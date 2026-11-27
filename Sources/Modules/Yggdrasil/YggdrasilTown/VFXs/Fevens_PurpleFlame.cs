@@ -73,7 +73,7 @@ public class Fevens_PurpleFlameDust : Visual
 	public override void Draw()
 	{
 		float pocession = Timer / MaxTime;
-		float timeValue = (float)(Main.time * 0.002);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.002);
 		timeValue = MathF.Sin(timeValue + ai[1] * 60) + 2;
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		float light = 1f;

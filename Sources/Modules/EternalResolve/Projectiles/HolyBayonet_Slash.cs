@@ -92,7 +92,7 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public void DrawWarp(VFXBatch sb)
 		{
-			float time = (float)(Main.time * 0.03);
+			float time = (float)(Main.timeForVisualEffects * 0.03);
 			float value0 = (120 - Projectile.timeLeft) / 120f;
 			float value1 = MathF.Pow(value0, 0.5f);
 			float width = (1 - MathF.Cos(value1 * 2f * MathF.PI)) * 5f;

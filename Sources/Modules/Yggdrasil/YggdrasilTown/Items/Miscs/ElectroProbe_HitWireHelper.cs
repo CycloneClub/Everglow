@@ -98,7 +98,7 @@ public class ElectroProbe_HitWireHelper : Visual
 		{
 			if (Main.tile[i, j].RedWire)
 			{
-				float size = 16f + ((float)Main.time / 4f) % 10f;
+				float size = 16f + ((float)Main.timeForVisualEffects / 4f) % 10f;
 				size *= 0.5f;
 				drawColor = new Color(1f, 0f, 0f, 0) * ((13 - size) / 5f);
 				Vector2 newPos = pos + new Vector2(8);
@@ -116,7 +116,7 @@ public class ElectroProbe_HitWireHelper : Visual
 			}
 			if (Main.tile[i, j].GreenWire)
 			{
-				float size = 16f + ((float)(Main.time + 10) / 4f) % 10f;
+				float size = 16f + ((float)(Main.timeForVisualEffects + 10) / 4f) % 10f;
 				size *= 0.5f;
 				drawColor = new Color(0f, 1f, 0f, 0) * ((13 - size) / 5f);
 				Vector2 newPos = pos + new Vector2(8);
@@ -134,7 +134,7 @@ public class ElectroProbe_HitWireHelper : Visual
 			}
 			if (Main.tile[i, j].BlueWire)
 			{
-				float size = 16f + ((float)(Main.time + 20) / 4f) % 10f;
+				float size = 16f + ((float)(Main.timeForVisualEffects + 20) / 4f) % 10f;
 				size *= 0.5f;
 				drawColor = new Color(0f, 0.3f, 1f, 0.5f) * ((13 - size) / 5f) * 2;
 				Vector2 newPos = pos + new Vector2(8);
@@ -152,7 +152,7 @@ public class ElectroProbe_HitWireHelper : Visual
 			}
 			if (Main.tile[i, j].YellowWire)
 			{
-				float size = 16f + ((float)(Main.time + 30) / 4f) % 10f;
+				float size = 16f + ((float)(Main.timeForVisualEffects + 30) / 4f) % 10f;
 				size *= 0.5f;
 				drawColor = Color.Yellow * ((13 - size) / 5f);
 				Vector2 newPos = pos + new Vector2(8);

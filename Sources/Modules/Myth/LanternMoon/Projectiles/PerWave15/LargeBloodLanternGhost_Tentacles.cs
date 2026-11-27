@@ -213,7 +213,7 @@ public class LargeBloodLanternGhost_Tentacles : ModProjectile
 							float value = timeValue * MathF.Sin(j * 0.75f) * (5f / (j + 5f));
 							if (ent.Timer < StretchTime * 1.5)
 							{
-								value *= MathF.Sin((float)Main.time * 0.12f);
+								value *= MathF.Sin((float)Main.timeForVisualEffects * 0.12f);
 							}
 							joint2[j] += dir * value;
 						}

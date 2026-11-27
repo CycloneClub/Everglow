@@ -146,7 +146,7 @@ public class VampireMatStickScreen : Visual
 		for (int k = 0; k < length; k++)
 		{
 			tantecle_pos -= tantecle_unit;
-			Vector2 unitPos = tantecle_pos + tantecle_normal * MathF.Sin((float)Main.time * 0.03f + k * 0.14f + randomOffset * MathHelper.TwoPi);
+			Vector2 unitPos = tantecle_pos + tantecle_normal * MathF.Sin((float)Main.timeForVisualEffects * 0.03f + k * 0.14f + randomOffset * MathHelper.TwoPi);
 			float width = 0.6f + (length - k) * 0.05f;
 			float valueX = k + 60 - length;
 			valueX /= 60f;

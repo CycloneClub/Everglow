@@ -44,7 +44,7 @@ public class Legume_Proj : TrailingProjectile
 	{
 		var bullerColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates());
 		Texture2D ball = ModAsset.Legume_Proj.Value;
-		Main.spriteBatch.Draw(ball, Projectile.Center - Main.screenPosition, null, bullerColor, (float)Main.time * 0.03f + Projectile.whoAmI, ball.Size() * 0.5f, 0.6f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(ball, Projectile.Center - Main.screenPosition, null, bullerColor, (float)Main.timeForVisualEffects * 0.03f + Projectile.whoAmI, ball.Size() * 0.5f, 0.6f, SpriteEffects.None, 0);
 		return;
 	}
 

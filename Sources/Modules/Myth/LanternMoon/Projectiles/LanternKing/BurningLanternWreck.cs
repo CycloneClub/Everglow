@@ -86,7 +86,7 @@ public class BurningLanternWreck : ModProjectile
 		}
 		Texture2D star = Commons.ModAsset.StarSlashGray.Value;
 		Texture2D spot = Commons.ModAsset.LightPoint2.Value;
-		Color drawColor = new Color(0.6f, 0.2f + 0.2f * MathF.Sin((float)Main.time * 0.03f + Projectile.whoAmI), 0, 0);
+		Color drawColor = new Color(0.6f, 0.2f + 0.2f * MathF.Sin((float)Main.timeForVisualEffects * 0.03f + Projectile.whoAmI), 0, 0);
 		var drawPos = Projectile.Center - Main.screenPosition;
 		Main.EntitySpriteDraw(star, drawPos, null, drawColor, 0, star.Size() * 0.5f, timeDecay, SpriteEffects.None, 0);
 		Main.EntitySpriteDraw(star, drawPos, null, drawColor, MathHelper.PiOver2, star.Size() * 0.5f, timeDecay, SpriteEffects.None, 0);

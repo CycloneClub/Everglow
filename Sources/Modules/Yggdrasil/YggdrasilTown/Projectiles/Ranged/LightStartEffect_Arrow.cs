@@ -43,7 +43,7 @@ public class LightStartEffect_Arrow : ModProjectile
 		}
 		else if (Projectile.timeLeft is > 120)
 		{
-			Projectile.ai[0] = (float)Utils.Lerp(Projectile.ai[0], (Math.Sin(Main.time * 0.03f + Projectile.whoAmI * 2) * 0.4f + 1f) * 0.5f, 0.3f);
+			Projectile.ai[0] = (float)Utils.Lerp(Projectile.ai[0], (Math.Sin(Main.timeForVisualEffects * 0.03f + Projectile.whoAmI * 2) * 0.4f + 1f) * 0.5f, 0.3f);
 		}
 		else
 		{
@@ -73,7 +73,7 @@ public class LightStartEffect_Arrow : ModProjectile
 		Action<float, int> generateParticleDust = (rotateRatio, currentTime) =>
 		{
 			float deltaRotation = (float)currentTime / duplicateTimes * MathHelper.TwoPi;
-			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(Main.time * rotateRatio + Projectile.whoAmI + deltaRotation);
+			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(Main.timeForVisualEffects * rotateRatio + Projectile.whoAmI + deltaRotation);
 			var somg = new LightFruitParticleDust
 			{
 				Velocity = newVelocity,
@@ -100,7 +100,7 @@ public class LightStartEffect_Arrow : ModProjectile
 	{
 		var texMain = Commons.ModAsset.StarSlash.Value;
 		var drawColor = new Color(0.5f, 0.4f, 0.2f, 0f);
-		float timeValue = (float)Main.time * 0.03f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.03f;
 		float scale = Projectile.scale * Projectile.ai[0];
 		Vector2 drawPos = Projectile.Center - Main.screenPosition;
 		Main.spriteBatch.Draw(texMain, drawPos, null, drawColor, 0, texMain.Size() / 2f, scale, SpriteEffects.None, 0);

@@ -99,7 +99,7 @@ public class EvilMusicRemnant_Note_Mark : ModProjectile
 	{
 		var texture = Commons.ModAsset.StarSlash.Value;
 		var textureBlack = Commons.ModAsset.StarSlash_Black.Value;
-		float timeValue = (float)Main.time * 0.02f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.02f;
 		var drawPos = Projectile.Center - Main.screenPosition;
 		float fade = 1f;
 		if (Projectile.timeLeft < 60f)

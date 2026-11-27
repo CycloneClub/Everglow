@@ -47,8 +47,8 @@ public class BlackCorruptRain3 : ModProjectile
 		}
 
 		Ins.Batch.Begin();
-		DrawTexCircle_VFXBatch(Ins.Batch, (30 + 7 * MathF.Sin((float)(Main.time / 3f + Projectile.ai[0]))) * Projectile.scale, width * Projectile.scale, Color.White * 0.1f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_Black_Thick.Value, (float)(Main.time / 3.8 + Projectile.ai[0]));
-		DrawTexCircle_VFXBatch(Ins.Batch, (30 + 7 * MathF.Sin((float)(Main.time / 3f + Projectile.ai[0]))) * Projectile.scale, width * Projectile.scale, new Color(0, 150, 255, 0) * 0.4f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2.Value, (float)(Main.time / 3.8 + Projectile.ai[0]));
+		DrawTexCircle_VFXBatch(Ins.Batch, (30 + 7 * MathF.Sin((float)(Main.timeForVisualEffects / 3f + Projectile.ai[0]))) * Projectile.scale, width * Projectile.scale, Color.White * 0.1f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_Black_Thick.Value, (float)(Main.timeForVisualEffects / 3.8 + Projectile.ai[0]));
+		DrawTexCircle_VFXBatch(Ins.Batch, (30 + 7 * MathF.Sin((float)(Main.timeForVisualEffects / 3f + Projectile.ai[0]))) * Projectile.scale, width * Projectile.scale, new Color(0, 150, 255, 0) * 0.4f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2.Value, (float)(Main.timeForVisualEffects / 3.8 + Projectile.ai[0]));
 		Ins.Batch.End();
 	}
 

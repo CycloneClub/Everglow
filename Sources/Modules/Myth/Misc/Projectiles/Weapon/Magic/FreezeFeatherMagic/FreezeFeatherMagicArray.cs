@@ -170,8 +170,8 @@ internal class FreezeFeatherMagicArray : VisualProjectile
 				pocession += 0.9f;
 			}
 			Vector2 normalizedRadious = radius / 40f * MathF.Sin(x / 40f * MathF.PI) * width;
-			bars.Add(new Vertex2D(Projectile.Center + radius + normalizedRadious, new Color(x / 400f, 0.1f, pocession, 0.0f), new Vector3(0 + (float)Main.time * 0.001f, x / 15f, 0)));
-			bars.Add(new Vertex2D(Projectile.Center + radius, new Color(x / 400f, 0.9f, pocession, 0.0f), new Vector3(0.8f + (float)Main.time * 0.001f, x / 15f, 0)));
+			bars.Add(new Vertex2D(Projectile.Center + radius + normalizedRadious, new Color(x / 400f, 0.1f, pocession, 0.0f), new Vector3(0 + (float)Main.timeForVisualEffects * 0.001f, x / 15f, 0)));
+			bars.Add(new Vertex2D(Projectile.Center + radius, new Color(x / 400f, 0.9f, pocession, 0.0f), new Vector3(0.8f + (float)Main.timeForVisualEffects * 0.001f, x / 15f, 0)));
 		}
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}

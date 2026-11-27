@@ -319,7 +319,7 @@ namespace Everglow.EternalResolve.Projectiles
 		{
 			if (Projectile.timeLeft < 180)
 			{
-				float time = (float)(Main.time * 0.03);
+				float time = (float)(Main.timeForVisualEffects * 0.03);
 				float newTime = Math.Clamp(6 - Projectile.timeLeft / 30f, 0, 1);
 				float value1 = MathF.Pow(newTime, 0.5f);
 				float width = (1 - MathF.Cos(value1 * 2f * MathF.PI)) * 5f;

@@ -97,11 +97,11 @@ public class MothShimmerScaleDust : Visual
 		for (int x = 0; x < 6; x++)
 		{
 			corner[x] = toCorner.RotatedBy(x / 3d * Math.PI);
-			corner[x].Y *= MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega));
+			corner[x].Y *= MathF.Sin(Phi + (float)(Main.timeForVisualEffects * 0.03 * Omega));
 			corner[x] = corner[x].RotatedBy(Rotation2);
 		}
 		Color lightColor = new Color(15, 45, 255, 60);
-		float reflectionLight = (1 - progress) * MathF.Pow(MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega + 1.57f)) + 1, 4) * 1.6f;
+		float reflectionLight = (1 - progress) * MathF.Pow(MathF.Sin(Phi + (float)(Main.timeForVisualEffects * 0.03 * Omega + 1.57f)) + 1, 4) * 1.6f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int x = 0; x < 3; x++)
 		{

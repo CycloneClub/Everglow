@@ -158,7 +158,7 @@ public class RockQuake_Proj : ModProjectile, IWarpProjectile_WarpStyle2
 		{
 			totalFade = Projectile.timeLeft / 30f;
 		}
-		float timeValue = (float)Main.time * 0.01f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.01f;
 		var drawColor = new Color(0.4f, 0.3f, 0.3f, 0) * totalFade;
 		int penetradeTileState = 0;
 		for (int i = 0; i < 1000; i++)
@@ -210,7 +210,7 @@ public class RockQuake_Proj : ModProjectile, IWarpProjectile_WarpStyle2
 		Vector2 checkPos = Projectile.Center;
 		var vel = Vector2.Normalize(Projectile.velocity);
 		Vector2 width = vel.RotatedBy(MathHelper.PiOver2) * 30;
-		float timeValue = (float)Main.time * 0.03f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.03f;
 		float totalFade = 1f;
 		if (Projectile.timeLeft < 30f)
 		{

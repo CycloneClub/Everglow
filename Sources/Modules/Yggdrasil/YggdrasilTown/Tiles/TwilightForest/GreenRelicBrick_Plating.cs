@@ -53,7 +53,7 @@ public class GreenRelicBrick_Plating : ModTile
 		Texture2D diamond = Commons.ModAsset.TileBlock.Value;
 		spriteBatch.Draw(diamond, new Point(i, j).ToWorldCoordinates() - Main.screenPosition + zero, null, drawColor, MathHelper.PiOver4, diamond.Size() * 0.5f, 1, SpriteEffects.None, 0);
 
-		float timer = (float)(Main.time * 0.03 + (i + j) * 0.27f) % 1f;
+		float timer = (float)(Main.timeForVisualEffects * 0.03 + (i + j) * 0.27f) % 1f;
 		spriteBatch.Draw(diamond, new Point(i, j).ToWorldCoordinates() - Main.screenPosition + zero, null, drawColor * (1 - timer), MathHelper.PiOver4, diamond.Size() * 0.5f, 1 + timer, SpriteEffects.None, 0);
 		return false;
 	}

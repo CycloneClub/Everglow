@@ -383,7 +383,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 
 		public void DrawWarp(VFXBatch sb)
 		{
-			float time = (float)(Main.time * 0.03);
+			float time = (float)(Main.timeForVisualEffects * 0.03);
 			if (OldColorFactor > 0)
 			{
 				for (int f = MaxDarkAttackUnitCount - 1; f > -1; f--)

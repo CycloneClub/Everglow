@@ -44,7 +44,7 @@ public class NightfireStaff_Projectile : ModProjectile
 	{
 		// Update texture frame
 		// ====================
-		if (Main.time % 5 == 0)
+		if (Main.timeForVisualEffects % 5 == 0)
 		{
 			Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Type];
 		}

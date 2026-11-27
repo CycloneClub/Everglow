@@ -117,7 +117,7 @@ public class SphereLanternProj : ModProjectile
 						fade = ent.TimeLeft / 30f;
 					}
 					Main.EntitySpriteDraw(tex, ent.Position - Main.screenPosition, null, Color.White * fade, ent.Rotation, tex.Size() * 0.5f, ent.Scale, SpriteEffects.None, 0);
-					float lightValue = MathF.Sin(ent.RandomValue + (float)Main.time * 0.1f) + 1;
+					float lightValue = MathF.Sin(ent.RandomValue + (float)Main.timeForVisualEffects * 0.1f) + 1;
 					lightValue *= 0.5f;
 					Main.EntitySpriteDraw(glow, ent.Position - Main.screenPosition, null, new Color(1f, 1f, 1f, 0) * lightValue * fade, ent.Rotation, glow.Size() * 0.5f, ent.Scale, SpriteEffects.None, 0);
 				}

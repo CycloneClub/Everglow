@@ -359,7 +359,7 @@ public class Guard_Of_YggdrasilTown : TownNPC_LiveInYggdrasil
 			Color color = drawColor;
 			color.A = 0;
 			int trailLength = 16;
-			float timeEffectValue = (float)(Main.time * 0.10f);
+			float timeEffectValue = (float)(Main.timeForVisualEffects * 0.10f);
 			var bars = new List<Vertex2D>();
 			for (int x = 0; x < trailLength; x++)
 			{

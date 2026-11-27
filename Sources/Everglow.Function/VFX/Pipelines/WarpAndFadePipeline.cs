@@ -76,7 +76,7 @@ public class WarpAndFadePipeline : PostPipeline
 			gd.Textures[1] = ModAsset.Noise_RGB.Value;
 			gd.SamplerStates[1] = SamplerState.AnisotropicWrap;
 			effect.Value.Parameters["strength"].SetValue(0.005f);
-			effect.Value.Parameters["deltaY"].SetValue((float)Main.time * 0.003f);
+			effect.Value.Parameters["deltaY"].SetValue((float)Main.timeForVisualEffects * 0.003f);
 			effect.Value.Parameters["mulSize"].SetValue(1.5f);
 			effect.Value.Parameters["fade"].SetValue(0.07f);
 			effect.Value.CurrentTechnique.Passes[0].Apply();

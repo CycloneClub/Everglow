@@ -456,7 +456,7 @@ public class Georg_Hook : ModProjectile
 			float factor = i / (float)smoothTrail.Count * mulFac;
 			float width = TrailWidthFunction(1 - factor);
 
-			float timeValue = (float)Main.time * 0.06f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.06f;
 
 			Vector2 drawPos = smoothTrail[i] + Projectile.Center;
 			Color drawC = Color.White * 0.8f;

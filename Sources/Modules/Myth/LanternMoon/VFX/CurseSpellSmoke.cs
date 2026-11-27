@@ -36,7 +36,7 @@ public class CurseSpellSmoke : Visual
 	{
 		float pocession = 1 - Timer / MaxTime;
 		Texture2D tex = Commons.ModAsset.Point.Value;
-		float timeValue = (float)(Main.time * 0.002);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.002);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		var bars = new List<Vertex2D>()
 		{

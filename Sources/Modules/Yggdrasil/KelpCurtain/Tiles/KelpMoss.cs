@@ -176,7 +176,7 @@ public class KelpMoss : ModTile, ITileFluentlyDrawn
 		}
 
 		Vector2 worldPos_drop = lastSegmentPos + Main.screenPosition + dropOffset.RotatedBy(lastRot);
-		float dropValue = (TileUtils.GetFixedRandomNumber(tilePos, 600) + (int)Main.time) % 600 - 300;
+		float dropValue = (TileUtils.GetFixedRandomNumber(tilePos, 600) + (int)Main.timeForVisualEffects) % 600 - 300;
 		if (dropValue < 0)
 		{
 			dropValue = 0;

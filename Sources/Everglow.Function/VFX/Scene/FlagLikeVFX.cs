@@ -130,7 +130,7 @@ public class FlagLikeVFX : TileVFX
 	public static Vector2 GetWindPush(float x, float y, float hardness)
 	{
 		float noise = 0;
-		float timeValue = (float)Main.time * 0.08f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.08f;
 
 		for (int i = 0; i < 8; i++)
 		{

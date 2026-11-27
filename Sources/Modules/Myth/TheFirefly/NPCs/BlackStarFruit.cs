@@ -83,7 +83,7 @@ public class BlackStarFruit : ModNPC
 		}
 
 		Texture2D fruit = ModAsset.BlackStarFruit.Value;
-		Main.spriteBatch.Draw(fruit, NPC.Center - Main.screenPosition, null, new Color(10, 83, 110, 0), NPC.rotation, fruit.Size() / 2f, 0.025f * (float)(4 + Math.Sin(Main.time / 15d + NPC.position.X / 36d)), effects, 0f);
+		Main.spriteBatch.Draw(fruit, NPC.Center - Main.screenPosition, null, new Color(10, 83, 110, 0), NPC.rotation, fruit.Size() / 2f, 0.025f * (float)(4 + Math.Sin(Main.timeForVisualEffects / 15d + NPC.position.X / 36d)), effects, 0f);
 		return false;
 	}
 
@@ -98,7 +98,7 @@ public class BlackStarFruit : ModNPC
 		Texture2D lightShell = ModAsset.Lightball.Value;
 		Texture2D lightFruit = ModAsset.BlackStarFruitLight.Value;
 		var color = new Color(10, 83, 110, 0);
-		Main.spriteBatch.Draw(lightShell, NPC.Center - Main.screenPosition, null, color, NPC.rotation, lightShell.Size() / 2f, 0.025f * (float)(4 + Math.Sin(Main.time / 15d + NPC.position.X / 36d)), effects, 0f);
+		Main.spriteBatch.Draw(lightShell, NPC.Center - Main.screenPosition, null, color, NPC.rotation, lightShell.Size() / 2f, 0.025f * (float)(4 + Math.Sin(Main.timeForVisualEffects / 15d + NPC.position.X / 36d)), effects, 0f);
 		for (int j = 0; j < 12; j++)
 		{
 			Main.spriteBatch.Draw(lightFruit, NPC.Center - Main.screenPosition + vectorRotationPosition[j] * floatLightPosition[j] * entityLightTime, null, new Color(1 - floatLightPosition[j], 1 - floatLightPosition[j], 1 - floatLightPosition[j], 0), NPC.rotation, new Vector2(5, 5), 1.2f * entityLightTime * (1 - floatLightPosition[j]), effects, 0f);

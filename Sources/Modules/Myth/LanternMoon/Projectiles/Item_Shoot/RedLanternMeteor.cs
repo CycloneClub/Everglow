@@ -43,7 +43,7 @@ public class RedLanternMeteor : TrailingProjectile
 		{
 			width *= Projectile.timeLeft / 150f;
 		}
-		width *= 1 + (MathF.Sin((float)Main.time * 0.23f + Projectile.whoAmI) + 0.5f) * 0.7f;
+		width *= 1 + (MathF.Sin((float)Main.timeForVisualEffects * 0.23f + Projectile.whoAmI) + 0.5f) * 0.7f;
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, new Color(1f, 0.75f, 0, 0), MathHelper.PiOver2, star.Size() / 2f, width / 4.5f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, new Color(1f, 0.75f, 0, 0), 0, star.Size() / 2f, new Vector2(3f, width / 4.5f), SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, new Color(1f, 0.75f, 0, 0), MathHelper.PiOver2 + (float)Main.timeForVisualEffects * 0.04f, star.Size() / 2f, width / 10f, SpriteEffects.None, 0);
@@ -86,7 +86,7 @@ public class RedLanternMeteor : TrailingProjectile
 			}
 			float factor = i / (float)smoothTrail.Count * mulFac;
 			float width = TrailWidthFunction(factor);
-			float timeValue = (float)Main.time * 0.0005f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.0005f;
 			factor += timeValue;
 
 			Vector2 drawPos = smoothTrail[i] + halfSize;

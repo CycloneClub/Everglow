@@ -67,8 +67,8 @@ public class UnderwaterFlareLauncher_Proj : ModProjectile
 				{
 					float range = (value - 0.5f) * 2f;
 					range = 1 - MathF.Cos(range * MathHelper.Pi * 1.2f);
-					range += 0.15f * MathF.Sin((float)Main.time * 0.02f + Projectile.whoAmI);
-					Vector2 pos = Projectile.Center + new Vector2(0, range * (180f - (k % 2) * 80f)).RotatedBy(k / 32f * MathHelper.TwoPi + (float)Main.time * 0.002f);
+					range += 0.15f * MathF.Sin((float)Main.timeForVisualEffects * 0.02f + Projectile.whoAmI);
+					Vector2 pos = Projectile.Center + new Vector2(0, range * (180f - (k % 2) * 80f)).RotatedBy(k / 32f * MathHelper.TwoPi + (float)Main.timeForVisualEffects * 0.002f);
 					var checkTile = TileUtils.SafeGetTile(pos.ToTileCoordinates());
 					if (checkTile.LiquidAmount > 0 && (!Main.tileBlockLight[checkTile.TileType] || !checkTile.HasTile))
 					{

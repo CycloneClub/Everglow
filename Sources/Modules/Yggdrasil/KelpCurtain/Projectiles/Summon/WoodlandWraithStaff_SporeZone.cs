@@ -80,7 +80,7 @@ public class WoodlandWraithStaff_SporeZone : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		float timeValue = (float)(Main.time * 0.0002f);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.0002f);
 		Vector2 drawPos = Projectile.Center - Main.screenPosition;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		List<Vertex2D> barsCenter = new List<Vertex2D>();

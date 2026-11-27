@@ -98,7 +98,7 @@ public class SettlementBackground : Visual
 		{
 			drawColor = new Color(0f, 0.25f, 0, 0f);
 		}
-		float timeValue = (float)(Main.time * 0.002);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.002);
 		List<Vertex2D> bars = new List<Vertex2D>();
 		bars.Add(new Vector2(0), drawColor, new Vector3(0, 0, pocession));
 		bars.Add(new Vector2(Main.screenWidth, 0), drawColor, new Vector3(1, 0, pocession));

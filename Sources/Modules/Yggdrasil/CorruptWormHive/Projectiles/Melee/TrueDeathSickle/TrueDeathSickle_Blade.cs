@@ -281,7 +281,7 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_WarpStyle2, 
 			return false;
 		}
 		float flameSize = 24f;
-		float flameTimer = -(float)Main.time * 0.06f;
+		float flameTimer = -(float)Main.timeForVisualEffects * 0.06f;
 
 		// dark background color.
 		Color drawColor = Color.White;

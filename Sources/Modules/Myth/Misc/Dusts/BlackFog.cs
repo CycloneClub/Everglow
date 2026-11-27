@@ -15,7 +15,7 @@ public class BlackFog : ModDust
 		dust.position += dust.velocity;
 		dust.rotation += 0.1f;
 		dust.scale *= 0.995f;
-		dust.velocity.X = (float)(Math.Sin(Main.time / 30d + dust.frame.Y) * 0.3f * dust.scale);
+		dust.velocity.X = (float)(Math.Sin(Main.timeForVisualEffects / 30d + dust.frame.Y) * 0.3f * dust.scale);
 		if (dust.scale < 0.05f)
 		{
 			dust.active = false;

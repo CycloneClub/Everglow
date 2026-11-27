@@ -27,7 +27,7 @@ public class KissOfCthulhu_Trail : ModDust
 		{
 			speed *= cus.X / 90f;
 		}
-		dust.velocity = new Vector2(0, speed).RotatedBy(cus.Y) * MathF.Sin(cus.X * 0.035f + (float)Main.time * 0.2f) + cus.ZW();
+		dust.velocity = new Vector2(0, speed).RotatedBy(cus.Y) * MathF.Sin(cus.X * 0.035f + (float)Main.timeForVisualEffects * 0.2f) + cus.ZW();
 		dust.position += dust.velocity;
 
 		dust.scale *= 0.87f;
@@ -39,8 +39,8 @@ public class KissOfCthulhu_Trail : ModDust
 		float value = 0;
 		for (int i = 0; i < 8; i++)
 		{
-			value += MathF.Sin(dust.position.X * 0.05f * MathF.Pow(2, i) + (float)Main.time * 0.02f * i % 3) / MathF.Pow(2, i);
-			value -= MathF.Sin(dust.position.Y * 0.05f * MathF.Pow(2, i) - (float)Main.time * 0.03f * i % 5) / MathF.Pow(2, i);
+			value += MathF.Sin(dust.position.X * 0.05f * MathF.Pow(2, i) + (float)Main.timeForVisualEffects * 0.02f * i % 3) / MathF.Pow(2, i);
+			value -= MathF.Sin(dust.position.Y * 0.05f * MathF.Pow(2, i) - (float)Main.timeForVisualEffects * 0.03f * i % 5) / MathF.Pow(2, i);
 		}
 		return value;
 	}

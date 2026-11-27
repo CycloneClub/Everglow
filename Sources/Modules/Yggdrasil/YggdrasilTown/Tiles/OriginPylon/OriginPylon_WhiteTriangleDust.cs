@@ -43,7 +43,7 @@ public class OriginalPylon_VFX : TileVFX
 			};
 			Ins.Batch.Draw(ModAsset.OriginPylon_Glow.Value, bars, PrimitiveType.TriangleStrip);
 
-			float timeValue = (float)(Main.time * 0.0004f);
+			float timeValue = (float)(Main.timeForVisualEffects * 0.0004f);
 			var crack = new List<Vertex2D>();
 			for (int k = 0; k < 6; k++)
 			{

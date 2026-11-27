@@ -91,7 +91,7 @@ public class MossySpellArray : NoTextureProjectile
 	public void DrawMagicArray()
 	{
 		Player player = Main.player[Projectile.owner];
-		float timeValue = (float)Main.time * 0.05f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.05f;
 		var stems_black = new List<Vertex2D>();
 		var leaves_black = new List<Vertex2D>();
 

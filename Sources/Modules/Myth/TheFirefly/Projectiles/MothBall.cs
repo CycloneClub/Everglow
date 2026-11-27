@@ -172,7 +172,7 @@ public class MothBall : ModProjectile
 		}
 		for (int k = 0; k < 9; k++)
 		{
-			DrawCurrents(k - (float)Main.time * 0.03f, k, range);
+			DrawCurrents(k - (float)Main.timeForVisualEffects * 0.03f, k, range);
 		}
 
 		return false;

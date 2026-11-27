@@ -203,7 +203,7 @@ internal class FlowLightMissile : ModProjectile
 		Vector2 bulbPos = Projectile.Center + new Vector2(56, 0).RotatedBy(rot0) - new Vector2(0, 6);
 		float energyValue = energy / 250f;
 		Color c0 = new Color(0, energyValue * energyValue * 0.2f, energyValue, 0);
-		float timeValue = (float)Main.time * 0.004f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.004f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		float accuracy = 16;
 		List<Vertex2D> bars2 = new List<Vertex2D>();

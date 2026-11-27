@@ -135,7 +135,7 @@ public class JellyBallGelStream : TrailingProjectile
 		Vector2 drawCenter = Projectile.Center - Main.screenPosition;
 		var drop = new List<Vertex2D>();
 		int step = 30;
-		float timeValue = (float)Main.time * 0.03f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.03f;
 		var drawColor = new Color(0.1f, 0.3f, 1f, 0.6f);
 		for (int theta = 0; theta <= step; theta++)
 		{

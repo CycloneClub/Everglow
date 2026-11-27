@@ -522,7 +522,7 @@ public class EvilMusicRemnant_Minion : ModProjectile
 		var chinPositionOffset = new Vector2(-6 * Projectile.direction, 20).RotatedBy(skullRotation) * scaleFactor;
 		var chinPosition = skullPosition + chinPositionOffset;
 		var chinOrigin = new Vector2(0, 0);
-		var chinRotation = skullRotation + 0.2f * MathF.Sin((float)Main.time * 0.6f + Projectile.whoAmI) * Projectile.direction;
+		var chinRotation = skullRotation + 0.2f * MathF.Sin((float)Main.timeForVisualEffects * 0.6f + Projectile.whoAmI) * Projectile.direction;
 		if (flameTime > 0)
 		{
 			chinRotation = skullRotation + (1 - flameTime / 100f) * Projectile.direction;
@@ -539,7 +539,7 @@ public class EvilMusicRemnant_Minion : ModProjectile
 
 		// Glow
 		var glowPosition = skullPosition;
-		var glowColor = new Color(1f, 1f, 1f, 0) * 0.6f * (MathF.Sin((float)Main.time * 0.06f + Projectile.whoAmI) + 2f) * dissolveDuration;
+		var glowColor = new Color(1f, 1f, 1f, 0) * 0.6f * (MathF.Sin((float)Main.timeForVisualEffects * 0.06f + Projectile.whoAmI) + 2f) * dissolveDuration;
 		Main.spriteBatch.Draw(glowTexture, glowPosition, null, glowColor, skullRotation, glowTexture.Size() / 2, scale, skullSpriteEffect, 0);
 		DrawTrace(Main.spriteBatch);
 		return false;

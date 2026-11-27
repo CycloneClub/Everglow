@@ -16,7 +16,7 @@ public class WaterDeliveryHole_VFX_Warp : TileVFX
 
 	public override void Draw()
 	{
-		float timeValue = (float)(Main.time * 0.001f);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.001f);
 		var bars_side_left = new List<Vertex2D>();
 		var bars_side_right = new List<Vertex2D>();
 		for (int k = -2; k < 30; k++)

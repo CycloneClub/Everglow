@@ -60,7 +60,7 @@ public class SquamousRockSpike_Falling_Predict : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		var toTarget = new Vector2(1, 0).RotatedBy(Projectile.rotation);
-		var timeValue = (float)Main.time * 0.04f;
+		var timeValue = (float)Main.timeForVisualEffects * 0.04f;
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;

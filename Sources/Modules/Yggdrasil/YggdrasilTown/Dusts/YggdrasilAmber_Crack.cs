@@ -13,7 +13,7 @@ public class YggdrasilAmber_Crack : ModDust
 
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
-		if ((int)Main.time % 50 == TileUtils.GetFixedRandomNumber_SingleSeed(dust.GetHashCode(), 50))
+		if ((int)Main.timeForVisualEffects % 50 == TileUtils.GetFixedRandomNumber_SingleSeed(dust.GetHashCode(), 50))
 		{
 			dust.alpha = 1;
 			return new Color?(new Color(1f, 1f, 1f, 0));

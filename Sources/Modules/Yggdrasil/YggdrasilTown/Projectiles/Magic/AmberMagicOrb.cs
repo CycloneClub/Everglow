@@ -82,19 +82,19 @@ public class AmberMagicOrb : HandheldProjectile
 		}
 
 		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction * player.gravDir;
-		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + GravityDrawOffset, null, lightColor, rot + (float)Main.time * 0.25f, texMain.Size() / 2f, 1f, se, 0);
-		Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition + GravityDrawOffset, null, new Color(1f, 1f, 1f, 0), rot + (float)Main.time * 0.25f, texGlow.Size() / 2f, 1f, se, 0);
+		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + GravityDrawOffset, null, lightColor, rot + (float)Main.timeForVisualEffects * 0.25f, texMain.Size() / 2f, 1f, se, 0);
+		Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition + GravityDrawOffset, null, new Color(1f, 1f, 1f, 0), rot + (float)Main.timeForVisualEffects * 0.25f, texGlow.Size() / 2f, 1f, se, 0);
 
 		var bars = new List<Vertex2D>();
 		for (int t = 0; t < 3; t++)
 		{
-			Vector2 v0 = Projectile.Center + new Vector2(0, -5 * player.direction).RotatedBy((float)Main.time * 0.25f + 1.5f);
+			Vector2 v0 = Projectile.Center + new Vector2(0, -5 * player.direction).RotatedBy((float)Main.timeForVisualEffects * 0.25f + 1.5f);
 			Vector2 v1 = new Vector2(0, -2).RotatedBy(t / 3d * MathHelper.TwoPi + Projectile.rotation);
 			var drawC = new Color(1f, 0.5f, 0f, 0);
 			for (int i = 0; i < 150; i++)
 			{
 				float factor = i / 85f;
-				float timeValue = (float)Main.time * 0.006f;
+				float timeValue = (float)Main.timeForVisualEffects * 0.006f;
 
 				Vector2 drawPos = v0;
 				Vector2 toPlayer = ArmRootPos - v0 - v1;

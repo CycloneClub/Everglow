@@ -90,7 +90,7 @@ public class TsunamiShark_Bullet_Hit : ModProjectile, IWarpProjectile
 		}
 
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.Default, SamplerState.PointWrap, RasterizerState.CullNone);
-		DrawTexRing_VFXBatch(Ins.Batch, value * 76, width, new Color(colorV * 0.6f, colorV * colorV * 3.8f, colorV * 12f, 0f), Projectile.Center - Main.screenPosition, t, Projectile.ai[1], (float)Main.time * 0.01f + Projectile.whoAmI * 2.45396f);
+		DrawTexRing_VFXBatch(Ins.Batch, value * 76, width, new Color(colorV * 0.6f, colorV * colorV * 3.8f, colorV * 12f, 0f), Projectile.Center - Main.screenPosition, t, Projectile.ai[1], (float)Main.timeForVisualEffects * 0.01f + Projectile.whoAmI * 2.45396f);
 		Ins.Batch.End();
 
 		return false;

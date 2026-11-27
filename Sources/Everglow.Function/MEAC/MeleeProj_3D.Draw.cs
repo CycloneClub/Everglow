@@ -213,7 +213,7 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_Warp
 		// LongitudeRing Rings
 		for (int l = 0; l < 9; l++)
 		{
-			List<Vector3> longitudeRing = ToLongitudeRing(basicRing, l / 9f * MathHelper.Pi + (float)Main.time * 0.003f);
+			List<Vector3> longitudeRing = ToLongitudeRing(basicRing, l / 9f * MathHelper.Pi + (float)Main.timeForVisualEffects * 0.003f);
 			Draw3DCurve(longitudeRing, drawColor, ScreenPositionOffset);
 		}
 
@@ -392,7 +392,7 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_Warp
 			}
 			if (style == 4)
 			{
-				float rot = (worldPos - Projectile.Center).ToRotation() - (float)Main.time * 0.01f;
+				float rot = (worldPos - Projectile.Center).ToRotation() - (float)Main.timeForVisualEffects * 0.01f;
 				drawColor *= MathF.Pow(Math.Max(0, 0.5f + 0.5f * MathF.Cos(rot * 2)), 16) * 0.4f * ReflectionSharpValue * MathF.Pow(extraValue0, 2);
 				drawColor.A = 0;
 			}

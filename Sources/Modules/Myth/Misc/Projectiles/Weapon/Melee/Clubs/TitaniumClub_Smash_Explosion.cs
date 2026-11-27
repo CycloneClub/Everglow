@@ -84,14 +84,14 @@ public class TitaniumClub_Smash_Explosion : ModProjectile, IWarpProjectile
 		DrawTexCircle(timeValue * 23 * Projectile.ai[0], 17 * Projectile.ai[0], Color.White * (1 - timeValue), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_10_Black.Value);
 
 		Color blue = new Color(0.1f * (1 - timeValue) * (1 - timeValue), 0.6f * (1 - timeValue) * (1 - timeValue), 1 - timeValue, 0f) * (1 - timeValue);
-		var deltaBlue = new Vector2(MathF.Sin((float)Main.time * 0.2f) * 5, 0);
+		var deltaBlue = new Vector2(MathF.Sin((float)Main.timeForVisualEffects * 0.2f) * 5, 0);
 		DrawTexCircle(timeValue * 24 * Projectile.ai[0], 17 * Projectile.ai[0], blue, Projectile.Center - Main.screenPosition + deltaBlue, Commons.ModAsset.Trail_8.Value);
 
-		Vector2 deltaPink = new Vector2(MathF.Sin((float)Main.time * 0.2f) * 5, 0).RotatedBy(MathHelper.PiOver2 / 3f);
+		Vector2 deltaPink = new Vector2(MathF.Sin((float)Main.timeForVisualEffects * 0.2f) * 5, 0).RotatedBy(MathHelper.PiOver2 / 3f);
 		Color pink = new Color(1 - timeValue, 0.6f * (1 - timeValue) * (1 - timeValue), 0.1f * (1 - timeValue) * (1 - timeValue), 0f) * (1 - timeValue);
 		DrawTexCircle(timeValue * 25 * Projectile.ai[0], 17 * Projectile.ai[0], pink, Projectile.Center - Main.screenPosition + deltaPink, Commons.ModAsset.Trail_10.Value);
 
-		Vector2 deltaYellow = new Vector2(MathF.Sin((float)Main.time * 0.2f) * 15, 0).RotatedBy(MathHelper.PiOver2 / 3f * 2);
+		Vector2 deltaYellow = new Vector2(MathF.Sin((float)Main.timeForVisualEffects * 0.2f) * 15, 0).RotatedBy(MathHelper.PiOver2 / 3f * 2);
 		var yellow = new Color(0.4f * (1 - timeValue) * (1 - timeValue), 0.4f * (1 - timeValue) * (1 - timeValue), 0.1f * (1 - timeValue) * (1 - timeValue), 0f);
 		DrawTexCircle(timeValue * 23 * Projectile.ai[0], 17 * Projectile.ai[0], yellow, Projectile.Center - Main.screenPosition + deltaYellow, Commons.ModAsset.Trail_8.Value);
 

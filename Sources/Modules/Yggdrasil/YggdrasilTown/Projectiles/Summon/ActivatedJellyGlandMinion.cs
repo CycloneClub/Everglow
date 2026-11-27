@@ -115,7 +115,7 @@ public class ActivatedJellyGlandMinion : ModProjectile
 	private void BaseMinionAI()
 	{
 		// Update frame
-		if (Main.time % 10 == 0)
+		if (Main.timeForVisualEffects % 10 == 0)
 		{
 			Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Projectile.type];
 		}

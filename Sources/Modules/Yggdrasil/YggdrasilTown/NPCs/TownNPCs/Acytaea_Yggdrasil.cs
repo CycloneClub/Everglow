@@ -992,7 +992,7 @@ public class Acytaea_Yggdrasil : ModNPC
 						offset = new Vector2(-10, 0).RotatedBy(NPC.rotation);
 						wingSize = 1f;
 					}
-					int frameIndex = (int)(Main.time * 0.17 + i * 5) % 7;
+					int frameIndex = (int)(Main.timeForVisualEffects * 0.17 + i * 5) % 7;
 					Rectangle frameWing = new Rectangle(0, frameIndex * 40, 40, 40);
 
 					spriteBatch.Draw(wing, NPC.Center - Main.screenPosition + offset, frameWing, drawColor, rotationWing, new Vector2(40), NPC.scale * (1 - i * 0.1f) * wingSize, SpriteEffects.None, 0);
@@ -1011,7 +1011,7 @@ public class Acytaea_Yggdrasil : ModNPC
 						offset = new Vector2(0);
 						wingSize = 0.8f;
 					}
-					int frameIndex = (int)(Main.time * 0.17 + i * 5 + 3) % 7;
+					int frameIndex = (int)(Main.timeForVisualEffects * 0.17 + i * 5 + 3) % 7;
 					Rectangle frameWing = new Rectangle(0, frameIndex * 40, 40, 40);
 					spriteBatch.Draw(wing, NPC.Center - Main.screenPosition + offset, frameWing, drawColor, rotationWing, new Vector2(40, 0), NPC.scale * (1 - i * 0.1f) * wingSize, SpriteEffects.FlipVertically, 0);
 					spriteBatch.Draw(wingFlame, NPC.Center - Main.screenPosition + offset, frameWing, new Color(1f, 1f, 1f, 0), rotationWing, new Vector2(40, 0), NPC.scale * (1 - i * 0.1f) * wingSize, SpriteEffects.FlipVertically, 0);

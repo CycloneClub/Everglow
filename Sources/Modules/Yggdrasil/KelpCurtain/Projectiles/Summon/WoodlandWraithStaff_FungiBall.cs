@@ -325,7 +325,7 @@ public class WoodlandWraithStaff_FungiBall : ModProjectile
 			toWander = Vector2.Normalize(toWander) * 12f;
 		}
 		Projectile.velocity = Vector2.Lerp(Projectile.velocity, toWander, 0.05f);
-		Projectile.rotation += MathF.Sin((float)Main.time * 0.02f + Projectile.whoAmI) * 0.02f;
+		Projectile.rotation += MathF.Sin((float)Main.timeForVisualEffects * 0.02f + Projectile.whoAmI) * 0.02f;
 		Projectile.rotation *= 0.995f;
 	}
 
@@ -564,7 +564,7 @@ public class WoodlandWraithStaff_FungiBall : ModProjectile
 			var texBloom = ModAsset.WoodlandWraithStaff_FungiBall_Bloom.Value;
 			if (ZoneSporeFade(Projectile.Center) > 0)
 			{
-				float cValue = 0.75f + 0.15f * MathF.Sin((float)Main.time * 0.05f + Projectile.whoAmI);
+				float cValue = 0.75f + 0.15f * MathF.Sin((float)Main.timeForVisualEffects * 0.05f + Projectile.whoAmI);
 				Main.spriteBatch.Draw(texBloom, Projectile.Center - Main.screenPosition, null, new Color(cValue, cValue, cValue, 0), Projectile.rotation, texBloom.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 			}
 			var texture = ModContent.Request<Texture2D>(Texture).Value;

@@ -1492,7 +1492,7 @@ public class CorruptMoth : ModNPC
 		float totalMaxZ = 0;
 		for (int j = 0; j < 8; j++)
 		{
-			posCheck = RodriguesRotate(cubeVec[j], axis, (float)Main.time * 0.03f);
+			posCheck = RodriguesRotate(cubeVec[j], axis, (float)Main.timeForVisualEffects * 0.03f);
 			if (posCheck.Z > totalMaxZ)
 			{
 				totalMaxZ = posCheck.Z;
@@ -1508,7 +1508,7 @@ public class CorruptMoth : ModNPC
 			for (int j = 0; j < 4; j++)
 			{
 				Vector3 pos = cubeVec[array[i][j] - 1];
-				posCheck = RodriguesRotate(pos, axis, (float)Main.time * 0.03f);
+				posCheck = RodriguesRotate(pos, axis, (float)Main.timeForVisualEffects * 0.03f);
 				if (posCheck.Z > faceMaxZ)
 				{
 					faceMaxZ = posCheck.Z;
@@ -1559,7 +1559,7 @@ public class CorruptMoth : ModNPC
 				{
 					coord = new Vector3(0, 0, 0);
 				}
-				pos = RodriguesRotate(pos, axis, (float)Main.time * 0.03f) * 140;
+				pos = RodriguesRotate(pos, axis, (float)Main.timeForVisualEffects * 0.03f) * 140;
 				pos.X += NPC.Center.X - Main.screenPosition.X;
 				pos.Y += NPC.Center.Y - Main.screenPosition.Y;
 				Vector2 v2Pos = Projection2(pos, new Vector2(Main.screenWidth, Main.screenHeight) / 2, 1000);
@@ -1580,7 +1580,7 @@ public class CorruptMoth : ModNPC
 			for (int j = 0; j < 4; j++)
 			{
 				Vector3 pos = cubeVec[array[i][j] - 1];
-				posCheck = RodriguesRotate(pos, axis, (float)Main.time * 0.03f);
+				posCheck = RodriguesRotate(pos, axis, (float)Main.timeForVisualEffects * 0.03f);
 				if (posCheck.Z > faceMaxZ)
 				{
 					faceMaxZ = posCheck.Z;
@@ -1631,7 +1631,7 @@ public class CorruptMoth : ModNPC
 				{
 					coord = new Vector3(0, 0, 0);
 				}
-				pos = RodriguesRotate(pos, axis, (float)Main.time * 0.03f) * 140;
+				pos = RodriguesRotate(pos, axis, (float)Main.timeForVisualEffects * 0.03f) * 140;
 				pos.X += NPC.Center.X - Main.screenPosition.X;
 				pos.Y += NPC.Center.Y - Main.screenPosition.Y;
 				Vector2 v2Pos = Projection2(pos, new Vector2(Main.screenWidth, Main.screenHeight) / 2, 1000);

@@ -93,7 +93,7 @@ public class VaporDust : Visual
 		float progress = Timer / MaxTime;
 		progress = MathF.Pow(progress, 0.3f);
 		progress = 1 - MathF.Sin(progress * MathF.PI);
-		float timeValue = (float)(Main.time * 0.0003f);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.0003f);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = Lighting.GetColor((int)(Position.X / 16f), (int)(Position.Y / 16f));
 		Vector3 drawC = lightColor.ToVector3() * 0.2f + new Vector3(lightColor.ToVector3().Length() / 3f);
@@ -158,7 +158,7 @@ public class VaporDust2 : Visual
 		float progress = Timer / MaxTime;
 		progress = MathF.Pow(progress, 0.3f);
 		progress = 1 - MathF.Sin(progress * MathF.PI);
-		float timeValue = (float)(Main.time * 0.0003f);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.0003f);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Vector2 pos0 = Position + toCorner;
 		Vector2 pos1 = Position + toCorner.RotatedBy(Math.PI * 0.5);
@@ -229,7 +229,7 @@ public class VaporDust3 : Visual
 		float progress = Timer / MaxTime;
 		progress = MathF.Pow(progress, 0.3f);
 		progress = 1 - MathF.Sin(progress * MathF.PI);
-		float timeValue = (float)(Main.time * 0.0003f);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.0003f);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Vector2 pos0 = Position + toCorner;
 		Vector2 pos1 = Position + toCorner.RotatedBy(Math.PI * 0.5);

@@ -83,7 +83,7 @@ public class BlossomFlameDust : Visual
 	public override void Draw()
 	{
 		float pocession = timer / maxTime;
-		float timeValue = (float)(Main.time * 0.002);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.002);
 		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{

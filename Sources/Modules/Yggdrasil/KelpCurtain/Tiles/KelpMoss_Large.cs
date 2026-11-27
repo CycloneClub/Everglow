@@ -22,13 +22,13 @@ public class KelpMoss_Large_Fore : TileVFX
 		{
 			if (i >= wigglerOmegas.Count)
 			{
-				wigglerOmegas.Add(MathF.Sin(Position.X + Position.Y + i * 0.4f + (float)Main.time * 0.05f) * 0.03f);
+				wigglerOmegas.Add(MathF.Sin(Position.X + Position.Y + i * 0.4f + (float)Main.timeForVisualEffects * 0.05f) * 0.03f);
 			}
 			else
 			{
 				wigglerRotations[i] += wigglerOmegas[i];
 				wigglerOmegas[i] *= 0.9f;
-				wigglerOmegas[i] += MathF.Sin(Position.X + Position.Y + i * 0.4f + (float)Main.time * 0.05f) * 0.0005f - Main.windSpeedCurrent * 0.001f / wigglerRotations.Count;
+				wigglerOmegas[i] += MathF.Sin(Position.X + Position.Y + i * 0.4f + (float)Main.timeForVisualEffects * 0.05f) * 0.0005f - Main.windSpeedCurrent * 0.001f / wigglerRotations.Count;
 				wigglerRotations[i] = wigglerRotations[i] * 0.9f + startRotation * MathF.Pow(0.7f, i) * 0.1f;
 			}
 		}

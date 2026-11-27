@@ -168,8 +168,8 @@ internal class BoneFeatherMagicArray : VisualProjectile
 				pocession += 0.9f;
 			}
 			Vector2 normalizedRadious = radius / 40f * MathF.Sin(x / 40f * MathF.PI) * width;
-			bars.Add(new Vertex2D(Projectile.Center + radius + normalizedRadious, new Color(x / 40f, 0.1f, pocession, 0.6f), new Vector3(0, x / 15f - (float)Main.time * 0.004f, 0)));
-			bars.Add(new Vertex2D(Projectile.Center + radius, new Color(x / 40f, 0.9f, pocession, 0.6f), new Vector3(0.8f, x / 15f - (float)Main.time * 0.004f, 0)));
+			bars.Add(new Vertex2D(Projectile.Center + radius + normalizedRadious, new Color(x / 40f, 0.1f, pocession, 0.6f), new Vector3(0, x / 15f - (float)Main.timeForVisualEffects * 0.004f, 0)));
+			bars.Add(new Vertex2D(Projectile.Center + radius, new Color(x / 40f, 0.9f, pocession, 0.6f), new Vector3(0.8f, x / 15f - (float)Main.timeForVisualEffects * 0.004f, 0)));
 		}
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}

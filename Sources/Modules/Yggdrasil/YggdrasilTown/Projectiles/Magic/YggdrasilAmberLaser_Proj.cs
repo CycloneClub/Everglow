@@ -235,7 +235,7 @@ public class YggdrasilAmberLaser_Proj : HandheldProjectile
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.CurrentTechnique.Passes[0].Apply();
 		Vector2 mouseToPlayer = new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75);
-		float timeValue = (float)Main.time * 0.06f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.06f;
 
 		int step = -6;
 		while (!Collision.SolidCollision(Projectile.Center + mouseToPlayer * step * 8, 0, 0))

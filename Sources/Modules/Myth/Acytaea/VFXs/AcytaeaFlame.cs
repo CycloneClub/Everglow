@@ -114,7 +114,7 @@ internal class AcytaeaFlameDust : ShaderDraw
 	public override void Draw()
 	{
 		float pocession = timer / maxTime;
-		float timeValue = (float)(Main.time * 0.002);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.002);
 		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
 		int len = pos.Length;
 		if (len <= 2)

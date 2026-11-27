@@ -35,7 +35,7 @@ internal class LightBeam : ModProjectile
 			{
 				Vector2 newVelocity = new Vector2(0, 0.7f).RotatedBy(i / 60f * MathHelper.TwoPi);
 				newVelocity.X *= 0.6f * MathF.Sin(i / 45f * MathHelper.TwoPi) + 0.2f;
-				newVelocity = newVelocity.RotatedBy(-Main.time * 0.05f + Projectile.whoAmI + j * MathHelper.TwoPi / 3f);
+				newVelocity = newVelocity.RotatedBy(-Main.timeForVisualEffects * 0.05f + Projectile.whoAmI + j * MathHelper.TwoPi / 3f);
 				var somg = new LightFruitParticleDust
 				{
 					Velocity = newVelocity * 0.4f,

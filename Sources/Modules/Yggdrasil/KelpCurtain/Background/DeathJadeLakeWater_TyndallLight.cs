@@ -39,7 +39,7 @@ public class DeathJadeLakeWater_TyndallLight : BackgroundSlideBase
 			return;
 		}
 		Vector2 totalOffset = (Main.screenPosition - WorldAnchor) * 1f / Distance / 300f;
-		float timeValue = (float)(Main.time * 0.0005);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.0005);
 
 		var bars = new List<Vertex2D>();
 		int yLayers = (int)((drawBottom - drawTop) / 16f);

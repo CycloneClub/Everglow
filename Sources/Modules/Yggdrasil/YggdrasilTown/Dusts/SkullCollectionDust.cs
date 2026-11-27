@@ -6,7 +6,7 @@ public class SkullCollectionDust : ModDust
 	{
 		dust.noGravity = true;
 		dust.velocity.Y -= 0.13f;
-		dust.velocity.X = MathF.Sin((float)Main.time * 0.23f + dust.GetHashCode());
+		dust.velocity.X = MathF.Sin((float)Main.timeForVisualEffects * 0.23f + dust.GetHashCode());
 		Lighting.AddLight(dust.position + new Vector2(4), new Vector3(0.3f * dust.scale, 0.4f * dust.scale, 0.4f * dust.scale));
 		return base.Update(dust);
 	}

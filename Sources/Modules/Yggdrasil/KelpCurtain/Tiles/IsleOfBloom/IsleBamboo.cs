@@ -173,7 +173,7 @@ public class IsleBamboo : ModTile, ITileFluentlyDrawn
 			}
 		}
 		float natureBendValue = (TileUtils.GetFixedRandomNumber(tilePos.X, tilePos.Y) % 10) - 4.5f;
-		natureBendValue += MathF.Sin((float)(Main.time * 0.03f + (TileUtils.GetFixedRandomNumber(tilePos.X, tilePos.Y) % 10) / 9f * MathHelper.PiOver2)) * Math.Clamp(Main.windSpeedCurrent, 0, 1);
+		natureBendValue += MathF.Sin((float)(Main.timeForVisualEffects * 0.03f + (TileUtils.GetFixedRandomNumber(tilePos.X, tilePos.Y) % 10) / 9f * MathHelper.PiOver2)) * Math.Clamp(Main.windSpeedCurrent, 0, 1);
 		if (height < 20)
 		{
 			natureBendValue *= 0;

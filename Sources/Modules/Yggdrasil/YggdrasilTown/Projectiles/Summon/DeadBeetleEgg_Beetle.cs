@@ -542,7 +542,7 @@ public class DeadBeetleEgg_Beetle : ModProjectile
 		{
 			Vector2 offest = new Vector2(0, -24).RotatedBy((i - 9) * 0.2f);
 			offest.X *= Projectile.spriteDirection;
-			float scale = 0.2f + MathF.Sin((float)Main.time * 0.03f + Projectile.whoAmI + i) * 0.06f;
+			float scale = 0.2f + MathF.Sin((float)Main.timeForVisualEffects * 0.03f + Projectile.whoAmI + i) * 0.06f;
 			if (ManaValue > i)
 			{
 				scale *= 1.2f;
@@ -590,7 +590,7 @@ public class DeadBeetleEgg_Beetle : ModProjectile
 				effect.Parameters["uColor1"].SetValue(new Vector4(1f, 1f, 1f, 1f));
 				effect.CurrentTechnique.Passes[0].Apply();
 				Vector2 drawCenter = Projectile.Center;
-				float timeValue = (float)Main.time * 0.004f;
+				float timeValue = (float)Main.timeForVisualEffects * 0.004f;
 				timeValue += MathF.Pow(timer / 210f, 5) * 20f;
 
 				// dark net

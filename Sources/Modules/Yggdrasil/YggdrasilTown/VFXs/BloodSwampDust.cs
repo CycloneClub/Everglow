@@ -40,7 +40,7 @@ public class BloodSwampDust : Visual
 			Timer += 5;
 		}
 		Vector2 rotatedVel = Velocity.NormalizeSafe().RotatedBy(ai[0]) * 0.3f;
-		Vector2 accleration = Vector2.Lerp(rotatedVel, toProj, MathF.Sin(ai[1] + (float)Main.time * 0.12f) * 0.5f + 0.5f);
+		Vector2 accleration = Vector2.Lerp(rotatedVel, toProj, MathF.Sin(ai[1] + (float)Main.timeForVisualEffects * 0.12f) * 0.5f + 0.5f);
 		Velocity *= 0.7f;
 		Velocity += accleration;
 		Scale = MaxScale * (1 - MathF.Sin(Timer / MaxTime * MathF.PI * 0.5f));

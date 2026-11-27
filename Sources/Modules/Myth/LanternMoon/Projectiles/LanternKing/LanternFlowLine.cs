@@ -59,7 +59,7 @@ public class LanternFlowLine : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		float timeValue = (float)(-Main.time * 0.02f) + Projectile.whoAmI / 7f;
+		float timeValue = (float)(-Main.timeForVisualEffects * 0.02f) + Projectile.whoAmI / 7f;
 		Vector2 drawPoint = new Vector2(0, -2000) + Projectile.Center;
 		float mulColor = 1;
 		if (Projectile.timeLeft > 500)
@@ -75,9 +75,9 @@ public class LanternFlowLine : ModProjectile
 		var bars_left = new List<Vertex2D>();
 		for (int y = 0; y < 600; y++)
 		{
-			float value0 = MathF.Sin((drawPoint.X - 150 * Projectile.scale + drawPoint.Y - (float)Main.time * 30) * 0.01f) * 0.5f + 0.5f;
-			float value1 = MathF.Sin((drawPoint.X + drawPoint.Y - (float)Main.time * 30) * 0.01f) * 0.5f + 0.5f;
-			float value2 = MathF.Sin((drawPoint.X + 150 * Projectile.scale + drawPoint.Y - (float)Main.time * 30) * 0.01f) * 0.5f + 0.5f;
+			float value0 = MathF.Sin((drawPoint.X - 150 * Projectile.scale + drawPoint.Y - (float)Main.timeForVisualEffects * 30) * 0.01f) * 0.5f + 0.5f;
+			float value1 = MathF.Sin((drawPoint.X + drawPoint.Y - (float)Main.timeForVisualEffects * 30) * 0.01f) * 0.5f + 0.5f;
+			float value2 = MathF.Sin((drawPoint.X + 150 * Projectile.scale + drawPoint.Y - (float)Main.timeForVisualEffects * 30) * 0.01f) * 0.5f + 0.5f;
 			Color c0 = Color.Lerp(new Color(0.5f, 0f, 0.1f, 0f), new Color(1f, 0.3f, 0.04f, 0f), value0);
 			Color c1 = Color.Lerp(new Color(0.5f, 0f, 0.1f, 0f), new Color(1f, 0.3f, 0.04f, 0f), value1);
 			Color c2 = Color.Lerp(new Color(0.5f, 0f, 0.1f, 0f), new Color(1f, 0.3f, 0.04f, 0f), value2);

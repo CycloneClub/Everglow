@@ -51,7 +51,7 @@ public class AcytaeaSwordRain : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		float timeValue = (float)Main.time * 0.2f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.2f;
 		float sizeH = 1f + 0.3f * MathF.Cos(timeValue);
 		float sizeV = 1f + 0.1f * MathF.Sin(timeValue * 0.2f);
 		Texture2D texBlack = Commons.ModAsset.StarSlash_Black.Value;

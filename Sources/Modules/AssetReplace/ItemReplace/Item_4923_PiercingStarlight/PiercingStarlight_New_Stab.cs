@@ -13,7 +13,7 @@ namespace Everglow.AssetReplace.ItemReplace.Item_4923_PiercingStarlight
 		public override void OnSpawn(IEntitySource source)
 		{
 			base.OnSpawn(source);
-			float timeValue = (float)(Main.time / 120f);
+			float timeValue = (float)(Main.timeForVisualEffects / 120f);
 			StabColor = Main.hslToRgb(timeValue % 1.0f, 1, 0.5f);
 			StabColor = Color.Lerp(StabColor, new Color(147, 242, 255), 0.2f);
 			StabColor.A = 0;

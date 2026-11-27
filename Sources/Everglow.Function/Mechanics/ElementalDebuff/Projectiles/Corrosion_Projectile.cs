@@ -153,7 +153,7 @@ public class Corrosion_Projectile : ModProjectile
 
 		var vertices = new List<Vertex2D>();
 		var vertices_dark = new List<Vertex2D>();
-		float timeValue = (float)Main.time * 0.003f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.003f;
 		float size = 50f * Projectile.scale;
 		for (int i = 0; i <= size; i++)
 		{

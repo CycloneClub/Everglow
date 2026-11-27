@@ -81,7 +81,7 @@ public class VampireMat_Attack_Proj_Ball : ModProjectile
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, CustomBlendStates.Reverse, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-		float drawScale = Projectile.scale * (MathF.Sin((float)Main.time * 0.15f + Projectile.whoAmI) * 0.25f + 1);
+		float drawScale = Projectile.scale * (MathF.Sin((float)Main.timeForVisualEffects * 0.15f + Projectile.whoAmI) * 0.25f + 1);
 		Rectangle frame = new Rectangle(0, 90 * Projectile.frame, 90, 90);
 		Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, frame, new Color(1f, 1f, 1f, 1), 0, frame.Size() * 0.5f, drawScale, SpriteEffects.None, 0);
 

@@ -36,7 +36,7 @@ public class Leaf_VFX_Spin : Visual
 	public override void Draw()
 	{
 		float pocession = 1 - Timer / MaxTime;
-		float timeValue = (float)(Main.time * 0.24 + ai[0]);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.24 + ai[0]);
 		float frameCount = 8;
 		float frameY = (int)timeValue % frameCount;
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);

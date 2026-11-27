@@ -62,7 +62,7 @@ public class Fevens_ThunderMarkShortTiming : ModProjectile
 			mulColor2 = (150 - Projectile.timeLeft) / 30f;
 		}
 		var drawColor = new Color(1f, 0f, 0f, 0f);
-		float timeValue = (float)Main.time * 0.03f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.03f;
 		var powerCircleLarge = new List<Vertex2D>();
 		var powerCircleLarge_Dark = new List<Vertex2D>();
 		for (int i = 0; i <= 50; i++)

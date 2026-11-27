@@ -191,12 +191,12 @@ public class JadeLakeGreenAlgae : ModTile, ITileFluentlyDrawn
 			windCycle += highestWindGridPushComplex;
 			float rotation = windCycle * 0.21f;
 			rotation -= lastOffset.X / (22f + j * 3f);
-			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 0.45f + (float)Main.time / 20f) * 0.15f;
-			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.time / 20f) * 6f / (height + 25);
+			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 0.45f + (float)Main.timeForVisualEffects / 20f) * 0.15f;
+			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.timeForVisualEffects / 20f) * 6f / (height + 25);
 			float rotation2 = windCycle * 0.21f;
 			rotation2 -= lastOffset2.X / (22f + j * 3f);
-			rotation2 += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X + 3) * 2 + tilePos.Y - (j + 1) * 0.45f + (float)Main.time / 20f) * 0.15f;
-			rotation2 += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X + 3) * 2 + tilePos.Y + (float)Main.time / 20f) * -6f / (height + 25);
+			rotation2 += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X + 3) * 2 + tilePos.Y - (j + 1) * 0.45f + (float)Main.timeForVisualEffects / 20f) * 0.15f;
+			rotation2 += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X + 3) * 2 + tilePos.Y + (float)Main.timeForVisualEffects / 20f) * -6f / (height + 25);
 			var tileLight = Lighting.GetColor(tilePos + new Point(0, -j));
 
 			// 支持发光涂料

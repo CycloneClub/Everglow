@@ -186,7 +186,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Main.spriteBatch.Draw(light, LightAttackEffect.Postion - Main.screenPosition, null, new Color(AttackColor.R / 255f, AttackColor.G / 255f, lightColor.B / 255f * AttackColor.B / 255f, 0), LightAttackEffect.Rotation, drawOrigin, LightAttackEffect.Size, SpriteEffects.None, 0f);
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-			float drawTimer = (float)Main.time * 0.04f;
+			float drawTimer = (float)Main.timeForVisualEffects * 0.04f;
 			if (starNPC != null)
 			{
 				float starSize = MathF.Sqrt(starNPC.width * starNPC.height) * 0.8f;

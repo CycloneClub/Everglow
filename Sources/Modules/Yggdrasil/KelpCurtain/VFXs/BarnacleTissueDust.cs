@@ -49,7 +49,7 @@ public class BarnacleTissueDust : Visual
 	public override void Draw()
 	{
 		var lightColor = new Color(1f, 0.18f, 0.12f, 0f);
-		float timeValue = (float)Main.time * 0.07f + ai[1];
+		float timeValue = (float)Main.timeForVisualEffects * 0.07f + ai[1];
 		var bars = new List<Vertex2D>();
 		if (Trails.Count <= 2)
 		{

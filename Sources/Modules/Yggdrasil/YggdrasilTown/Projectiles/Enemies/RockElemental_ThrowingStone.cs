@@ -282,7 +282,7 @@ public class RockElemental_ThrowingStone : ModProjectile
 			Vector2 drawCenter2 = drawCenter + OffestSuck + shake;
 			for (int i = 0; i < 20 * silence; i++)
 			{
-				Main.EntitySpriteDraw(texture, drawCenter2 + new Vector2(0, 7).RotatedBy(i / 5d * MathHelper.TwoPi + Main.time * 0.08), null, new Color(0.7f, 0.2f, 1f, 0f), Projectile.rotation + i, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+				Main.EntitySpriteDraw(texture, drawCenter2 + new Vector2(0, 7).RotatedBy(i / 5d * MathHelper.TwoPi + Main.timeForVisualEffects * 0.08), null, new Color(0.7f, 0.2f, 1f, 0f), Projectile.rotation + i, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 			}
 			Main.EntitySpriteDraw(texture, drawCenter2 + shake, null, lightColor, Projectile.rotation, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		}

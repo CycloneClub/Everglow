@@ -65,7 +65,7 @@ public class AbandonedFishingNet : ModTile, ITileFluentlyDrawn
 		for (int k = 0; k <= 8; k++)
 		{
 			float value = k / 8f;
-			float offsetY = (float)Math.Sin((float)Main.time * 0.04f + tilePos.Y * 0.5f + k * 0.25f) * 6 * Math.Clamp(k / 3f, 0, 1) + 16;
+			float offsetY = (float)Math.Sin((float)Main.timeForVisualEffects * 0.04f + tilePos.Y * 0.5f + k * 0.25f) * 6 * Math.Clamp(k / 3f, 0, 1) + 16;
 			Vector2 offset = new Vector2(value * frame.Width * dir, offsetY);
 			Vector2 drawPos = drawCenterPos + offset;
 			Color lightColor = Lighting.GetColor((drawCenterPos + Main.screenPosition).ToTileCoordinates());

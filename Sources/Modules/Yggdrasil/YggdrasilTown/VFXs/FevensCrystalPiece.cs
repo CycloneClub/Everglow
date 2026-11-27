@@ -96,11 +96,11 @@ public class FevensCrystalPieceDust : Visual
 		for (int x = 0; x < cornerCount * 2; x++)
 		{
 			Corner[x] = toCorner.RotatedBy(x / (float)cornerCount * Math.PI);
-			Corner[x].Y *= MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega));
+			Corner[x].Y *= MathF.Sin(Phi + (float)(Main.timeForVisualEffects * 0.03 * Omega));
 			Corner[x] = Corner[x].RotatedBy(rotation2);
 		}
 		Color lightColor = Lighting.GetColor((int)(Position.X / 16f), (int)(Position.Y / 16f));
-		float reflectionLight = (1 - pocession) * MathF.Pow(MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega + 1.57f)) + 1, 4) / 2f;
+		float reflectionLight = (1 - pocession) * MathF.Pow(MathF.Sin(Phi + (float)(Main.timeForVisualEffects * 0.03 * Omega + 1.57f)) + 1, 4) / 2f;
 		var bars = new List<Vertex2D>();
 		for (int x = 0; x < cornerCount; x++)
 		{

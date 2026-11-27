@@ -872,7 +872,7 @@ public class FlamingDashCore : ModNPC
 
 			// 把变换和所需信息丢给shader
 			ef2.Parameters["uTransform"].SetValue(model * projection);
-			ef2.Parameters["uTime"].SetValue(-(float)Main.time * 0.012f);
+			ef2.Parameters["uTime"].SetValue(-(float)Main.timeForVisualEffects * 0.012f);
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.HeatMap_Rainbow.Value;
 			Main.graphics.GraphicsDevice.Textures[1] = ModAsset.FogTraceGamma2.Value;
 			Main.graphics.GraphicsDevice.Textures[2] = ModAsset.FogTraceBeta3.Value;

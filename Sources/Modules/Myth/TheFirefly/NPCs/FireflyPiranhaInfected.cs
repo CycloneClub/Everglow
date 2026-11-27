@@ -111,7 +111,7 @@ public class FireflyPiranhaInfected : ModNPC
 			}
 			else
 			{
-				NPC.rotation += MathF.Sin((float)Main.time * 0.03f + NPC.whoAmI) * 0.03f;
+				NPC.rotation += MathF.Sin((float)Main.timeForVisualEffects * 0.03f + NPC.whoAmI) * 0.03f;
 			}
 		}
 		if (NPC.velocity.X > 0)
@@ -348,7 +348,7 @@ public class FireflyPiranhaInfected : ModNPC
 		float colorValue = 0.1f;
 		if (nPCFrameAnimationType == 1)
 		{
-			colorValue = MathF.Sin((float)Main.time * 0.3f + NPC.whoAmI * 1.5f) * 0.4f + 0.6f;
+			colorValue = MathF.Sin((float)Main.timeForVisualEffects * 0.3f + NPC.whoAmI * 1.5f) * 0.4f + 0.6f;
 		}
 		spriteBatch.Draw(tex, NPC.Center - screenPos, NPC.frame, new Color(colorValue, colorValue, colorValue, 0), NPC.rotation, new Vector2(NPC.frame.Width, NPC.frame.Height) * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 	}

@@ -52,7 +52,7 @@ public class LanternExplosionDustGroup : Visual
 		float x = pos.X;
 		float y = pos.Y;
 		float number = 0;
-		float timeValue = (float)Main.time * 0.03f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.03f;
 		for (int i = 0; i < 10; i++)
 		{
 			number += MathF.Sin((x - timeValue) * MathF.Pow(1.5f, i)) * MathF.Pow(2, -i);

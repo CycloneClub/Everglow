@@ -217,7 +217,7 @@ public class SquamousRockSpike : ModProjectile
 			Vector2 drawCenter = Projectile.Center;
 
 			// inner timer.
-			float timeValue = (float)Main.time * 0.04f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.04f;
 			float decrease = 1 - timerProj / 80f;
 			float addTimeValue = MathF.Pow(0.75f - decrease, 3) * 10f;
 			decrease = MathF.Pow(decrease, 3);
@@ -376,7 +376,7 @@ public class SquamousRockSpike : ModProjectile
 
 	private float GetFlowEffectRotation(float i, float r)
 	{
-		float timeValue = (float)Main.time * 0.04f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.04f;
 		timeValue *= 0.5f;
 
 		return r / 6f * MathHelper.TwoPi + MathF.Sin(i * 0.07f + r * 0.03f + timeValue + Projectile.whoAmI) * 1.4f + MathF.Sin(i * 0.12f + r + timeValue) * 0.2f;

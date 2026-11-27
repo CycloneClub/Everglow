@@ -90,7 +90,7 @@ public class CurseFlame_HighQualityDust : Visual
 		{
 			progress = 0.4f;
 		}
-		float timeValue = (float)(Main.time * 0.2);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.2);
 		Vector2[] pos = OldPositions.Reverse<Vector2>().ToArray();
 		int len = pos.Length;
 

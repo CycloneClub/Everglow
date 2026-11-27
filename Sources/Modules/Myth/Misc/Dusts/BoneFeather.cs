@@ -13,7 +13,7 @@ public class BoneFeather : ModDust
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
-		dust.rotation += MathF.Sin((float)(Main.time * 0.3 + dust.color.R)) * 0.7f;
+		dust.rotation += MathF.Sin((float)(Main.timeForVisualEffects * 0.3 + dust.color.R)) * 0.7f;
 		dust.scale *= 0.97f;
 		dust.velocity *= MathF.Pow(0.97f, dust.velocity.Length());
 		if (dust.position.X <= 320 || dust.position.X >= Main.maxTilesX * 16 - 320)

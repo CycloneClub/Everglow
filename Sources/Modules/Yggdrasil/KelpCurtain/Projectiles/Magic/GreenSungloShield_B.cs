@@ -88,9 +88,9 @@ public class GreenSungloShield_B : ModProjectile
 			Color color = new Color(0.5f / alpha, 1f / alpha, 0.5f / alpha, 0);
 			for (float i = 0; i <= count; i++)
 			{
-				Vector3 pos0 = new Vector3(MathF.Cos(a * (i + 1) * 0.01f - (float)Main.time * 0.025f), MathF.Sin(b * (i + 1) * 0.01f - (float)Main.time * 0.025f), MathF.Sin(a * (i + 1) * 0.01f - (float)Main.time * 0.025f)) * 25;
-				Vector3 pos = new Vector3(MathF.Cos(a * i * 0.01f - (float)Main.time * 0.025f), MathF.Sin(b * i * 0.01f - (float)Main.time * 0.025f), MathF.Sin(a * i * 0.01f - (float)Main.time * 0.025f)) * 25;
-				Vector3 pos2 = new Vector3(MathF.Cos(a * (i - 1) * 0.01f - (float)Main.time * 0.025f), MathF.Sin(b * (i - 1) * 0.01f - (float)Main.time * 0.025f), MathF.Sin(a * (i - 1) * 0.01f - (float)Main.time * 0.025f)) * 25;
+				Vector3 pos0 = new Vector3(MathF.Cos(a * (i + 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(b * (i + 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(a * (i + 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f)) * 25;
+				Vector3 pos = new Vector3(MathF.Cos(a * i * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(b * i * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(a * i * 0.01f - (float)Main.timeForVisualEffects * 0.025f)) * 25;
+				Vector3 pos2 = new Vector3(MathF.Cos(a * (i - 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(b * (i - 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(a * (i - 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f)) * 25;
 				Vector3 normal3D = Vector3.Normalize(Vector3.Cross(pos - pos0, pos - pos2));
 				Vector2 normal2D = new Vector2(normal3D.X, normal3D.Y);
 				normal2D = MathUtils.Lerp(0.25f, normal2D, Vector2.UnitX);
@@ -109,9 +109,9 @@ public class GreenSungloShield_B : ModProjectile
 		thorns.Clear();
 		for (float i = 0; i <= count; i++)
 		{
-			Vector3 pos0 = new Vector3(MathF.Cos(a * (i + 1) * 0.01f - (float)Main.time * 0.025f), MathF.Sin(b * (i + 1) * 0.01f - (float)Main.time * 0.025f), MathF.Sin(a * (i + 1) * 0.01f - (float)Main.time * 0.025f)) * 25;
-			Vector3 pos = new Vector3(MathF.Cos(a * i * 0.01f - (float)Main.time * 0.025f), MathF.Sin(b * i * 0.01f - (float)Main.time * 0.025f), MathF.Sin(a * i * 0.01f - (float)Main.time * 0.025f)) * 25;
-			Vector3 pos2 = new Vector3(MathF.Cos(a * (i - 1) * 0.01f - (float)Main.time * 0.025f), MathF.Sin(b * (i - 1) * 0.01f - (float)Main.time * 0.025f), MathF.Sin(a * (i - 1) * 0.01f - (float)Main.time * 0.025f)) * 25;
+			Vector3 pos0 = new Vector3(MathF.Cos(a * (i + 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(b * (i + 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(a * (i + 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f)) * 25;
+			Vector3 pos = new Vector3(MathF.Cos(a * i * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(b * i * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(a * i * 0.01f - (float)Main.timeForVisualEffects * 0.025f)) * 25;
+			Vector3 pos2 = new Vector3(MathF.Cos(a * (i - 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(b * (i - 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f), MathF.Sin(a * (i - 1) * 0.01f - (float)Main.timeForVisualEffects * 0.025f)) * 25;
 			Vector3 normal3D = Vector3.Normalize(Vector3.Cross(pos - pos0, pos - pos2));
 			Vector2 normal2D = new Vector2(normal3D.X, normal3D.Y);
 			normal2D = MathUtils.Lerp(0.25f, normal2D, Vector2.UnitX);

@@ -101,7 +101,7 @@ public class DarkGlimmeringParticleDust : Visual
 		// Offset
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = new Color(1f, 1f, 1f, 0);
-		float aValue = MathF.Sin((float)Main.time * 0.15f + ai[1]) * 0.5f + 0.4f;
+		float aValue = MathF.Sin((float)Main.timeForVisualEffects * 0.15f + ai[1]) * 0.5f + 0.4f;
 		float addScale = 0f;
 		if (aValue < 0)
 		{

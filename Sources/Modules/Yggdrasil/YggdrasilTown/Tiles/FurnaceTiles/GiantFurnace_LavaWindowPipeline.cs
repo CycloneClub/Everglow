@@ -8,7 +8,7 @@ public class GiantFurnace_LavaWindowPipeline : Pipeline
 		Ins.Batch.Begin();
 		effect.Value.CurrentTechnique.Passes[0].Apply();
 		effect.Value.Parameters["uSize"].SetValue(0.6f);
-		effect.Value.Parameters["uTime"].SetValue((float)Main.time * 0.01f);
+		effect.Value.Parameters["uTime"].SetValue((float)Main.timeForVisualEffects * 0.01f);
 		effect.Value.Parameters["uLight"].SetValue(Commons.ModAsset.Noise_Smooth_Ice.Value);
 	}
 

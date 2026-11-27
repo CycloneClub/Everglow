@@ -30,7 +30,7 @@ public class BambooLeaf : Visual
 		}
 		Velocity *= 0.9f;
 		Velocity += new Vector2(Main.windSpeedCurrent * 0.3f, 0.1f);
-		Velocity = Velocity.RotatedBy(MathF.Sin((float)Main.time * 0.03f + ai[0]) * 0.05f);
+		Velocity = Velocity.RotatedBy(MathF.Sin((float)Main.timeForVisualEffects * 0.03f + ai[0]) * 0.05f);
 		if (Collision.IsWorldPointSolid(Position))
 		{
 			Rotation = 0;

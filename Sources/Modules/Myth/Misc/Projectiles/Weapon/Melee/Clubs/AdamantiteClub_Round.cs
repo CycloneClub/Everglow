@@ -326,7 +326,7 @@ public class AdamantiteClub_Round : ModProjectile, IWarpProjectile
 
 	public void PostPreDraw()
 	{
-		float colorValue = Omega / 0.1f * (MathF.Sin((float)Main.time * 0.15f + Projectile.whoAmI * 4.32f) * 0.4f + 0.3f);
+		float colorValue = Omega / 0.1f * (MathF.Sin((float)Main.timeForVisualEffects * 0.15f + Projectile.whoAmI * 4.32f) * 0.4f + 0.3f);
 		var starDark = Commons.ModAsset.StarSlash_Black.Value;
 		var star = Commons.ModAsset.StarSlash.Value;
 		Vector2 size = new Vector2(colorValue * 0.14f, 1f) * Projectile.scale * 1.4f;

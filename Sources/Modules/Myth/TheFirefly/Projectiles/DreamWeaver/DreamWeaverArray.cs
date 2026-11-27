@@ -68,7 +68,7 @@ internal class DreamWeaverArray : NoTextureProjectile
 	public void DrawMagicArray()
 	{
 		Player player = Main.player[Projectile.owner];
-		float timeValue = (float)Main.time * 0.05f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.05f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		Color drawColor = new Color(0, 0.4f, 1f, 0);
 		Vector2 drawPos = player.MountedCenter + ringPos;

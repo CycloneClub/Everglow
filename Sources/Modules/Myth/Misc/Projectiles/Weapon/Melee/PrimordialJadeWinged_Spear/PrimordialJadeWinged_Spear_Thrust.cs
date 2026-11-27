@@ -160,7 +160,7 @@ public class PrimordialJadeWinged_Spear_Thrust : ModProjectile, IWarpProjectile
 		Vector2 end = Projectile.Center - Vector2.Normalize(Projectile.velocity) * 750;
 		float value = Projectile.timeLeft / 135f;
 		Vector2 middle = Vector2.Lerp(end, start, MathF.Sqrt(value) * 0.5f);
-		float time = (float)(Main.time * 0.03);
+		float time = (float)(Main.timeForVisualEffects * 0.03);
 		Color alphaColor = Color.White;
 		alphaColor.A = 0;
 		alphaColor.R = (byte)(((Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 6.283 + Math.PI) % 6.283) / 6.283 * 255);
@@ -211,7 +211,7 @@ public class PrimordialJadeWinged_Spear_Thrust : ModProjectile, IWarpProjectile
 			}
 		}
 
-		float timeEffectValue = (float)(Main.time * 0.03f);
+		float timeEffectValue = (float)(Main.timeForVisualEffects * 0.03f);
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int x = 0; x < trailLength; x++)
 		{

@@ -208,7 +208,7 @@ public class WaterSluice_Scene : ModTile, ISceneTile
 	public float GetRandomWave(float x)
 	{
 		float value = 0;
-		float timeValue = (float)Main.time * 0.06f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.06f;
 		for (int i = 0; i < 8; i++)
 		{
 			float rate = MathF.Pow(2, i);

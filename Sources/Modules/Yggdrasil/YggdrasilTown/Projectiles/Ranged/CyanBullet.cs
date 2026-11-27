@@ -65,8 +65,8 @@ public class CyanBullet : TrailingProjectile
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(0.1f, 0.7f, 0.6f, 0f), Projectile.velocity.ToRotationSafe() + MathHelper.PiOver2, light.Size() * 0.5f, 0.7f, SpriteEffects.None, 0);
 
 		Texture2D ball = Commons.ModAsset.TileBlock.Value;
-		Main.spriteBatch.Draw(ball, Projectile.Center - Main.screenPosition, null, new Color(0.1f, 0.7f, 0.4f, 0.5f), (float)Main.time * 0.03f + Projectile.whoAmI, ball.Size() * 0.5f, 0.4f, SpriteEffects.None, 0);
-		Main.spriteBatch.Draw(ball, Projectile.Center - Main.screenPosition, null, new Color(0.1f, 0.7f, 0.4f, 0.5f), (float)Main.time * 0.03f + Projectile.whoAmI + MathHelper.PiOver4, ball.Size() * 0.5f, 0.4f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(ball, Projectile.Center - Main.screenPosition, null, new Color(0.1f, 0.7f, 0.4f, 0.5f), (float)Main.timeForVisualEffects * 0.03f + Projectile.whoAmI, ball.Size() * 0.5f, 0.4f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(ball, Projectile.Center - Main.screenPosition, null, new Color(0.1f, 0.7f, 0.4f, 0.5f), (float)Main.timeForVisualEffects * 0.03f + Projectile.whoAmI + MathHelper.PiOver4, ball.Size() * 0.5f, 0.4f, SpriteEffects.None, 0);
 		return;
 	}
 

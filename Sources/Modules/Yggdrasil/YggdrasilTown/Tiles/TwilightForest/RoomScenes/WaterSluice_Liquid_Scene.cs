@@ -231,7 +231,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		// Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_2_Pure.Value, bars_wave, PrimitiveType.TriangleStrip);
 		// Ins.Batch.Draw(liquidTex_side, bars_side, PrimitiveType.TriangleStrip);
 		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_Thin.Value;
-		float timeValue = -(float)Main.time / 120f;
+		float timeValue = -(float)Main.timeForVisualEffects / 120f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		float fade = 0.1f;
 		for (int i = 0; i < 300; i++)
@@ -255,7 +255,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 	public void DrawWaterPierThin(Vector2 worldPos, float offsetY, int segments)
 	{
 		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_Thin_Batch.Value;
-		float timeValue = -(float)Main.time / 120f;
+		float timeValue = -(float)Main.timeForVisualEffects / 120f;
 		List<Vertex2D> bars = pierBars;
 		bars.Clear();
 		float fade = 0.3f;
@@ -274,7 +274,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 	{
 		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_Content.Value;
 		Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_WaterPier_Side.Value;
-		float timeValue = -(float)Main.time / 120f;
+		float timeValue = -(float)Main.timeForVisualEffects / 120f;
 		List<Vertex2D> bars = pierBars;
 		List<Vertex2D> bars_side = pierBarsSide;
 		List<Vertex2D> bars_wave = pierBarsWave;
@@ -306,7 +306,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 	{
 		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_Content.Value;
 		Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_Waterfall_Side.Value;
-		float timeValue = -(float)Main.time / 120f;
+		float timeValue = -(float)Main.timeForVisualEffects / 120f;
 
 		// Legacy
 		// for (int i = 0; i < 14; i++)
@@ -631,7 +631,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 	public float GetRandomWave(float x)
 	{
 		float value = 0;
-		float timeValue = (float)Main.time * 0.06f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.06f;
 		for (int i = 0; i < 8; i++)
 		{
 			float rate = MathF.Pow(2, i);

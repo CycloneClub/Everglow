@@ -158,7 +158,7 @@ internal class DarkFanFly : ModProjectile
 			{
 				value = x / 5f;
 			}
-			float coordValue = (float)Main.time * 0.02f;
+			float coordValue = (float)Main.timeForVisualEffects * 0.02f;
 			effect.Add(new Vertex2D(Projectile.Center + v4 * Projectile.scale * 0.5f - Main.screenPosition, new Color(0, 100, 255, 0) * value, new Vector3(x / 50f + coordValue, 0, 0)));
 			effect.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, 100, 255, 0) * 0.5f * value, new Vector3(x / 50f + coordValue, 1, 0)));
 		}
@@ -177,7 +177,7 @@ internal class DarkFanFly : ModProjectile
 			{
 				value = x / 5f;
 			}
-			float coordValue = (float)Main.time * 0.02f;
+			float coordValue = (float)Main.timeForVisualEffects * 0.02f;
 			effect.Add(new Vertex2D(Projectile.Center + v4 * Projectile.scale * 0.5f - Main.screenPosition, Color.White * value, new Vector3(x / 50f + coordValue, 0.5f, 0)));
 			effect.Add(new Vertex2D(Projectile.Center - Main.screenPosition, Color.White * 0.5f * value, new Vector3(x / 50f + coordValue, 1, 0)));
 		}

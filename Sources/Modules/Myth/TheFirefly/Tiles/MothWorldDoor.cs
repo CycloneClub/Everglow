@@ -160,7 +160,7 @@ public class DrawMagicArraySystem : ModSystem
 		}
 		float mulColor = Math.Max((150 - playerDistance) / 150f, 0.25f);
 		c0 *= mulColor;
-		float timer = (float)(Main.time * 0.003f);
+		float timer = (float)(Main.timeForVisualEffects * 0.003f);
 		Vector2 pos = ArrayPosition * 16 - Main.screenPosition + new Vector2(-24, -27);
 
 		Lighting.AddLight(pos + Main.screenPosition, 0, 1.2f * mulColor, 2.6f * mulColor);
@@ -197,8 +197,8 @@ public class DrawMagicArraySystem : ModSystem
 		var vertex2Ds = new List<Vertex2D>();
 
 		float texcoordHeight = 1f;
-		float value0 = (float)(Main.time / 391d + 20) % 1f;
-		float value1 = (float)(Main.time / 391d + 20.4) % 1f;
+		float value0 = (float)(Main.timeForVisualEffects / 391d + 20) % 1f;
+		float value1 = (float)(Main.timeForVisualEffects / 391d + 20.4) % 1f;
 
 		if (value1 < value0)
 		{
@@ -236,7 +236,7 @@ public class DrawMagicArraySystem : ModSystem
 
 	public static void DrawTexCircle(float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
-		float timer = (float)(Main.time * 0.003f);
+		float timer = (float)(Main.timeForVisualEffects * 0.003f);
 		float sinValue = 0.8f * (MathF.Sin(timer + radius / 8 * MathF.PI) * 0.5f + 0.5f);
 		var circle = new List<Vertex2D>();
 		for (int h = 0; h < 60; h += 1)

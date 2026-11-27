@@ -114,7 +114,7 @@ public class EvilHalbertBarnacle_Proj_Thrust : ModProjectile
 		}
 		Vector2 vel = Vector2.Normalize(Projectile.velocity);
 		Vector2 width = vel.RotatedBy(MathHelper.PiOver2) * 60 * timeValue;
-		float timeEffectValue = (float)(Main.time * 0.06f) + Projectile.whoAmI * 0.27f;
+		float timeEffectValue = (float)(Main.timeForVisualEffects * 0.06f) + Projectile.whoAmI * 0.27f;
 
 		Player player = Main.player[Projectile.owner];
 		int duration = (int)(14 / player.meleeSpeed);

@@ -159,7 +159,7 @@ public class GoldRoundYoyo : YoyoProjectile
 	public void DrawCorona()
 	{
 		Color drawC = new Color(1f, 0.4f, 0.05f, 0) * (0.5f * trailWidth / 18f);
-		float timeValue = (float)Main.time * 0.0015f + MathF.Sin(Projectile.whoAmI);
+		float timeValue = (float)Main.timeForVisualEffects * 0.0015f + MathF.Sin(Projectile.whoAmI);
 		var bars = new List<Vertex2D>();
 
 		for (int i = 0; i <= 120; ++i)
@@ -206,7 +206,7 @@ public class GoldRoundYoyo : YoyoProjectile
 			mulColor = 1;
 		}
 		Color drawC = new Color(1f, 0.4f, 0.05f, 0) * (0.5f * trailWidth / 18f) * mulColor;
-		float timeValue = (float)Main.time * 0.00015f + MathF.Sin(Projectile.whoAmI);
+		float timeValue = (float)Main.timeForVisualEffects * 0.00015f + MathF.Sin(Projectile.whoAmI);
 		var bars = new List<Vertex2D>();
 
 		for (int i = 0; i <= 120; ++i)
@@ -292,7 +292,7 @@ public class GoldRoundYoyo : YoyoProjectile
 						if (distanceProj <= 120)
 						{
 							Color drawC = new Color(1f, 0.4f, 0.05f, 0) * (0.5f * trailWidth / 18f);
-							float timeValue = (float)Main.time * 0.05f + MathF.Sin(Projectile.whoAmI);
+							float timeValue = (float)Main.timeForVisualEffects * 0.05f + MathF.Sin(Projectile.whoAmI);
 							Vector2 normalized = Vector2.Normalize(Projectile.Center - proj.Center);
 							Vector2 drawPoint = proj.Center;
 							Vector2 normalizedLeft = normalized.RotatedBy(MathHelper.PiOver2);

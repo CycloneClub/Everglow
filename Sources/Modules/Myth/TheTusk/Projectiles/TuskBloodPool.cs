@@ -158,7 +158,7 @@ public class TuskBloodPool : ModProjectile
 
 	private void AddBars(List<Vertex2D> bars, float x, int style = 0)
 	{
-		float timeValue = (float)(Main.time * 0.03f) + Projectile.whoAmI * 2.74f;
+		float timeValue = (float)(Main.timeForVisualEffects * 0.03f) + Projectile.whoAmI * 2.74f;
 		float mulTimeValue = 1f;
 		if (Projectile.timeLeft < 990)
 		{

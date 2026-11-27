@@ -23,7 +23,7 @@ public class MiningPowerPickaxe_Proj_WavePipeline : Pipeline
 		effect.Parameters["colorParaPlus"].SetValue(0.5f);
 		effect.Parameters["colorParaMul"].SetValue(1.3f);
 		effect.Parameters["disPara"].SetValue(0.02f);
-		effect.Parameters["uTime"].SetValue(((float)Main.time * 0.2f) % 8f - 1.8f);
+		effect.Parameters["uTime"].SetValue(((float)Main.timeForVisualEffects * 0.2f) % 8f - 1.8f);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();

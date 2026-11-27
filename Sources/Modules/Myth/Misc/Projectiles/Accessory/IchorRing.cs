@@ -107,7 +107,7 @@ public class IchorRing : ModProjectile
 		energyValue = MathF.Pow(energyValue, 0.3f);
 		energyValue *= 12f / 5f;
 		Color c0 = new Color(1, 0.7f, 0, 0);
-		float timeValue = (float)Main.time * 0.009f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.009f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		float accuracy = 16;
 		List<Vertex2D> bars2 = new List<Vertex2D>();
@@ -140,7 +140,7 @@ public class IchorRing : ModProjectile
 				addVel = addVel.RotatedBy((1 - factor * factor * 1.2f) * 0.36f) * 1.08f;
 			}
 		}
-		timeValue = (float)Main.time * 0.09f;
+		timeValue = (float)Main.timeForVisualEffects * 0.09f;
 		for (int x = 0; x < 45; x++)
 		{
 			float factor = x / 44f;

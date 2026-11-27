@@ -155,9 +155,9 @@ public class NavyThunderBomb : ModProjectile, IWarpProjectile
 		Texture2D WaterS = Commons.ModAsset.Trail_5_Black.Value;
 		float value0 = (float)(Math.Sin(800d / (Projectile.timeLeft + 35)) * 0.75f + 0.25f) * (300 - Projectile.timeLeft) / 300f;
 		value0 = Math.Max(0, value0);
-		DrawTexCircle(122, 42, new Color(0.33f * value0, 0.33f * value0, 0.33f * value0, 0.33f * value0), Projectile.Center - Main.screenPosition, WaterS, Main.time / 17);
-		DrawTexCircle(132, 32, new Color(0, 0.45f * value0, 1f * value0, 0), Projectile.Center - Main.screenPosition, Water, Main.time / 17);
-		DrawTexCircle(122, 42, new Color(0, 0.15f * value0, 0.33f * value0, 0), Projectile.Center - Main.screenPosition, Water, -Main.time / 17);
+		DrawTexCircle(122, 42, new Color(0.33f * value0, 0.33f * value0, 0.33f * value0, 0.33f * value0), Projectile.Center - Main.screenPosition, WaterS, Main.timeForVisualEffects / 17);
+		DrawTexCircle(132, 32, new Color(0, 0.45f * value0, 1f * value0, 0), Projectile.Center - Main.screenPosition, Water, Main.timeForVisualEffects / 17);
+		DrawTexCircle(122, 42, new Color(0, 0.15f * value0, 0.33f * value0, 0), Projectile.Center - Main.screenPosition, Water, -Main.timeForVisualEffects / 17);
 
 		Texture2D dark = ModAsset.BlueFlameDark.Value;
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f), Projectile.rotation, dark.Size() / 2f, sparkleStrength / 60f, SpriteEffects.None, 0f);

@@ -23,7 +23,7 @@ namespace Everglow.AssetReplace.ItemReplace.Item_4923_PiercingStarlight
 
 		public override void CustomBehavior()
 		{
-			float timeValue = (float)(Main.time / 120f);
+			float timeValue = (float)(Main.timeForVisualEffects / 120f);
 			GlowColor = Main.hslToRgb(timeValue % 1.0f, 1, 0.5f);
 			HitTileSparkColor = GlowColor * 1.2f;
 			HitTileSparkColor.A = 0;
@@ -75,7 +75,7 @@ namespace Everglow.AssetReplace.ItemReplace.Item_4923_PiercingStarlight
 						DarkAttackEffect[f].DarkShadow = DarkAttackEffect[f - 1].DarkShadow * MathF.Pow(ShadeMultiplicative_Modifier, 1f / NormalExtraUpdates);
 						DarkAttackEffect[f].Size.Y = DarkAttackEffect[f - 1].Size.Y * MathF.Pow(ScaleMultiplicative_Modifier, 1f / NormalExtraUpdates);
 
-						float timeValue = (float)(Main.time / 120f) - f / 8f;
+						float timeValue = (float)(Main.timeForVisualEffects / 120f) - f / 8f;
 						Color oldGlowColor = Main.hslToRgb(timeValue % 1.0f, 1, 0.5f);
 						oldGlowColor = Color.Lerp(oldGlowColor, new Color(147, 242, 255), 0.2f);
 						oldGlowColor.A = 0;

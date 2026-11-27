@@ -32,7 +32,7 @@ public class BloodPedal : ModDust
 
 		dust.position += dust.velocity;
 
-		if ((int)(Main.time / 5d) % 5 == (int)dust.position.X % 5 && !(Collision.SolidCollision(dust.position - Vector2.One * 5f, 10, 10) && dust.fadeIn == 0f))
+		if ((int)(Main.timeForVisualEffects / 5d) % 5 == (int)dust.position.X % 5 && !(Collision.SolidCollision(dust.position - Vector2.One * 5f, 10, 10) && dust.fadeIn == 0f))
 		{
 			if (dust.frame.Y < 98)
 			{

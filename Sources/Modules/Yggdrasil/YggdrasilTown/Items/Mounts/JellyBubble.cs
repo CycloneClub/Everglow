@@ -212,8 +212,8 @@ public class JellyBubble : ModMount
 		var jellyBallGlowOrigin = new Vector2(jellyBallGlowTexture.Width / 2, (jellyBallGlowTexture.Height - jellyBallTexture.Height) * 0.5f);
 		var jellyBallOrigin = new Vector2(jellyBallTexture.Width / 2, 0);
 		var jellyBallScale = new Vector2(
-			1.6f * (0.9f + scaleMagnitudeFact) * (scaleMagnitudeFact * MathF.Cos((float)Main.time * scaleFrequencyFact) + (1 - scaleMagnitudeFact)),
-			1.2f * (0.9f + scaleMagnitudeFact) * (scaleMagnitudeFact * MathF.Sin((float)Main.time * scaleFrequencyFact) + (1 - scaleMagnitudeFact)));
+			1.6f * (0.9f + scaleMagnitudeFact) * (scaleMagnitudeFact * MathF.Cos((float)Main.timeForVisualEffects * scaleFrequencyFact) + (1 - scaleMagnitudeFact)),
+			1.2f * (0.9f + scaleMagnitudeFact) * (scaleMagnitudeFact * MathF.Sin((float)Main.timeForVisualEffects * scaleFrequencyFact) + (1 - scaleMagnitudeFact)));
 		var staminaValue = Stamina / (float)MaxMountStamina;
 		var staminaColor = new Color(staminaValue, staminaValue + 0.3f, staminaValue * 1.8f + 0.3f, 0) * FlyGlowValue;
 		Main.spriteBatch.Draw(jellyBallGlowTexture, jellyBallPosition, null, jellyBallGlowDrawColor, 0, jellyBallGlowOrigin, jellyBallScale, SpriteEffects.None, 0);

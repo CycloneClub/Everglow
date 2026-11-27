@@ -134,7 +134,7 @@ public class BloodySwamp_Area : ModProjectile, IWarpProjectile_WarpStyle2
 		}
 		var drawColor = new Color(1f, 0.1f, 0.3f, 0) * fade;
 		var blackColor = Color.White * fade;
-		var timeValue = (float)Main.time * 0.003f;
+		var timeValue = (float)Main.timeForVisualEffects * 0.003f;
 
 		var bars_black = new List<Vertex2D>();
 		for (int i = 0; i <= 150; i++)
@@ -233,7 +233,7 @@ public class BloodySwamp_Area : ModProjectile, IWarpProjectile_WarpStyle2
 			size = (1200 - Projectile.timeLeft) / 15f;
 			size = MathF.Pow(size, 0.3f);
 		}
-		var timeValue = (float)Main.time * 0.003f;
+		var timeValue = (float)Main.timeForVisualEffects * 0.003f;
 		var bars = new List<Vertex2D>();
 		var bars2 = new List<Vertex2D>();
 		for (int i = 0; i <= 150; i++)

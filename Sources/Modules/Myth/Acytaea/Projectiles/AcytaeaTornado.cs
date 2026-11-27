@@ -154,7 +154,7 @@ public class AcytaeaTornado : ModProjectile
 
 	public void DrawTornado(Texture2D tex, Color color, float width = 80, string pass = "", float dissolveRange = 0.2f, float deltaY = 0, float valueX = 13f, float valueY = 84f)
 	{
-		float uTime = (float)Main.time * 0.02f * Math.Abs(width) / 80f;
+		float uTime = (float)Main.timeForVisualEffects * 0.02f * Math.Abs(width) / 80f;
 		int tolerance = 3;
 		int length = (int)Timer;
 		if (length >= 40)

@@ -84,7 +84,7 @@ public class CyanVineThrowingSpear_Proj : ModProjectile
 		}
 		else
 		{
-			var flagVec = Vector2.Lerp(Projectile.velocity, new Vector2(0, -10), 0.15f + MathF.Sin(Main.windSpeedCurrent + (float)Main.time * 0.9f + Projectile.whoAmI) * 0.25f);
+			var flagVec = Vector2.Lerp(Projectile.velocity, new Vector2(0, -10), 0.15f + MathF.Sin(Main.windSpeedCurrent + (float)Main.timeForVisualEffects * 0.9f + Projectile.whoAmI) * 0.25f);
 			float rot = flagVec.ToRotation() + MathHelper.PiOver2;
 			Main.spriteBatch.Draw(flag, redKnotPos, null, lightColor, rot, new Vector2(4, 0), Projectile.scale, SpriteEffects.None, 0);
 		}

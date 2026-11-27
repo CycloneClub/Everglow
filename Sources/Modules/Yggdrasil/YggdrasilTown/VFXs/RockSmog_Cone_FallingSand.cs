@@ -86,7 +86,7 @@ public class RockSmog_Cone_FallingSandDust : Visual
 	public override void Draw()
 	{
 		float pocession = Timer / MaxTime; // (float)(Main.timeForVisualEffects * 0.008) % 1f;
-		float timeValue = (float)(Main.time * 0.002);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.002);
 		Vector3 lightValue = Lighting.GetColor(Position.ToTileCoordinates()).ToVector3();
 		float light = lightValue.Length();
 		List<Vertex2D> bars = new List<Vertex2D>();

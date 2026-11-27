@@ -61,7 +61,7 @@ public class Fevens_EnchantingSmash : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		var toTarget = new Vector2(1, 0).RotatedBy(Projectile.rotation);
-		var timeValue = (float)Main.time * 0.04f;
+		var timeValue = (float)Main.timeForVisualEffects * 0.04f;
 		DrawStar(Projectile.Center + toTarget * 40 - Main.screenPosition);
 		Texture2D wingTarget = ModAsset.Fevens_WingTarget.Value;
 		Vector2 drawPos = EndPosition - Main.screenPosition;
@@ -167,7 +167,7 @@ public class Fevens_EnchantingSmash : ModProjectile
 
 	public void DrawStar(Vector2 position, float scale = 1f)
 	{
-		var timeValue = (float)Main.time * 0.04f;
+		var timeValue = (float)Main.timeForVisualEffects * 0.04f;
 		var timeLeftValue = 1 - Projectile.timeLeft / 120f;
 		Vector2 drawPos = position;
 		Texture2D star = Commons.ModAsset.StarSlashGray.Value;

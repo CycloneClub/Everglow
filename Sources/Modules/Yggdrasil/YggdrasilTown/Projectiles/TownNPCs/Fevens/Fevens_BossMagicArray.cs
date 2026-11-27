@@ -116,8 +116,8 @@ internal class Fevens_MagicArray : ModProjectile
 			Vector2 radius = toBottom.RotatedBy((MathF.PI - x / (float)accurance * MathHelper.TwoPi) * 0.75f + MathF.PI);
 			float width = 120f;
 			Vector2 normalizedRadious = radius / 40f * MathF.Sin(x / 40f * MathF.PI) * width;
-			bars.Add(new Vertex2D(Projectile.Center + radius + normalizedRadious, new Color(x / 40f, 0.0f, pocession, 1.0f), new Vector3(x / 65f, 0, (float)Main.time * 0.012f)));
-			bars.Add(new Vertex2D(Projectile.Center + radius, new Color(x / 40f, 0.5f, pocession, 1.0f), new Vector3(x / 65f, 0, (float)Main.time * 0.012f + 0.5f)));
+			bars.Add(new Vertex2D(Projectile.Center + radius + normalizedRadious, new Color(x / 40f, 0.0f, pocession, 1.0f), new Vector3(x / 65f, 0, (float)Main.timeForVisualEffects * 0.012f)));
+			bars.Add(new Vertex2D(Projectile.Center + radius, new Color(x / 40f, 0.5f, pocession, 1.0f), new Vector3(x / 65f, 0, (float)Main.timeForVisualEffects * 0.012f + 0.5f)));
 		}
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		bars = new List<Vertex2D>();
@@ -127,8 +127,8 @@ internal class Fevens_MagicArray : ModProjectile
 			Vector2 radius = toBottom.RotatedBy((MathF.PI - x / (float)accurance * MathHelper.TwoPi) * 0.75f + MathF.PI);
 			float width = 10f;
 			Vector2 normalizedRadious = radius / 40f * MathF.Sin(x / 40f * MathF.PI) * width;
-			bars.Add(new Vertex2D(Projectile.Center + radius - normalizedRadious, new Color(x / 40f, 0.4f, pocession, 1.0f), new Vector3(x / 65f, 0, (float)Main.time * 0.012f + 0.6f)));
-			bars.Add(new Vertex2D(Projectile.Center + radius, new Color(x / 40f, 0.5f, pocession, 1.0f), new Vector3(x / 65f, 0, (float)Main.time * 0.012f + 0.5f)));
+			bars.Add(new Vertex2D(Projectile.Center + radius - normalizedRadious, new Color(x / 40f, 0.4f, pocession, 1.0f), new Vector3(x / 65f, 0, (float)Main.timeForVisualEffects * 0.012f + 0.6f)));
+			bars.Add(new Vertex2D(Projectile.Center + radius, new Color(x / 40f, 0.5f, pocession, 1.0f), new Vector3(x / 65f, 0, (float)Main.timeForVisualEffects * 0.012f + 0.5f)));
 		}
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		if (NPCOwner >= 0)
@@ -137,14 +137,14 @@ internal class Fevens_MagicArray : ModProjectile
 			bars = new List<Vertex2D>();
 			Vector2 flamePos = npc.Hitbox.Left() + new Vector2(10, -4);
 			Vector2 endPos = Projectile.Center + new Vector2(-45, -10);
-			Vector2 flameVel = Vector2.Normalize(endPos - flamePos).RotatedBy(-0.9f + 0.1f * MathF.Sin((float)Main.time * 0.13f)) * 3f;
+			Vector2 flameVel = Vector2.Normalize(endPos - flamePos).RotatedBy(-0.9f + 0.1f * MathF.Sin((float)Main.timeForVisualEffects * 0.13f)) * 3f;
 			for (int x = 0; x < 200; x++)
 			{
 				float pocession = 0.1f + (30 - timer) / 30f;
 				float width = Math.Min(x * 2, 10);
 				Vector2 normalizedRadious = Vector2.Normalize(flameVel.RotatedBy(MathHelper.PiOver2)) * width;
-				bars.Add(new Vertex2D(flamePos + normalizedRadious, new Color(x / 40f, 0.2f, pocession, 1.0f), new Vector3(x / 150f, 0, (float)Main.time * 0.012f + 0.6f)));
-				bars.Add(new Vertex2D(flamePos - normalizedRadious, new Color(x / 40f, 0.8f, pocession, 1.0f), new Vector3(x / 150f, 0, (float)Main.time * 0.012f + 0.57f)));
+				bars.Add(new Vertex2D(flamePos + normalizedRadious, new Color(x / 40f, 0.2f, pocession, 1.0f), new Vector3(x / 150f, 0, (float)Main.timeForVisualEffects * 0.012f + 0.6f)));
+				bars.Add(new Vertex2D(flamePos - normalizedRadious, new Color(x / 40f, 0.8f, pocession, 1.0f), new Vector3(x / 150f, 0, (float)Main.timeForVisualEffects * 0.012f + 0.57f)));
 				flamePos += flameVel;
 				if ((endPos - flamePos).Length() < 10)
 				{
@@ -160,14 +160,14 @@ internal class Fevens_MagicArray : ModProjectile
 			bars = new List<Vertex2D>();
 			flamePos = npc.Hitbox.Right() + new Vector2(-10, -4);
 			endPos = Projectile.Center + new Vector2(45, -10);
-			flameVel = Vector2.Normalize(endPos - flamePos).RotatedBy(0.9f - 0.1f * MathF.Sin((float)Main.time * 0.13f)) * 3f;
+			flameVel = Vector2.Normalize(endPos - flamePos).RotatedBy(0.9f - 0.1f * MathF.Sin((float)Main.timeForVisualEffects * 0.13f)) * 3f;
 			for (int x = 0; x < 200; x++)
 			{
 				float pocession = 0.1f + (30 - timer) / 30f;
 				float width = Math.Min(x * 2, 10);
 				Vector2 normalizedRadious = Vector2.Normalize(flameVel.RotatedBy(MathHelper.PiOver2)) * width;
-				bars.Add(new Vertex2D(flamePos + normalizedRadious, new Color(x / 40f, 0.2f, pocession, 1.0f), new Vector3(x / 150f, 0, (float)Main.time * 0.012f + 0.3f)));
-				bars.Add(new Vertex2D(flamePos - normalizedRadious, new Color(x / 40f, 0.8f, pocession, 1.0f), new Vector3(x / 150f, 0, (float)Main.time * 0.012f + 0.37f)));
+				bars.Add(new Vertex2D(flamePos + normalizedRadious, new Color(x / 40f, 0.2f, pocession, 1.0f), new Vector3(x / 150f, 0, (float)Main.timeForVisualEffects * 0.012f + 0.3f)));
+				bars.Add(new Vertex2D(flamePos - normalizedRadious, new Color(x / 40f, 0.8f, pocession, 1.0f), new Vector3(x / 150f, 0, (float)Main.timeForVisualEffects * 0.012f + 0.37f)));
 				flamePos += flameVel;
 				if ((endPos - flamePos).Length() < 10)
 				{

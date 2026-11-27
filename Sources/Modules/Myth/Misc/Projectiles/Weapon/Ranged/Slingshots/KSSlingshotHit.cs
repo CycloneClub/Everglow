@@ -82,7 +82,7 @@ internal class KSSlingshotHit : ModProjectile
 			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.ZoomMatrix;
 
 			ef.Parameters["uTransform"].SetValue(model * projection);
-			ef.Parameters["uTime"].SetValue(-(float)Main.time * 0.06f);
+			ef.Parameters["uTime"].SetValue(-(float)Main.timeForVisualEffects * 0.06f);
 			ef.Parameters["maxr"].SetValue(widxM * widxM);
 			ef.Parameters["stre"].SetValue(Projectile.ai[0]);
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.HeatMap_Blue_Rain.Value;

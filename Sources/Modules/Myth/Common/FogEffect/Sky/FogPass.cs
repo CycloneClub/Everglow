@@ -239,9 +239,9 @@ public class FogPass
 				targetState.ViewAbsorptionRatio, progress * progress);
 		}
 
-		if (Main.time % 400 < 1)
+		if (Main.timeForVisualEffects % 400 < 1)
 		{
-			if ((int)(Main.time / 400) % 2 == 0)
+			if ((int)(Main.timeForVisualEffects / 400) % 2 == 0)
 			{
 				SwitchState(Default, 150);
 			}

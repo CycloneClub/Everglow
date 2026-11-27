@@ -139,7 +139,7 @@ public class AdamantiteClub_Round_Slash : ModProjectile, IWarpProjectile
 			return;
 		}
 		Vector2 deltaPos = StickProjectile.Center - startStickCenter;
-		float time = (float)(Main.time * 0.03);
+		float time = (float)(Main.timeForVisualEffects * 0.03);
 		float value0 = (120 - Projectile.timeLeft) / 120f;
 		float value1 = MathF.Pow(value0, 0.5f);
 		float width = (1 - MathF.Cos(value1 * 2f * MathF.PI)) * 5f;

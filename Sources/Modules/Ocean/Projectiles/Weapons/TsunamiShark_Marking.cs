@@ -120,7 +120,7 @@ public class TsunamiShark_Marking : ModProjectile, IWarpProjectile
 		}
 
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.Default, SamplerState.PointWrap, RasterizerState.CullNone);
-		DrawTexRing_VFXBatch(Ins.Batch, value * 400, width, new Color(0, colorV * colorV * 1.6f, colorV * 12f, 0f), Projectile.Center - Main.screenPosition, t, Projectile.ai[1], (float)Main.time * 0.01f);
+		DrawTexRing_VFXBatch(Ins.Batch, value * 400, width, new Color(0, colorV * colorV * 1.6f, colorV * 12f, 0f), Projectile.Center - Main.screenPosition, t, Projectile.ai[1], (float)Main.timeForVisualEffects * 0.01f);
 		Ins.Batch.End();
 
 		return false;

@@ -93,7 +93,7 @@ public class NewWaterBolt : TrailingProjectile
 		for (int i = 0; i < 4; ++i)
 		{
 			float factor = i / 3f;
-			float timeValue = -(float)Main.time * 0.06f;
+			float timeValue = -(float)Main.timeForVisualEffects * 0.06f;
 
 			Vector2 normalizedVel = Vector2.Normalize(Projectile.velocity);
 			Vector2 drawPos = Projectile.Center + normalizedVel * 20f * (i - 2.4f);

@@ -194,8 +194,8 @@ public class JadeLakeSargassum : ModTile, ITileFluentlyDrawn
 			windCycle += highestWindGridPushComplex;
 			float rotation = windCycle * 0.12f;
 			rotation -= lastOffset.X / (22f + j * 3f);
-			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 0.45f + (float)Main.time / 20f) * 0.15f;
-			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.time / 20f) * 6f / (height + 25);
+			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 0.45f + (float)Main.timeForVisualEffects / 20f) * 0.15f;
+			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.timeForVisualEffects / 20f) * 6f / (height + 25);
 			var tileLight = Lighting.GetColor(tilePos + new Point(0, -j));
 
 			// 支持发光涂料
@@ -233,7 +233,7 @@ public class JadeLakeSargassum : ModTile, ITileFluentlyDrawn
 					leaf.Add(drawPos + leafPos + leafWidth, getlight, new Vector3(t / 23f * 74f / 144f, 126f / 144f, 0));
 					leaf.Add(drawPos + leafPos - leafWidth, getlight, new Vector3(t / 23f * 74f / 144f, 144f / 144f, 0));
 					leafPos += leafVel;
-					leafVel = leafVel.RotatedBy(Math.Sin(MathF.Pow(t / 0.5f, 0.5f) + Main.time / 30 + tilePos.X + tilePos.Y / 7f) * 0.08f);
+					leafVel = leafVel.RotatedBy(Math.Sin(MathF.Pow(t / 0.5f, 0.5f) + Main.timeForVisualEffects / 30 + tilePos.X + tilePos.Y / 7f) * 0.08f);
 				}
 				if (leaf.Count > 2 && size > 0.35f)
 				{
@@ -253,7 +253,7 @@ public class JadeLakeSargassum : ModTile, ITileFluentlyDrawn
 					leaf.Add(drawPos + leafPos + leafWidth, getlight, new Vector3(t / 23f * 74f / 144f, 126f / 144f, 0));
 					leaf.Add(drawPos + leafPos - leafWidth, getlight, new Vector3(t / 23f * 74f / 144f, 144f / 144f, 0));
 					leafPos += leafVel;
-					leafVel = leafVel.RotatedBy(Math.Sin(MathF.Pow(t / 0.5f, 0.5f) + Main.time / 30 + tilePos.X + tilePos.Y / 7f) * 0.08f);
+					leafVel = leafVel.RotatedBy(Math.Sin(MathF.Pow(t / 0.5f, 0.5f) + Main.timeForVisualEffects / 30 + tilePos.X + tilePos.Y / 7f) * 0.08f);
 				}
 				if (leaf.Count > 2 && size > 0.35f)
 				{
@@ -274,7 +274,7 @@ public class JadeLakeSargassum : ModTile, ITileFluentlyDrawn
 						leaf.Add(drawPos + leafPos + leafWidth, getlight, new Vector3(t / 15f * 56f / 144f, 86f / 144f, 0));
 						leaf.Add(drawPos + leafPos - leafWidth, getlight, new Vector3(t / 15f * 56f / 144f, 104f / 144f, 0));
 						leafPos += leafVel;
-						leafVel = leafVel.RotatedBy(Math.Sin(t * 0.35f + Main.time / 30 + tilePos.X + tilePos.Y / 7f) * 0.08f);
+						leafVel = leafVel.RotatedBy(Math.Sin(t * 0.35f + Main.timeForVisualEffects / 30 + tilePos.X + tilePos.Y / 7f) * 0.08f);
 					}
 					if (leaf.Count > 2)
 					{
@@ -294,7 +294,7 @@ public class JadeLakeSargassum : ModTile, ITileFluentlyDrawn
 						leaf.Add(drawPos + leafPos + leafWidth, getlight, new Vector3(t / 15f * 56f / 144f, 86f / 144f, 0));
 						leaf.Add(drawPos + leafPos - leafWidth, getlight, new Vector3(t / 15f * 56f / 144f, 104f / 144f, 0));
 						leafPos += leafVel;
-						leafVel = leafVel.RotatedBy(Math.Sin(t * 0.35f + Main.time / 30 + tilePos.X + tilePos.Y / 7f) * 0.08f);
+						leafVel = leafVel.RotatedBy(Math.Sin(t * 0.35f + Main.timeForVisualEffects / 30 + tilePos.X + tilePos.Y / 7f) * 0.08f);
 					}
 					if (leaf.Count > 2)
 					{

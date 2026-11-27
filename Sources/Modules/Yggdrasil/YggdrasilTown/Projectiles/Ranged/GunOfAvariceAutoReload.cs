@@ -114,7 +114,7 @@ public class GunOfAvariceAutoReload : ModProjectile
 			effect.Parameters["uColor1"].SetValue(new Vector4(1f, 1f, 1f, 1f));
 			effect.CurrentTechnique.Passes[0].Apply();
 			Vector2 drawCenter = Projectile.Center;
-			float timeValue = (float)Main.time * 0.004f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.004f;
 			timeValue += MathF.Pow(timer / 210f, 5) * 20f;
 
 			// dark net

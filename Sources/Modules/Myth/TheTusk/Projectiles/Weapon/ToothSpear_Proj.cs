@@ -167,7 +167,7 @@ public class ToothSpear_Proj : ModProjectile
 		{
 			trailLength = (int)((duration - Projectile.timeLeft) * 2 * player.meleeSpeed);
 		}
-		float timeEffectValue = (float)(Main.time * 0.10f);
+		float timeEffectValue = (float)(Main.timeForVisualEffects * 0.10f);
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int x = 0; x < trailLength; x++)
 		{

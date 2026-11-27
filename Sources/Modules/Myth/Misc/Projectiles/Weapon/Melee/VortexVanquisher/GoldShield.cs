@@ -86,7 +86,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.CurrentTechnique.Passes[0].Apply();
 		// 花纹
-		float timeValue = (float)Main.time * 0.006f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.006f;
 		Texture2D texPiece = ModAsset.GoldShieldScale_Dark.Value;
 		Vector2 drawPos = DrawSize / 2f;
 		float count = 16;
@@ -322,14 +322,14 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			Texture2D shieldTexture = ShieldTexture;
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-			Post.Parameters["uTime"].SetValue((float)Main.time * 0.0005f);
+			Post.Parameters["uTime"].SetValue((float)Main.timeForVisualEffects * 0.0005f);
 			Post.CurrentTechnique.Passes["Test3"].Apply();
 			DrawPost(new Color(255, 175, 25, 0) * 0.25f, 200, 50, 1, ModAsset.GoldShieldMap.Value, Commons.ModAsset.Noise_Flame_0.Value);
 
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-			Post.Parameters["uTime"].SetValue((float)Main.time * 0.002f);
+			Post.Parameters["uTime"].SetValue((float)Main.timeForVisualEffects * 0.002f);
 			Post.CurrentTechnique.Passes["Test"].Apply();
 			if (shieldTexture != null)
 			{

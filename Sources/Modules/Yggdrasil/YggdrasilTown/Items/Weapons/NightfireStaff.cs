@@ -45,7 +45,7 @@ public class NightfireStaff : ModItem
 			for (int i = 0; i < 8; i++)
 			{
 				Dust dust = Dust.NewDustDirect(shootPos - new Vector2(4), 0, 0, ModContent.DustType<NightFire>());
-				dust.velocity = new Vector2(0, MathF.Sqrt(i / 8f) * 12f).RotatedBy(Main.time + j * MathHelper.TwoPi / 8f + MathF.Sin(i));
+				dust.velocity = new Vector2(0, MathF.Sqrt(i / 8f) * 12f).RotatedBy(Main.timeForVisualEffects + j * MathHelper.TwoPi / 8f + MathF.Sin(i));
 				dust.scale = Main.rand.NextFloat(1.1f, 1.7f);
 			}
 		}

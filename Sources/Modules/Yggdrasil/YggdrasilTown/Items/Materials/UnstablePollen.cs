@@ -21,7 +21,7 @@ public class UnstablePollen : ModItem
 
 	public override void Update(ref float gravity, ref float maxFallSpeed)
 	{
-		float timeValue = (float)(Main.time * 0.13f + Item.whoAmI) % 7;
+		float timeValue = (float)(Main.timeForVisualEffects * 0.13f + Item.whoAmI) % 7;
 		Vector3 color = new Vector3(0.4f, 0.3f, 0) * (MathF.Sin(timeValue) * 0.25f + 1.1f);
 		Lighting.AddLight(Item.Center, color);
 
@@ -32,7 +32,7 @@ public class UnstablePollen : ModItem
 	{
 		Texture2D texture2D = ModAsset.UnstablePollen.Value;
 		Texture2D textureGlow = ModAsset.UnstablePollen_Glow.Value;
-		int frameCount = (int)(Main.time * 0.33f + MathF.Sin(whoAmI) * 5) % 7;
+		int frameCount = (int)(Main.timeForVisualEffects * 0.33f + MathF.Sin(whoAmI) * 5) % 7;
 		var frame = new Rectangle(0, 30 * frameCount, 30, 30);
 		spriteBatch.Draw(texture2D, Item.Center - Main.screenPosition, frame, lightColor, rotation, new Vector2(15f), scale, SpriteEffects.None, 0);
 		spriteBatch.Draw(textureGlow, Item.Center - Main.screenPosition, frame, new Color(1f, 1f, 1f, 0), rotation, new Vector2(15f), scale, SpriteEffects.None, 0);

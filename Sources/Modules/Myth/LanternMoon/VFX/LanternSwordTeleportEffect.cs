@@ -24,7 +24,7 @@ public class LanternSwordTeleportEffect : Visual
 
 	public override void Draw()
 	{
-		float timeValue = (float)(Main.time * 0.03f);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.03f);
 		Vector2 normal = (Position_End - Position_Start).RotatedBy(MathHelper.PiOver2).NormalizeSafe() * 35f;
 		Color normalColor = new Color(1f, 0, 0, 0);
 		List<Vertex2D> barsR_dark = new List<Vertex2D>();

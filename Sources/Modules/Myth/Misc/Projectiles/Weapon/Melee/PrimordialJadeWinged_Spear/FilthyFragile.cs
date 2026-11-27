@@ -100,11 +100,11 @@ public class FilthyFragileDust : Visual
 		for (int x = 0; x < sideCount; x++)
 		{
 			Corner[x] = toCorner.RotatedBy(x / (float)sideCount * Math.Tau);
-			Corner[x].Y *= MathF.Sin(phi + (float)(Main.time * 0.03 * omega));
+			Corner[x].Y *= MathF.Sin(phi + (float)(Main.timeForVisualEffects * 0.03 * omega));
 			Corner[x] = Corner[x].RotatedBy(rotation2);
 		}
 		Color lightColor = new Color(255, 0, 0, 0);
-		float reflectionLight = (1 - pocession) * MathF.Pow(MathF.Sin(phi + (float)(Main.time * 0.03 * omega + 1.57f)) + 1, 4) * 1.6f;
+		float reflectionLight = (1 - pocession) * MathF.Pow(MathF.Sin(phi + (float)(Main.timeForVisualEffects * 0.03 * omega + 1.57f)) + 1, 4) * 1.6f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int x = 0; x < sideCount; x++)
 		{

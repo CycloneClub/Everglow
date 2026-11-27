@@ -343,7 +343,7 @@ public class EvilHalbertBarnacle_Proj_Shuttle : TrailingProjectile
 				width = 0;
 			}
 			int trailThinnerIndex = Math.Clamp((int)(smoothIndexRatio * i), 0, ThinnerTrail.Count - 1);
-			float timeValue = (float)Main.time * 0.0005f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.0005f;
 			factor *= 3;
 			factor += timeValue;
 
@@ -457,7 +457,7 @@ public class EvilHalbertBarnacle_Proj_Shuttle : TrailingProjectile
 			{
 				width = 0;
 			}
-			float timeValue = (float)Main.time * 0.0005f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.0005f;
 			factor *= 3;
 			factor += timeValue;
 

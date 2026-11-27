@@ -34,7 +34,7 @@ public class RockPortal : Visual
 	public override void Draw()
 	{
 		float pocession = Timer / MaxTime;
-		float timeValue = (float)(Main.time * 0.001);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.001);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{

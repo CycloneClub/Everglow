@@ -120,7 +120,7 @@ public class SquamousDashEffect : ModProjectile, IWarpProjectile_WarpStyle2
 		float speed = Math.Abs(owner.velocity.X);
 		float power = speed / 10f;
 		power = Math.Clamp(power, 0, 1);
-		float timeValue = -(float)Main.time * 0.03f;
+		float timeValue = -(float)Main.timeForVisualEffects * 0.03f;
 		int npcDir = 1;
 		if (owner.velocity.X < 0)
 		{
@@ -190,7 +190,7 @@ public class SquamousDashEffect : ModProjectile, IWarpProjectile_WarpStyle2
 		float speed = Math.Abs(owner.velocity.X);
 		float power = speed / 10f;
 		power = Math.Clamp(power, 0, 1);
-		float timeValue = -(float)Main.time * 0.01f;
+		float timeValue = -(float)Main.timeForVisualEffects * 0.01f;
 		int npcDir = 1;
 		if (owner.velocity.X < 0)
 		{

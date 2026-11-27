@@ -25,7 +25,7 @@ public class FireFeather : ModDust
 		if (!wet)
 		{
 			Lighting.AddLight(dust.position, (dust.scale - 0.5f) * 0.85f, (dust.scale - 0.5f) * 0.25f, 0);
-			dust.rotation += MathF.Sin((float)(Main.time * 0.3 + dust.color.R)) * 0.7f;
+			dust.rotation += MathF.Sin((float)(Main.timeForVisualEffects * 0.3 + dust.color.R)) * 0.7f;
 		}
 		else
 		{

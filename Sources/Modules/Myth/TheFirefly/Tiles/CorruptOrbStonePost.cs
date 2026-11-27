@@ -49,7 +49,7 @@ public class CorruptOrbStonePost : ModTile
 			float energyValue = 1f;
 			Vector2 powerCenter = new Vector2(i, j) * 16;
 			Color c0 = new Color(0.4f, 0.3f, 0.7f, 0);
-			float timeValue = (float)Main.time * 0.002f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.002f;
 			List<Vertex2D> bars = new List<Vertex2D>();
 			float accuracy = 16;
 			List<Vertex2D> bars2 = new List<Vertex2D>();

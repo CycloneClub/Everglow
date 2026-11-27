@@ -81,7 +81,7 @@ public class VineEnergyBeam : ModProjectile
 			fade = Projectile.timeLeft / 10f;
 		}
 		Vector2 thick = direction.RotatedBy(MathHelper.PiOver2) * 20f * Projectile.ai[0];
-		float time = -(float)Main.time * 0.03f;
+		float time = -(float)Main.timeForVisualEffects * 0.03f;
 		Color[] flowColors = new Color[]
 		{
 			new Color(187, 224, 163, 0),

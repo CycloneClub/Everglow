@@ -83,7 +83,7 @@ public class DashingLightEff : ModProjectile, IWarpProjectile
 		Vector2 end = Projectile.Center - Vector2.Normalize(Projectile.velocity) * 100;
 
 		Vector2 middle = Vector2.Lerp(end, start, 0.6f);
-		float time = (float)(Main.time * 0.03);
+		float time = (float)(Main.timeForVisualEffects * 0.03);
 		Color alphaColor = Color.White;
 		alphaColor.A = 0;
 		alphaColor.R = (byte)(((Projectile.rotation + MathHelper.TwoPi + MathHelper.PiOver4 * 4) % MathHelper.TwoPi) / MathHelper.TwoPi * 255);
@@ -119,7 +119,7 @@ public class DashingLightEff : ModProjectile, IWarpProjectile
 		Color drawColor = new Color(1f, 0.6f, 0.3f, 0);
 		int trailLength = (50 - Projectile.timeLeft) * 3 / 5;
 
-		float timeEffectValue = (float)(Main.time * 0.06f) + Projectile.whoAmI * 0.27f;
+		float timeEffectValue = (float)(Main.timeForVisualEffects * 0.06f) + Projectile.whoAmI * 0.27f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int x = 0; x < trailLength; x++)
 		{

@@ -221,7 +221,7 @@ public class DeadBeetleEgg_Beetle_Proj : ModProjectile
 
 			var factor = i / (float)trueL;
 			additiveFactor += (Projectile.oldPos[i - 1] - Projectile.oldPos[i]).Length() / 600f;
-			float timer = (float)Main.time * 0.02f + Projectile.whoAmI * 0.77f;
+			float timer = (float)Main.timeForVisualEffects * 0.02f + Projectile.whoAmI * 0.77f;
 			var color = Color.Lerp(new Color(drawC * light.R / 255f * 0.1f, drawC * light.G / 255f * 0.6f, drawC * light.B / 255f * 0.7f, 0), new Color(0, 0, 0, 0), factor);
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width + new Vector2(10) - Main.screenPosition, color, new Vector3(-additiveFactor * 2 + timer, 0, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width + new Vector2(10) - Main.screenPosition, color, new Vector3(-additiveFactor * 2 + timer, 1, 0)));

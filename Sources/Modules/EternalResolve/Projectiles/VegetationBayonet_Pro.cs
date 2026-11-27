@@ -80,7 +80,7 @@ namespace Everglow.EternalResolve.Projectiles
 				bottomPos1 = bottomPos1 * 0.9f;
 				bottomPos2 = bottomPos2 * 0.9f;
 			}
-			float scale = MathF.Sin((float)Main.time * 0.8f);
+			float scale = MathF.Sin((float)Main.timeForVisualEffects * 0.8f);
 			DrawGlowBerry(lightColor, -5, 11, ModAsset.VegetationBayonet_Flag.Value, scale);
 			DrawGlowBerry(new Color(255, 255, 255, 0), -5, 11, ModAsset.VegetationBayonet_Flag.Value, scale);
 		}

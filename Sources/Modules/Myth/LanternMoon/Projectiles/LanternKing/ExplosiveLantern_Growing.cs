@@ -81,7 +81,7 @@ public class ExplosiveLantern_Growing : ModNPC
 	{
 		var texture2D = (Texture2D)ModContent.Request<Texture2D>(Texture);
 
-		float timeValue = (float)Main.time * 0.03f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.03f;
 		var colorT = new Color(1f + (float)(Math.Sin(timeValue) + 2) / 3f, 1f + (float)(Math.Sin(timeValue) + 2) / 3f, 1f + (float)(Math.Sin(timeValue) + 2) / 3f, 0.5f + (float)(Math.Sin(timeValue) + 2) / 6f);
 
 		spriteBatch.Draw(texture2D, NPC.Center - Main.screenPosition, null, colorT, NPC.rotation, texture2D.Size() * 0.5f, NPC.scale, SpriteEffects.None, 1f);
@@ -106,7 +106,7 @@ public class ExplosiveLantern_Growing : ModNPC
 		{
 			maxDistance = 150;
 		}
-		DrawTexCircle(maxDistance * MathF.Pow(value, 0.2f), 22 * value + 22, new Color(0.75f, 0.05f, 0.0f, 0), NPC.Center - Main.screenPosition, Commons.ModAsset.Trail_0.Value, Main.time / 17);
+		DrawTexCircle(maxDistance * MathF.Pow(value, 0.2f), 22 * value + 22, new Color(0.75f, 0.05f, 0.0f, 0), NPC.Center - Main.screenPosition, Commons.ModAsset.Trail_0.Value, Main.timeForVisualEffects / 17);
 		return false;
 	}
 

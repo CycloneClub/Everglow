@@ -182,7 +182,7 @@ public class AlgaeCoveredChest : ModTile, ITileFluentlyDrawn
 				{
 					int frameXChoose = GetFixedRandomNumber(i + x + j, 4) + 6;
 					Rectangle frame = new Rectangle(36 + frameXChoose * 8, 106 - y * 6, 6, 6);
-					float modifyX = MathF.Sin(i + x + y + (float)Main.time / 24f) * 1.5f;
+					float modifyX = MathF.Sin(i + x + y + (float)Main.timeForVisualEffects / 24f) * 1.5f;
 					spriteBatch.Draw(tex, drawPos + new Vector2(modifyX, -y * 6), frame, Lighting.GetColor(i, j), 0, new Vector2(4, 6), 1f, SpriteEffects.None, 0);
 				}
 			}
@@ -240,8 +240,8 @@ public class AlgaeCoveredChest : ModTile, ITileFluentlyDrawn
 				windCycle += highestWindGridPushComplex;
 				float rotation = windCycle * 0.18f;
 				rotation -= lastOffset.X / (42f + j * 3f);
-				rotation += MathF.Sin((i * 6 + j) / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 5f + (float)Main.time / 20f) * 0.12f;
-				rotation += MathF.Sin((i * 6 + j) / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.time / 20f) * 2f / (height + 25);
+				rotation += MathF.Sin((i * 6 + j) / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 5f + (float)Main.timeForVisualEffects / 20f) * 0.12f;
+				rotation += MathF.Sin((i * 6 + j) / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.timeForVisualEffects / 20f) * 2f / (height + 25);
 				if (j <= 3)
 				{
 					rotation *= j / 3f;
@@ -283,8 +283,8 @@ public class AlgaeCoveredChest : ModTile, ITileFluentlyDrawn
 				windCycle += highestWindGridPushComplex;
 				float rotation = windCycle * 0.18f;
 				rotation -= lastOffset.X / (42f + j * 3f);
-				rotation += MathF.Sin((i * 6 + j) / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 5f + (float)Main.time / 20f) * 0.12f;
-				rotation += MathF.Sin((i * 6 + j) / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.time / 20f) * 2f / (height + 25);
+				rotation += MathF.Sin((i * 6 + j) / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 5f + (float)Main.timeForVisualEffects / 20f) * 0.12f;
+				rotation += MathF.Sin((i * 6 + j) / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.timeForVisualEffects / 20f) * 2f / (height + 25);
 				if (j <= 3)
 				{
 					rotation *= j / 3f;

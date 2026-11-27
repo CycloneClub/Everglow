@@ -18,7 +18,7 @@ public class UIQuestDurationBar : BaseElement
 
 	public override void Draw(SpriteBatch sb)
 	{
-		CurrentDuration = (int)((Main.time * 0.03f) % (MaxDuration + 1));
+		CurrentDuration = (int)((Main.timeForVisualEffects * 0.03f) % (MaxDuration + 1));
 		Texture2D tex = ModAsset.QuestDurationFlag.Value;
 		if (MaxDuration > 1)
 		{

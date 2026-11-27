@@ -129,7 +129,7 @@ internal class FeatheredStaff : ModProjectile
 				MaxTime = Main.rand.Next(27, 66),
 				Scale = 1,
 				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { 7, (float)(Main.time + i / (float)duplicateTimes) * 1.8f },
+				ai = new float[] { 7, (float)(Main.timeForVisualEffects + i / (float)duplicateTimes) * 1.8f },
 			};
 			Ins.VFXManager.Add(somg);
 		}
@@ -150,7 +150,7 @@ internal class FeatheredStaff : ModProjectile
 				MaxTime = Main.rand.Next(27, 36),
 				Scale = 1,
 				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { 5, (float)Main.time * 1.8f - speed * 2.4f },
+				ai = new float[] { 5, (float)Main.timeForVisualEffects * 1.8f - speed * 2.4f },
 			};
 			Ins.VFXManager.Add(somg);
 		}
@@ -341,7 +341,7 @@ internal class FeatheredStaff : ModProjectile
 				effects: effects,
 				0);
 			Texture2D light = Commons.ModAsset.StarSlash.Value;
-			var lightHalo = Color.Lerp(new Color(1f, 0.8f, 0.5f, 0), new Color(0.7f, 0.2f, 0.1f, 0), (float)(Math.Sin(Main.time * 0.3f + Projectile.whoAmI) + 1) * 0.5f);
+			var lightHalo = Color.Lerp(new Color(1f, 0.8f, 0.5f, 0), new Color(0.7f, 0.2f, 0.1f, 0), (float)(Math.Sin(Main.timeForVisualEffects * 0.3f + Projectile.whoAmI) + 1) * 0.5f);
 			Main.spriteBatch.Draw(
 				light,
 				Projectile.Center - Main.screenPosition,

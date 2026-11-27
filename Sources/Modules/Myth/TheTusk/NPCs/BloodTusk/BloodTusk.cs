@@ -1382,7 +1382,7 @@ public class BloodTusk : ModNPC
 		result1 *= new Vector2(Main.screenWidth, Main.screenHeight) / 2f;
 		effect.Parameters["drawOrigin"].SetValue(result1);
 		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_RGB.Value);
-		effect.Parameters["noiseCoord"].SetValue(new Vector2(0, (float)Main.time * 0.0005f));
+		effect.Parameters["noiseCoord"].SetValue(new Vector2(0, (float)Main.timeForVisualEffects * 0.0005f));
 
 		effect.CurrentTechnique.Passes[0].Apply();
 

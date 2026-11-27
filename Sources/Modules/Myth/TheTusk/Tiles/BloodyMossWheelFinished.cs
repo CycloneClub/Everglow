@@ -107,12 +107,12 @@ public class BloodyMossWheelFinished : ModTile
 		Texture2D Tdoor2 = ModAsset.CosmicVort.Value;
 		Texture2D Tdoor3 = ModAsset.Cosmic_Perlin.Value;
 
-		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 300f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
-		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(100, 100, 100, 0), -(float)Main.time / 200f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
-		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 150f, new Vector2(56), 65f / 50f, SpriteEffects.None, 0f);
-		sb.Draw(Tdoor2, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 300f, new Vector2(56), 65 / 45f, SpriteEffects.None, 0f);
-		sb.Draw(Tdoor3, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), -(float)Main.time / 200f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
-		sb.Draw(Tdoor3, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 150f, new Vector2(56), 65 / 45f, SpriteEffects.None, 0f);
+		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.timeForVisualEffects / 300f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
+		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(100, 100, 100, 0), -(float)Main.timeForVisualEffects / 200f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
+		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.timeForVisualEffects / 150f, new Vector2(56), 65f / 50f, SpriteEffects.None, 0f);
+		sb.Draw(Tdoor2, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.timeForVisualEffects / 300f, new Vector2(56), 65 / 45f, SpriteEffects.None, 0f);
+		sb.Draw(Tdoor3, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), -(float)Main.timeForVisualEffects / 200f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
+		sb.Draw(Tdoor3, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.timeForVisualEffects / 150f, new Vector2(56), 65 / 45f, SpriteEffects.None, 0f);
 
 		Texture2D scene = ModAsset.TuskMiddle_Square.Value;
 		Matrix matrix = sb.transformMatrix;

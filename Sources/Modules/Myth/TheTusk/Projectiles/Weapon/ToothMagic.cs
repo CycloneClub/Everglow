@@ -314,7 +314,7 @@ public class ToothMagic : ModProjectile, IWarpProjectile
 		{
 			Color c2 = Lighting.GetColor((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16);
 			float mulColor = (c2.R + c2.G + c2.B) / 765f;
-			var Frame = new Rectangle(0, (int)(Main.time / 100f % 7) * 32, 32, 32);
+			var Frame = new Rectangle(0, (int)(Main.timeForVisualEffects / 100f % 7) * 32, 32, 32);
 			Main.spriteBatch.Draw(Shade, Projectile.Center - Main.screenPosition, Frame, Color.White * MulByTimeLeft, Projectile.rotation, Frame.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 			Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition, Frame, new Color(255, 0, 21, 0) * mulColor, Projectile.rotation, Frame.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		}
@@ -363,13 +363,13 @@ public class ToothMagic : ModProjectile, IWarpProjectile
 			Color c2 = Lighting.GetColor((int)DrawCenter.X / 16, (int)DrawCenter.Y / 16);
 			mulColor *= (c2.R + c2.G + c2.B) / 765f;
 			var factor = i / (float)TrueL;
-			float x0 = factor * Mulfactor - (float)(Main.time / 150d) + 100000;
+			float x0 = factor * Mulfactor - (float)(Main.timeForVisualEffects / 150d) + 100000;
 			x0 %= 1f;
 			bars.Add(new Vertex2D(DrawCenter + normalDir * -width * (1 - factor) - Main.screenPosition, c0 * mulColor, new Vector3(x0, 1, 0)));
 			bars.Add(new Vertex2D(DrawCenter + normalDir * width * (1 - factor) - Main.screenPosition, c0 * mulColor, new Vector3(x0, 0, 0)));
 			var factorII = factor;
 			factor = (i + 1) / (float)TrueL;
-			var x1 = factor * Mulfactor - (float)(Main.time / 150d) + 100000;
+			var x1 = factor * Mulfactor - (float)(Main.timeForVisualEffects / 150d) + 100000;
 			x1 %= 1f;
 			if (x0 > x1)
 			{
@@ -460,13 +460,13 @@ public class ToothMagic : ModProjectile, IWarpProjectile
 			Color c0 = new Color(k0, 0.2f * mulColor, 0, 0) * MulByTimeLeft;
 
 			var factor = i / (float)TrueL;
-			float x0 = factor * 1.3f - (float)(Main.time / 150d) + 100000;
+			float x0 = factor * 1.3f - (float)(Main.timeForVisualEffects / 150d) + 100000;
 			x0 %= 1f;
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width * (1 - factor) + new Vector2(9f) - Main.screenPosition, c0, new Vector3(x0, 1, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factor) + new Vector2(9f) - Main.screenPosition, c0, new Vector3(x0, 0, 0)));
 			var factorII = factor;
 			factor = (i + 1) / (float)TrueL;
-			var x1 = factor * 1.3f - (float)(Main.time / 150d) + 100000;
+			var x1 = factor * 1.3f - (float)(Main.timeForVisualEffects / 150d) + 100000;
 			x1 %= 1f;
 			if (x0 > x1)
 			{

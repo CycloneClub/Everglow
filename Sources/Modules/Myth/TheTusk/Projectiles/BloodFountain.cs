@@ -117,7 +117,7 @@ public class BloodFountain : ModProjectile
 			List<Vertex2D> bars = new List<Vertex2D>();
 			for (int j = 0; j < 25; j++)
 			{
-				float yCoord = j / 30f + (float)Main.time * 0.007f;
+				float yCoord = j / 30f + (float)Main.timeForVisualEffects * 0.007f;
 				float zCoord0 = (j - 16) / 7f - MathF.Pow(Math.Abs(i), 2) / 25f - decreaseZ;
 				float zCoord1 = (j - 16) / 7f - MathF.Pow(Math.Abs(i + 1), 2) / 25f - decreaseZ;
 				if (j == 24)

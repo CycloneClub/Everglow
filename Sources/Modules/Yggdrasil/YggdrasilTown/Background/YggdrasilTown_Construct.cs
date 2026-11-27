@@ -120,7 +120,7 @@ public class YggdrasilTown_Construct : BackgroundSlideBase
 		}
 		foreach (var rectangle in WindowFrames)
 		{
-			if ((Main.time + TileUtils.GetFixedRandomNumber_SingleSeed(rectangle.X - rectangle.Y)) * 10 % 10240 > 5120)
+			if ((Main.timeForVisualEffects + TileUtils.GetFixedRandomNumber_SingleSeed(rectangle.X - rectangle.Y)) * 10 % 10240 > 5120)
 			{
 				if (VFXManager.InScreen(rectangle.Center() + topLeft, rectangle.Size().Length()))
 				{

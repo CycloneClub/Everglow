@@ -181,13 +181,13 @@ public class NormalEscalator_VFX : TileVFX
 
 	public Rectangle CurrentAnimationPanel()
 	{
-		int animationValue = (int)(Main.time * 0.1f) % 3;
+		int animationValue = (int)(Main.timeForVisualEffects * 0.1f) % 3;
 		return new Rectangle(214, 8 * animationValue + State * 24, 18, 6);
 	}
 
 	public Rectangle CurrentAnimationPane_Glow()
 	{
-		int animationValue = (int)(Main.time * 0.1f) % 3;
+		int animationValue = (int)(Main.timeForVisualEffects * 0.1f) % 3;
 		return new Rectangle(216, 8 * animationValue + State * 24, 14, 6);
 	}
 

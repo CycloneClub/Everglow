@@ -33,6 +33,12 @@ public class DreamWeaverBall : ModProjectile
 	public float PosLerpValue = 0;
 	public Vector2 HitPoint = Vector2.Zero;
 
+	private float GetRainSpawnRadius()
+	{
+		float phase = (float)(Main.timeForVisualEffects * 0.008f) * 5f + Projectile.whoAmI;
+		return 30f * (1f + MathF.Sin(phase) * 0.05f) * Projectile.scale;
+	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -70,9 +76,7 @@ public class DreamWeaverBall : ModProjectile
 		{
 			Projectile.ai[0] = 0;
 
-			float timeValue = (float)(Main.time * 0.008f);
-			float mulSize = 1f + MathF.Sin(timeValue * 5f + Projectile.whoAmI) * 0.05f;
-			float radius = 30 * mulSize * Projectile.scale;
+			float radius = GetRainSpawnRadius();
 			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(0, radius).RotatedBy(Main.rand.NextFloat(-1.4f, 1.4f)), new Vector2(0, 20), ModContent.ProjectileType<DreamWeaver_Rain>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner);
 		}
 	}
@@ -86,7 +90,7 @@ public class DreamWeaverBall : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		float timeValue = (float)(Main.time * 0.008f);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.008f);
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
@@ -95,8 +99,8 @@ public class DreamWeaverBall : ModProjectile
 		Effect antiSphere = ModAsset.AntiSpherePerspective_DreamWeaverBall.Value;
 		List<Vertex2D> triangleList = new List<Vertex2D>();
 
-		float mulSize = 1f + MathF.Sin(timeValue * 5f + Projectile.whoAmI) * 0.05f;
-		float radius = 120 * mulSize * Projectile.scale;
+		float shellRadius = 4f * GetRainSpawnRadius();
+		float radius = shellRadius;
 		var baseColor = Color.Black;
 
 		triangleList.Add(new Vertex2D(Projectile.Center - new Vector2(radius, radius), baseColor, new Vector3(-1, 1, timeValue)));
@@ -127,7 +131,7 @@ public class DreamWeaverBall : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		mulSize = 1f + MathF.Sin(timeValue * 15f + Projectile.whoAmI) * 0.07f;
+		float mulSize = 1f + MathF.Sin(timeValue * 15f + Projectile.whoAmI) * 0.07f;
 		radius = 80 * mulSize * Projectile.scale;
 		baseColor = new Color(0.05f, 0.35f, 1, 0);
 
@@ -210,8 +214,7 @@ public class DreamWeaverBall : ModProjectile
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
 		triangleList = new List<Vertex2D>();
-		mulSize = 1f + MathF.Sin(timeValue * 5f + Projectile.whoAmI) * 0.05f;
-		radius = 120 * mulSize * Projectile.scale;
+		radius = shellRadius;
 		baseColor = Color.Black;
 
 		triangleList.Add(new Vertex2D(Projectile.Center - new Vector2(radius, radius), baseColor, new Vector3(-1, 1, timeValue)));

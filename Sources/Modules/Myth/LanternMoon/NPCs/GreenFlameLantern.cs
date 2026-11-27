@@ -289,7 +289,7 @@ public class GreenFlameLantern : LanternMoonNPC
 		{
 			star_scale = (Timer % 150 - 120) / 30f;
 		}
-		float timeValue = MathF.Sin((float)Main.time * 0.07f + NPC.whoAmI) * 0.5f + 0.5f;
+		float timeValue = MathF.Sin((float)Main.timeForVisualEffects * 0.07f + NPC.whoAmI) * 0.5f + 0.5f;
 		Color c0 = new Color(0f, 0.75f * timeValue, 0.75f, 0);
 		var drawPos = NPC.Center - Main.screenPosition + new Vector2(0, -30);
 		Main.spriteBatch.Draw(star, drawPos, null, c0, MathHelper.PiOver2, star.Size() / 2f, new Vector2(star_scale / 1.5f, 1f), SpriteEffects.None, 0);

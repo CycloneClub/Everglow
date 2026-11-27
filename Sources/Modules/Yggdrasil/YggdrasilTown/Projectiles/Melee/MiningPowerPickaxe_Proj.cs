@@ -235,7 +235,7 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 		var textureGlow = ModAsset.MiningPowerPickaxe_Glow.Value;
 		var textureDrillGlow = ModAsset.MiningPowerPickaxe_DrillGlow.Value;
 		var rotation = Projectile.rotation;
-		float starSize = 1 + MathF.Sin((float)Main.time * 0.8f) * 0.3f;
+		float starSize = 1 + MathF.Sin((float)Main.timeForVisualEffects * 0.8f) * 0.3f;
 		starSize *= 0.5f;
 		var effects = (Owner.direction == 1 && Owner.gravDir == 1) || (Owner.gravDir == -1 && Owner.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipVertically;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, rotation, texture.Size() * 0.5f, Projectile.scale, effects, 0f);

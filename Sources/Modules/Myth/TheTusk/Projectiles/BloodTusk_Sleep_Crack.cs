@@ -69,7 +69,7 @@ public class BloodTusk_Sleep_Crack : ModProjectile
 		bloodCrack.Parameters["uNoiseSize"].SetValue(1f);
 		bloodCrack.Parameters["uNoiseXY"].SetValue(new Vector2(0.5f, 0.5f));
 		bloodCrack.CurrentTechnique.Passes[0].Apply();
-		float timeValue = (float)Main.time * 0.01f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.01f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int y = 0; y <= 40; y++)
 		{

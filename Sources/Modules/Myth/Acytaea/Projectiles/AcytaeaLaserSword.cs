@@ -108,7 +108,7 @@ public class AcytaeaLaserSword : ModProjectile
 			{
 				break;
 			}
-			float x = -i / 40f + (float)Main.time * 0.06f;
+			float x = -i / 40f + (float)Main.timeForVisualEffects * 0.06f;
 			bars.Add(new Vertex2D(detect + velocityLeft, c0, new Vector3(x, 1, MathF.Min(i / width / 4f, 0.5f))));
 			bars.Add(new Vertex2D(detect - velocityLeft, c0, new Vector3(x, 0, MathF.Min(i / width / 4f, 0.5f))));
 		}

@@ -88,7 +88,7 @@ public class HandheldCircularSaw_Proj : ModProjectile
 		float rot0 = Projectile.rotation - (float)(Math.PI * 0.25) + MathF.PI * 0.25f * player.direction;
 		Vector2 projToPlayer = new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75);
 
-		Main.spriteBatch.Draw(texSaw, Projectile.Center - Main.screenPosition + projToPlayer * 0, new Rectangle(0, 0, 34, 34), drawColor, (float)Main.time * 0.75f, new Vector2(17), 1f, se, 0);
+		Main.spriteBatch.Draw(texSaw, Projectile.Center - Main.screenPosition + projToPlayer * 0, new Rectangle(0, 0, 34, 34), drawColor, (float)Main.timeForVisualEffects * 0.75f, new Vector2(17), 1f, se, 0);
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition - projToPlayer * 13, null, drawColor, rot0, texMain.Size() / 2f, 1f, se, 0);
 	}
 

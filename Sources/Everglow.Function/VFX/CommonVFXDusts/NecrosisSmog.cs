@@ -91,7 +91,7 @@ public class NecrosisSmogDust : Visual
 	public override void Draw()
 	{
 		float progress = Timer / MaxTime;
-		float timeValue = (float)(Main.time * 0.002);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.002);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		var lightValue = Lighting.GetColor(Position.ToTileCoordinates()).ToVector3();
 		float light = lightValue.Length();

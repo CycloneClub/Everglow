@@ -91,7 +91,7 @@ public class PurpleBombCaterpillarDeath : ModProjectile
 		{
 			Vector2 newVelocity = new Vector2(0, 0.7f).RotatedBy(j / 20f * MathHelper.TwoPi);
 			newVelocity.X *= 0.6f * MathF.Sin(j / 15f * MathHelper.TwoPi) + 0.2f;
-			newVelocity = newVelocity.RotatedBy(-Main.time * 0.05f + Projectile.whoAmI + j * MathHelper.TwoPi / 3f);
+			newVelocity = newVelocity.RotatedBy(-Main.timeForVisualEffects * 0.05f + Projectile.whoAmI + j * MathHelper.TwoPi / 3f);
 			newVelocity.X *= 2f;
 			var somg = new LightFruitParticleDust
 			{

@@ -79,7 +79,7 @@ public class YggdrasilSlashBall : ModProjectile
 		NormalDistance = (player.Center - player.MouseWorld()).SafeNormalize(Vector2.zeroVector);
 
 		Projectile.Center = player.Center - NormalDistance * 100;
-		float timeValue = (float)Main.time * 0.02f + Projectile.whoAmI;
+		float timeValue = (float)Main.timeForVisualEffects * 0.02f + Projectile.whoAmI;
 		for (int i = 0; i < 8; i++)
 		{
 			float rot = timeValue * (30 - i * 2);
@@ -135,7 +135,7 @@ public class YggdrasilSlashBall : ModProjectile
 		Texture2D dark = Commons.ModAsset.Point_Black.Value;
 		Vector2 pos = Projectile.Center - Main.screenPosition;
 
-		float timeValue = (float)Main.time * 0.02f + Projectile.whoAmI;
+		float timeValue = (float)Main.timeForVisualEffects * 0.02f + Projectile.whoAmI;
 		var bars = new List<Vertex2D>();
 		for (int i = 0; i < 8; i++)
 		{

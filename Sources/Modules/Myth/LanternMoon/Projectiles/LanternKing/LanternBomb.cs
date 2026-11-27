@@ -110,7 +110,7 @@ public class LanternBomb : ModProjectile
 		{
 			maxDistance = 150;
 		}
-		DrawTexCircle(maxDistance * timeValueX2, 22 * timeValueX2 + 22, new Color(0.75f, 0.45f, 0.45f, 0) * colorValue, Projectile.Center - Main.screenPosition, flameRing, Main.time / 17);
+		DrawTexCircle(maxDistance * timeValueX2, 22 * timeValueX2 + 22, new Color(0.75f, 0.45f, 0.45f, 0) * colorValue, Projectile.Center - Main.screenPosition, flameRing, Main.timeForVisualEffects / 17);
 		return false;
 	}
 

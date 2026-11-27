@@ -38,7 +38,7 @@ public class Georg_Hook_Thunder : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		float timeValue = (float)Main.time * 0.03f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.03f;
 		float mulColor = 1f;
 		float width = 120f;
 

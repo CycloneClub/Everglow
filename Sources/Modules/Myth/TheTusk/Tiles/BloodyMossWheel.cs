@@ -68,7 +68,7 @@ public class BloodyMossWheel : ModTile
 		var origin = new Vector2(56);
 
 		Color color = Lighting.GetColor(i, j);
-		Vector2 v = new Vector2(0, 100).RotatedBy(Main.time / 60f);
+		Vector2 v = new Vector2(0, 100).RotatedBy(Main.timeForVisualEffects / 60f);
 		spriteBatch.Draw(BaseCo1, new Vector2(i * 16 - 16 + 6, j * 16 - 68 - 16) + origin - Main.screenPosition + zero, new Rectangle(256 + (int)v.X, 256 + (int)v.Y, 32, 32), new Color(255, 0, 0, 255), 0f, origin, 1f, SpriteEffects.None, 0f);
 		spriteBatch.Draw(BaseCo1, new Vector2(i * 16 - 16 + 6, j * 16 - 68 - 16) + origin - Main.screenPosition + zero, new Rectangle(256 - (int)v.X, 256 - (int)v.Y, 32, 32), new Color(255, 125, 0, 0), 0f, origin, 1f, SpriteEffects.None, 0f);
 		spriteBatch.Draw(Sp1a, new Vector2(i * 16 + 6, j * 16 - 68) - Main.screenPosition + zero, null, color, 0f, origin, 1f, SpriteEffects.None, 0f);
@@ -324,12 +324,12 @@ public class BloodyMossWheel : ModTile
 			{
 				Killing--;
 			}
-			sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 300f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
-			sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(100, 100, 100, 0), -(float)Main.time / 200f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
-			sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 150f, new Vector2(56), (60 - Killing) / 50f, SpriteEffects.None, 0f);
-			sb.Draw(Tdoor2, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 300f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
-			sb.Draw(Tdoor3, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), -(float)Main.time / 200f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
-			sb.Draw(Tdoor3, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 150f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
+			sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.timeForVisualEffects / 300f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
+			sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(100, 100, 100, 0), -(float)Main.timeForVisualEffects / 200f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
+			sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.timeForVisualEffects / 150f, new Vector2(56), (60 - Killing) / 50f, SpriteEffects.None, 0f);
+			sb.Draw(Tdoor2, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.timeForVisualEffects / 300f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
+			sb.Draw(Tdoor3, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), -(float)Main.timeForVisualEffects / 200f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
+			sb.Draw(Tdoor3, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.timeForVisualEffects / 150f, new Vector2(56), (60 - Killing) / 45f, SpriteEffects.None, 0f);
 
 			Texture2D scene = ModAsset.TuskMiddle_Square.Value;
 			Matrix matrix = sb.transformMatrix;

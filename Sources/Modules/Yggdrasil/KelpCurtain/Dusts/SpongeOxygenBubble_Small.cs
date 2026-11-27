@@ -14,7 +14,7 @@ public class SpongeOxygenBubble_Small : ModDust
 	{
 		if (dust.customData is Projectile proj && proj.active && (dust.position - proj.Center).Length() < 80f)
 		{
-			Vector2 toOwner = proj.Center - dust.position + new Vector2(20 * MathF.Cos(dust.dustIndex + (float)Main.time * 0.05f), 20 * MathF.Sin(dust.dustIndex + (float)Main.time * 0.75f));
+			Vector2 toOwner = proj.Center - dust.position + new Vector2(20 * MathF.Cos(dust.dustIndex + (float)Main.timeForVisualEffects * 0.05f), 20 * MathF.Sin(dust.dustIndex + (float)Main.timeForVisualEffects * 0.75f));
 			float mulAcc = 1.3f - dust.frame.Y / 32f;
 			dust.velocity += toOwner / 1000f * mulAcc;
 			dust.velocity *= 0.99f;

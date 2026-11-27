@@ -232,7 +232,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			}
 			float value = (Projectile.timeLeft + ToKill) / 200f;
 			Vector2 middle = Vector2.Lerp(end, start, MathF.Sqrt(value) * 0.5f);
-			float time = (float)(Main.time * 0.03);
+			float time = (float)(Main.timeForVisualEffects * 0.03);
 			float dark = MathF.Sin(value * MathF.PI) * 4;
 			List<Vertex2D> bars = new List<Vertex2D>
 			{
@@ -335,7 +335,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			}
 			float value = (Projectile.timeLeft + ToKill) / 135f;
 			Vector2 middle = Vector2.Lerp(end, start, MathF.Sqrt(value) * 0.5f);
-			float time = (float)(Main.time * 0.03);
+			float time = (float)(Main.timeForVisualEffects * 0.03);
 			Color alphaColor = Color;
 			alphaColor.A = 0;
 			alphaColor.R = (byte)(((Projectile.velocity.ToRotation() + Math.PI * 3) % MathHelper.TwoPi) / MathHelper.TwoPi * 255);

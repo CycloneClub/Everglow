@@ -76,7 +76,7 @@ public class SkullCollection : ModItem
 	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
 		Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
-		var frame = texture.Frame(verticalFrames: ItemFrames, frameY: ((int)Main.time / 5) % ItemFrames);
+		var frame = texture.Frame(verticalFrames: ItemFrames, frameY: ((int)Main.timeForVisualEffects / 5) % ItemFrames);
 		spriteBatch.Draw(texture, Item.Center - Main.screenPosition, frame, lightColor, 0, new Vector2(texture.Width, texture.Height / ItemFrames) / 2, 1f, SpriteEffects.None, 0);
 
 		return false;

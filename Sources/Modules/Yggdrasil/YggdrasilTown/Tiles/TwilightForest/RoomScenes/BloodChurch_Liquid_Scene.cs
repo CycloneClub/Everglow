@@ -128,7 +128,7 @@ public class BloodChurch_Liquid_Scene : TileVFX
 		// Fountain blood liquid
 		Texture2D liquidTex = ModAsset.BloodChurch_Scene_FakeLiquid_Dark.Value;
 		Texture2D liquidTex_highlight = ModAsset.BloodChurch_Scene_FakeLiquid.Value;
-		float timeValue = -(float)Main.time / 240f;
+		float timeValue = -(float)Main.timeForVisualEffects / 240f;
 		List<Vertex2D> bars = liquidBars;
 		List<Vertex2D> bars_highlight = liquidBarsHighlight;
 		bars.Clear();
@@ -194,7 +194,7 @@ public class BloodChurch_Liquid_Scene : TileVFX
 	public float GetRandomWave(float x)
 	{
 		float value = 0;
-		float timeValue = (float)Main.time * 0.06f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.06f;
 		for (int i = 0; i < 8; i++)
 		{
 			float rate = MathF.Pow(2, i);

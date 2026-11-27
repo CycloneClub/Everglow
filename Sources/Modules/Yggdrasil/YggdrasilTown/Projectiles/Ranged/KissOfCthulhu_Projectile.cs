@@ -61,7 +61,7 @@ public class KissOfCthulhu_Projectile : ModProjectile
 			{
 				speed *= cus.X / 90f;
 			}
-			dust.position += new Vector2(0, speed).RotatedBy(cus.Y) * MathF.Sin(cus.X * 0.035f + (float)Main.time * 0.2f) * (1 - duration);
+			dust.position += new Vector2(0, speed).RotatedBy(cus.Y) * MathF.Sin(cus.X * 0.035f + (float)Main.timeForVisualEffects * 0.2f) * (1 - duration);
 			dust.customData = cus;
 			dust.scale = 2 * MathF.Pow(0.87f, duration);
 			DustCount++;

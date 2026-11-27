@@ -262,8 +262,8 @@ public class BloodLanternGhost_PowerBall_Explosion : ModProjectile
 		{
 			star_width *= Projectile.timeLeft / 60f;
 		}
-		star_width *= 1 + (MathF.Sin((float)Main.time * 0.23f + Projectile.whoAmI) + 0.5f) * 0.7f;
-		float timeValue = MathF.Sin((float)Main.time * 0.07f + Projectile.whoAmI) * 0.5f + 0.5f;
+		star_width *= 1 + (MathF.Sin((float)Main.timeForVisualEffects * 0.23f + Projectile.whoAmI) + 0.5f) * 0.7f;
+		float timeValue = MathF.Sin((float)Main.timeForVisualEffects * 0.07f + Projectile.whoAmI) * 0.5f + 0.5f;
 		Color c0 = new Color(1f, 0.75f * timeValue, 0, 0) * timeValue;
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, c0, MathHelper.PiOver2, star.Size() / 2f, new Vector2(star_width / 1.5f, 0.5f), SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, c0, 0, star.Size() / 2f, new Vector2(star_width / 1.5f, 0.5f), SpriteEffects.None, 0);

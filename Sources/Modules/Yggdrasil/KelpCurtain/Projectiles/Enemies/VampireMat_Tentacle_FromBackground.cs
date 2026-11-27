@@ -122,7 +122,7 @@ public class VampireMat_Tentacle_FromBackground : ModProjectile
 				{
 					decay = 1;
 				}
-				wave = MathF.Sin((Duration - 60) / 120f * MathHelper.Pi) * MathF.Sin(i / 30f + Projectile.whoAmI + (float)Main.time * 0.06f) * 30 * decay;
+				wave = MathF.Sin((Duration - 60) / 120f * MathHelper.Pi) * MathF.Sin(i / 30f + Projectile.whoAmI + (float)Main.timeForVisualEffects * 0.06f) * 30 * decay;
 			}
 			tentacleCurve.Add(Projectile.Center + new Vector2(tentacle_dis - i, wave).RotatedBy(Projectile.rotation) - Main.screenPosition);
 		}

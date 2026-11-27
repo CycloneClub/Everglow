@@ -70,7 +70,7 @@ public class GiantGhostClawBarnacle_Background : TileVFX
 		for (int i = 0; i < steps; i++)
 		{
 			float value = i / (float)steps;
-			float wave = MathF.Sin((float)Main.time * 0.06f + value * 5 + TileUtils.GetFixedRandomNumber_SingleSeed((int)(position.Y * 244.1268f))) * 6;
+			float wave = MathF.Sin((float)Main.timeForVisualEffects * 0.06f + value * 5 + TileUtils.GetFixedRandomNumber_SingleSeed((int)(position.Y * 244.1268f))) * 6;
 			bars.Add(position + new Vector2(length * value, width + wave), Lighting.GetColor(position.ToTileCoordinates()), new Vector3(value, (frame.Y + frame.Height) / (float)tentacle.Height, 0));
 			bars.Add(position + new Vector2(length * value, -width + wave), Lighting.GetColor(position.ToTileCoordinates()), new Vector3(value, frame.Y / (float)tentacle.Height, 0));
 		}

@@ -114,7 +114,7 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 		}
 		float coordX = 0;
 		Color oldColor = new Color(1f, 0f, 0.2f, 0);
-		float timeValue = -(float)Main.time / 240f;
+		float timeValue = -(float)Main.timeForVisualEffects / 240f;
 		for (int i = 0; i < 11; i++)
 		{
 			AppendFountainStrip(bg, flipH, direction, 17, 11, new Vector2(i * 8 * direction, 0), i, 10, 16, 6f, 0.35f, false, timeValue, oldColor, ref coordX);
@@ -335,7 +335,7 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 	public float GetRandomWave(float x)
 	{
 		float value = 0;
-		float timeValue = (float)Main.time * 0.06f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.06f;
 		for (int i = 0; i < 8; i++)
 		{
 			float rate = MathF.Pow(2, i);

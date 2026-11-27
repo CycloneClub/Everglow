@@ -107,14 +107,14 @@ public class Schorl_Laser : ModProjectile
 				float value = i / distance;
 				var dust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<Schorl_GoldenDust>());
 				dust.position = Projectile.Center * value + EndPos * (1 - value);
-				dust.velocity = new Vector2(0, MathF.Sin(i * 0.2f + (float)Main.time * 0.23f + Projectile.whoAmI * 0.36f)).RotatedBy(Projectile.velocity.ToRotationSafe()) * 0.4f;
+				dust.velocity = new Vector2(0, MathF.Sin(i * 0.2f + (float)Main.timeForVisualEffects * 0.23f + Projectile.whoAmI * 0.36f)).RotatedBy(Projectile.velocity.ToRotationSafe()) * 0.4f;
 			}
 		}
 		if (Main.rand.NextBool() && Timer >= 65 && Projectile.timeLeft > 10)
 		{
 			var dust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<Schorl_GoldenDust>());
 			dust.position = EndPos;
-			dust.velocity = new Vector2(0, MathF.Sin((float)Main.time * 0.23f + Projectile.whoAmI * 0.36f)).RotatedBy(Projectile.velocity.ToRotationSafe()) * 2f;
+			dust.velocity = new Vector2(0, MathF.Sin((float)Main.timeForVisualEffects * 0.23f + Projectile.whoAmI * 0.36f)).RotatedBy(Projectile.velocity.ToRotationSafe()) * 2f;
 		}
 		if (EndPos == Vector2.zeroVector)
 		{

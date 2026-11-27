@@ -86,7 +86,7 @@ public class FrostFlameDust : Visual
 	public override void Draw()
 	{
 		float progress = Timer / MaxTime;
-		float timeValue = (float)(Main.time * 0.002);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.002);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{

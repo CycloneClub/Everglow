@@ -41,7 +41,7 @@ public class LanternExplosionDecayBlackLines : Visual
 				pocession *= 0.5f;
 			}
 		}
-		float timeValue = (float)(Main.time * 0.01f);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.01f);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		float light = 1f;
 		float scaleTex = 1.2f;

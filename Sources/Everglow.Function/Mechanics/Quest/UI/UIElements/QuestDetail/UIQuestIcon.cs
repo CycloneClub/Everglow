@@ -122,7 +122,7 @@ public class UIQuestIcon : UIBlock
 		}
 		else
 		{
-			prevIcon.Info.Left.SetValue(nextIcon.Info.Left.Pixel - MathF.Sin((float)Main.time * 0.1f) * 10);
+			prevIcon.Info.Left.SetValue(nextIcon.Info.Left.Pixel - MathF.Sin((float)Main.timeForVisualEffects * 0.1f) * 10);
 		}
 		if (!IconGroup.IsLastIcon)
 		{
@@ -156,7 +156,7 @@ public class UIQuestIcon : UIBlock
 		}
 		else
 		{
-			nextIcon.Info.Left.SetValue(nextIcon.Info.Left.Pixel + MathF.Sin((float)Main.time * 0.1f) * 10);
+			nextIcon.Info.Left.SetValue(nextIcon.Info.Left.Pixel + MathF.Sin((float)Main.timeForVisualEffects * 0.1f) * 10);
 		}
 		if (!IconGroup.IsFirstIcon)
 		{

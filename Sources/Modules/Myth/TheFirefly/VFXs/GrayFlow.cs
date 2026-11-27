@@ -94,7 +94,7 @@ internal class GrayFlowLine : ShaderDraw
 		}
 		else
 		{
-			ai[1] += MathF.Sin((float)Main.time * 0.1f + ai[0] * 100) * 0.01f * ai[0];
+			ai[1] += MathF.Sin((float)Main.timeForVisualEffects * 0.1f + ai[0] * 100) * 0.01f * ai[0];
 		}
 		timer++;
 		if (timer > maxTime)

@@ -128,7 +128,7 @@ public class WiltedForestLamp_Proj_Shoot : TrailingProjectile
 			{
 				mulFac = 1f;
 			}
-			float timeValue = (float)Main.time * 0.0005f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.0005f;
 			float factor = i / (float)SmoothedOldPos.Count * mulFac;
 			float width = TrailWidthFunction(factor);
 			factor += timeValue;

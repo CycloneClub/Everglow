@@ -292,7 +292,7 @@ public class LanternFlow : TrailingProjectile
 		}
 		if (style == 4)
 		{
-			float value = MathF.Sin((worldPos.X + worldPos.Y + (float)Main.time * 15) * 0.01f) * 0.5f + 0.5f;
+			float value = MathF.Sin((worldPos.X + worldPos.Y + (float)Main.timeForVisualEffects * 15) * 0.01f) * 0.5f + 0.5f;
 			Color c0 = Color.Lerp(new Color(0.5f, 0f, 0f, 0f), new Color(0.85f, 0.2f, 0.04f, 0f), value);
 			if (disValue < 1)
 			{
@@ -316,7 +316,7 @@ public class LanternFlow : TrailingProjectile
 		}
 		Texture2D star = Commons.ModAsset.StarSlashGray.Value;
 		Texture2D spot = Commons.ModAsset.LightPoint2.Value;
-		Color drawColor = new Color(1f, 0.2f + 0.2f * MathF.Sin((float)Main.time * 0.03f + Projectile.whoAmI), 0, 0) * colorValue;
+		Color drawColor = new Color(1f, 0.2f + 0.2f * MathF.Sin((float)Main.timeForVisualEffects * 0.03f + Projectile.whoAmI), 0, 0) * colorValue;
 		var drawPos = Projectile.Center - Main.screenPosition;
 		Main.EntitySpriteDraw(star, drawPos, null, drawColor, 0, star.Size() * 0.5f, 1f, SpriteEffects.None, 0);
 		Main.EntitySpriteDraw(star, drawPos, null, drawColor, MathHelper.PiOver2, star.Size() * 0.5f, 1f, SpriteEffects.None, 0);

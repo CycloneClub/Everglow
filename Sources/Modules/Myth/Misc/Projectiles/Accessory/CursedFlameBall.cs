@@ -174,7 +174,7 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 			var factor = i / (float)trueL;
 			var w = MathHelper.Lerp(1f, 0.05f, factor);
-			float x0 = (float)(factor * 0.6f + Main.time * 0.04);
+			float x0 = (float)(factor * 0.6f + Main.timeForVisualEffects * 0.04);
 			x0 %= 1f;
 			bars0.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width * (1 - factor) + new Vector2(5f, 5f) - Main.screenPosition, c1, new Vector3(x0, 1, w)));
 			bars0.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factor) + new Vector2(5f, 5f) - Main.screenPosition, c1, new Vector3(x0, 0, w)));
@@ -205,7 +205,7 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 			var factor = i / (float)trueL;
 			var w = MathHelper.Lerp(1f, 0.05f, factor);
-			float x0 = (float)(factor * 1.6 + Main.time * 0.04);
+			float x0 = (float)(factor * 1.6 + Main.timeForVisualEffects * 0.04);
 			x0 %= 1f;
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width * (1 - factor) + new Vector2(5f, 5f) - Main.screenPosition, c1, new Vector3(x0, 1, w)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factor) + new Vector2(5f, 5f) - Main.screenPosition, c1, new Vector3(x0, 0, w)));
@@ -292,13 +292,13 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 			Color c0 = new Color(k0, 0.02f * mulColor, 0, 0) * mulByTimeLeft;
 
 			var factor = i / (float)trueL;
-			float x0 = factor * 1.3f - (float)(Main.time / 15d) + 100000;
+			float x0 = factor * 1.3f - (float)(Main.timeForVisualEffects / 15d) + 100000;
 			x0 %= 1f;
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width * (1 - factor) + new Vector2(5f) - Main.screenPosition, c0, new Vector3(x0, 1, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factor) + new Vector2(5f) - Main.screenPosition, c0, new Vector3(x0, 0, 0)));
 			var factorII = factor;
 			factor = (i + 1) / (float)trueL;
-			var x1 = factor * 1.3f - (float)(Main.time / 15d) + 100000;
+			var x1 = factor * 1.3f - (float)(Main.timeForVisualEffects / 15d) + 100000;
 			x1 %= 1f;
 			if (x0 > x1)
 			{

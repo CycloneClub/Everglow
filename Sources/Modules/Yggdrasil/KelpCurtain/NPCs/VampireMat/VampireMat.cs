@@ -1039,8 +1039,8 @@ public class VampireMat : ModNPC
 				{
 					Vector2 offset0 = new Vector2(200, 0).RotatedBy(k / 20f * MathHelper.TwoPi);
 					Vector2 offset1 = new Vector2(200, 0).RotatedBy((k + 1) / 20f * MathHelper.TwoPi);
-					Vector2 pos0 = drawPos + offset0 * (1 + MathF.Sin(k / 4f * MathHelper.TwoPi + (float)Main.time * 0.09f) * 0.1f) * npc.scale;
-					Vector2 pos1 = drawPos + offset1 * (1 + MathF.Sin((k + 1) / 4f * MathHelper.TwoPi + (float)Main.time * 0.09f) * 0.1f) * npc.scale;
+					Vector2 pos0 = drawPos + offset0 * (1 + MathF.Sin(k / 4f * MathHelper.TwoPi + (float)Main.timeForVisualEffects * 0.09f) * 0.1f) * npc.scale;
+					Vector2 pos1 = drawPos + offset1 * (1 + MathF.Sin((k + 1) / 4f * MathHelper.TwoPi + (float)Main.timeForVisualEffects * 0.09f) * 0.1f) * npc.scale;
 					SpriteBatchUtils.AddVertexWithEnv_Light(boss_bottom_bars, pos0, new Vector3((new Vector2(200, 1800) + offset0) / texture.Size(), 0), false, fade);
 					SpriteBatchUtils.AddVertexWithEnv_Light(boss_bottom_bars, pos1, new Vector3((new Vector2(200, 1800) + offset1) / texture.Size(), 0), false, fade);
 					SpriteBatchUtils.AddVertexWithEnv_Light(boss_bottom_bars, drawPos, new Vector3(new Vector2(200, 1800) / texture.Size(), 0), false, fade);

@@ -50,7 +50,7 @@ public class PylonSquare : BackgroundSlideBase
 
 		drawPos0 = center - new Vector2(664, 0);
 		drawPos1 = center + new Vector2(664, 0);
-		int tick = (int)(Main.time / 6) % 10;
+		int tick = (int)(Main.timeForVisualEffects / 6) % 10;
 		Rectangle frame = new Rectangle(0, 350 * tick, 200, 350);
 
 		Lighting.AddLight(drawPos0 + new Vector2(0, -150), new Vector3(3f, 2f, 6f));

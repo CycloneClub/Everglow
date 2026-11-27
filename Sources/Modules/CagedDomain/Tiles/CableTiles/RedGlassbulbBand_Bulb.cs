@@ -82,7 +82,7 @@ public class RedGlassbulbBand_Bulb : CableTile
 						spriteBatch.Draw(tex, drawPos, new Rectangle(0, 30, 30, 30), new Color(1f, 1f, 1f, 0), rotation, new Vector2(15f, 7f), 0.7f, tileSpriteEffect, 0);
 						break;
 					case 2:
-						timeValue = (float)Main.time * 0.09f;
+						timeValue = (float)Main.timeForVisualEffects * 0.09f;
 						light = MathF.Sin(timeValue + i / 3f * MathHelper.Pi);
 						if (light > 0)
 						{
@@ -96,7 +96,7 @@ public class RedGlassbulbBand_Bulb : CableTile
 						spriteBatch.Draw(tex, drawPos, new Rectangle(0, 30, 30, 30), new Color(light, light, light, 0), rotation, new Vector2(15f, 7f), 0.7f, tileSpriteEffect, 0);
 						break;
 					case 3:
-						timeValue = (float)Main.time * 0.02f;
+						timeValue = (float)Main.timeForVisualEffects * 0.02f;
 						light = (MathF.Sin(timeValue) + 1) * 0.6f;
 						if (light > 0)
 						{

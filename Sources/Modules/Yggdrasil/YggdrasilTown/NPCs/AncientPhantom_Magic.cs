@@ -322,14 +322,14 @@ public class AncientPhantom_Magic : Fighter
 			Vector2 shootPos = NPC.Center + new Vector2(NPC.direction * 9, 0);
 			Texture2D orb = ModAsset.AncientPhantom_Magic_Orb.Value;
 			float timer = ShootTimer / (float)MaxShootTime;
-			spriteBatch.Draw(orb, shootPos + new Vector2(0, NPC.gfxOffY - 7) - screenPos, null, Color.White, (float)Main.time * 0.1f + NPC.whoAmI, orb.Size() * 0.5f, 1 - timer, flip, 0);
+			spriteBatch.Draw(orb, shootPos + new Vector2(0, NPC.gfxOffY - 7) - screenPos, null, Color.White, (float)Main.timeForVisualEffects * 0.1f + NPC.whoAmI, orb.Size() * 0.5f, 1 - timer, flip, 0);
 			if (ShootTimer % 6 == 0 && ShootTimer < 48f)
 			{
 				Texture2D star = Commons.ModAsset.StarSlash.Value;
 				float size = Main.rand.NextFloat(0.2f, 0.5f);
 				for (int t = 0; t < 3; t++)
 				{
-					Main.EntitySpriteDraw(star, shootPos + new Vector2(0, NPC.gfxOffY - 7) + new Vector2(10, 0).RotatedBy((float)Main.time * 0.1f + NPC.whoAmI) - screenPos, null, new Color(1f, 1f, 1f, 0) * size, t * MathHelper.TwoPi / 3f, star.Size() * 0.5f, size, SpriteEffects.None, 0);
+					Main.EntitySpriteDraw(star, shootPos + new Vector2(0, NPC.gfxOffY - 7) + new Vector2(10, 0).RotatedBy((float)Main.timeForVisualEffects * 0.1f + NPC.whoAmI) - screenPos, null, new Color(1f, 1f, 1f, 0) * size, t * MathHelper.TwoPi / 3f, star.Size() * 0.5f, size, SpriteEffects.None, 0);
 				}
 			}
 		}

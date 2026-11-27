@@ -27,7 +27,7 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 			float value = (Projectile.timeLeft + StabTimer) / 135f;
 			var middle = Vector2.Lerp(end, start, MathF.Sqrt(value) * 0.5f);
-			float time = (float)(Main.time * 0.03);
+			float time = (float)(Main.timeForVisualEffects * 0.03);
 			float dark = MathF.Sin(value * MathF.PI) * 8;
 			var bars = new List<Vertex2D>
 			{

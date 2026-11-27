@@ -196,7 +196,7 @@ public class BloodSpell : ModProjectile
 			Vector2 lightingCrack = Projectile.velocity.SafeNormalize(Vector2.zeroVector).RotatedBy(MathHelper.PiOver2);
 			Vector2 pos = Projectile.Center - Projectile.velocity * value;
 			lightingCrack *= 1 * MathF.Sin(pos.Length() * 0.1f + Projectile.whoAmI);
-			lightingCrack += lightingCrack.RotatedBy(MathHelper.PiOver2 * MathF.Sin((float)Main.time * 0.1f + Projectile.whoAmI) * 0.3f) * 0.5f * MathF.Sin(Projectile.velocity.Length() * 3f);
+			lightingCrack += lightingCrack.RotatedBy(MathHelper.PiOver2 * MathF.Sin((float)Main.timeForVisualEffects * 0.1f + Projectile.whoAmI) * 0.3f) * 0.5f * MathF.Sin(Projectile.velocity.Length() * 3f);
 			var somg = new BloodFlame
 			{
 				Velocity = lightingCrack,
@@ -212,7 +212,7 @@ public class BloodSpell : ModProjectile
 
 			lightingCrack = Projectile.velocity.SafeNormalize(Vector2.zeroVector).RotatedBy(MathHelper.PiOver2);
 			lightingCrack *= 1 * MathF.Sin(pos.Length() * 0.22f + Projectile.whoAmI);
-			lightingCrack += lightingCrack.RotatedBy(MathHelper.PiOver2 * MathF.Sin((float)Main.time * 0.07f + Projectile.whoAmI) * 0.2f) * 0.6f * MathF.Sin(Projectile.velocity.Length() * 2f);
+			lightingCrack += lightingCrack.RotatedBy(MathHelper.PiOver2 * MathF.Sin((float)Main.timeForVisualEffects * 0.07f + Projectile.whoAmI) * 0.2f) * 0.6f * MathF.Sin(Projectile.velocity.Length() * 2f);
 			var somg2 = new BloodFlame_Dark
 			{
 				Velocity = lightingCrack,
@@ -239,11 +239,11 @@ public class BloodSpell : ModProjectile
 		Texture2D shade = Commons.ModAsset.Point_Black.Value;
 		Main.spriteBatch.Draw(shade, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 1f, 1f, 1f), Projectile.rotation, shade.Size() / 2f, Projectile.scale * 0.25f + 0.25f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(fbm, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0f), Projectile.rotation, fbm.Size() / 2f, Projectile.scale * 0.5f + 0.5f, SpriteEffects.None, 0);
-		Main.spriteBatch.Draw(fbm, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0f), Projectile.rotation + (float)Main.time * 0.02f, fbm.Size() / 2f, Projectile.scale * 0.75f, SpriteEffects.None, 0);
-		Main.spriteBatch.Draw(fbm, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0f), Projectile.rotation + (float)Main.time * 0.06f, fbm.Size() / 2f, Projectile.scale * 0.35f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(fbm, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0f), Projectile.rotation + (float)Main.timeForVisualEffects * 0.02f, fbm.Size() / 2f, Projectile.scale * 0.75f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(fbm, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0f), Projectile.rotation + (float)Main.timeForVisualEffects * 0.06f, fbm.Size() / 2f, Projectile.scale * 0.35f, SpriteEffects.None, 0);
 
 		var TexMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0.5f), Projectile.rotation + (float)Main.time * 0.2f, TexMain.Size() / 2f, Projectile.scale * 0.2f + 0.3f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0.5f), Projectile.rotation + (float)Main.timeForVisualEffects * 0.2f, TexMain.Size() / 2f, Projectile.scale * 0.2f + 0.3f, SpriteEffects.None, 0);
 
 		Texture2D starDark = Commons.ModAsset.StarSlash_Black.Value;
 		Texture2D star = Commons.ModAsset.StarSlash.Value;

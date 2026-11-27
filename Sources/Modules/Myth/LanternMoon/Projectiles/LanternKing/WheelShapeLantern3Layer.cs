@@ -205,7 +205,7 @@ public class WheelShapeLantern3Layer : ModProjectile
 						fade = ent.TimeLeft / 30f;
 					}
 
-					float sinT = (MathF.Sin((float)Main.time * 0.08f + ent.ai[0] * 45) + 2) / 3f;
+					float sinT = (MathF.Sin((float)Main.timeForVisualEffects * 0.08f + ent.ai[0] * 45) + 2) / 3f;
 					var colorT = new Color(sinT, sinT, sinT, 0.5f * sinT) * ent.Alpha;
 
 					Main.EntitySpriteDraw(tex, ent.Position - Main.screenPosition, frameBody, colorT * fade, ent.Rotation, frameBody.Size() * 0.5f, ent.Scale, SpriteEffects.None, 0);

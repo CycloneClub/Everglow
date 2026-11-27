@@ -26,9 +26,9 @@ public class Fevens_AttackProj0 : ModProjectile
 	public Queue<Vector2> OldPos0 = new Queue<Vector2>();
 	public Queue<Vector2> OldPos1 = new Queue<Vector2>();
 
-	public Vector2 Position0 => Projectile.Center + new Vector2(0, 20).RotatedBy((float)Main.time * 0.25f);
+	public Vector2 Position0 => Projectile.Center + new Vector2(0, 20).RotatedBy((float)Main.timeForVisualEffects * 0.25f);
 
-	public Vector2 Position1 => Projectile.Center + new Vector2(0, 30).RotatedBy((float)Main.time * 0.25f + MathHelper.Pi);
+	public Vector2 Position1 => Projectile.Center + new Vector2(0, 30).RotatedBy((float)Main.timeForVisualEffects * 0.25f + MathHelper.Pi);
 
 	public override void OnSpawn(IEntitySource source)
 	{
@@ -142,7 +142,7 @@ public class Fevens_AttackProj0 : ModProjectile
 
 				var factor = i / (float)trueL;
 				additiveFactor += (oldPos0Array[i - 1] - oldPos0Array[i]).Length() / 600f;
-				float timer = (float)Main.time * 0.02f + Projectile.whoAmI * 0.77f;
+				float timer = (float)Main.timeForVisualEffects * 0.02f + Projectile.whoAmI * 0.77f;
 				var color = Color.Lerp(new Color(1f, 0f, 0.1f, 0), new Color(0, 0, 0, 0), 1 - factor);
 				bars.Add(new Vertex2D(oldPos0Array[i] + normalDir * -width - Main.screenPosition, color, new Vector3(-additiveFactor * 2 + timer, 0, 0)));
 				bars.Add(new Vertex2D(oldPos0Array[i] + normalDir * width - Main.screenPosition, color, new Vector3(-additiveFactor * 2 + timer, 1, 0)));
@@ -182,7 +182,7 @@ public class Fevens_AttackProj0 : ModProjectile
 
 				var factor = i / (float)trueL;
 				additiveFactor += (oldPos1Array[i - 1] - oldPos1Array[i]).Length() / 600f;
-				float timer = (float)Main.time * 0.02f + Projectile.whoAmI * 0.77f;
+				float timer = (float)Main.timeForVisualEffects * 0.02f + Projectile.whoAmI * 0.77f;
 				var color = Color.Lerp(new Color(drawC * light.R / 255f * 1f, drawC * light.G / 255f * 0f, drawC * light.B / 255f * 0.2f, 0), new Color(0, 0, 0, 0), 1 - factor);
 				bars.Add(new Vertex2D(oldPos1Array[i] + normalDir * -width - Main.screenPosition, color, new Vector3(-additiveFactor * 2 + timer, 0, 0)));
 				bars.Add(new Vertex2D(oldPos1Array[i] + normalDir * width - Main.screenPosition, color, new Vector3(-additiveFactor * 2 + timer, 1, 0)));

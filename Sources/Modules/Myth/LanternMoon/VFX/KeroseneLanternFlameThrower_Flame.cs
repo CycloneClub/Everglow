@@ -35,7 +35,7 @@ public class KeroseneLanternFlameThrower_Flame : Visual
 			Active = false;
 		}
 
-		Velocity = Velocity.RotatedBy(ai[1] * MathF.Sin(ai[2] + (float)Main.time * 0.4f));
+		Velocity = Velocity.RotatedBy(ai[1] * MathF.Sin(ai[2] + (float)Main.timeForVisualEffects * 0.4f));
 		float value = Timer / MaxTime;
 		var color = Vector3.Lerp(new Vector3(2f, 1.4f, 1f), new Vector3(0.5f, 0, 0), value);
 		Lighting.AddLight(Position, color * Scale * 0.02f * (1 - value));
@@ -45,7 +45,7 @@ public class KeroseneLanternFlameThrower_Flame : Visual
 	{
 		float pocession = Timer / MaxTime;
 		pocession = MathF.Pow(pocession, 1.25f);
-		float timeValue = (float)(Main.time * 0.002);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.002);
 		float realScale = Scale;
 		if (Timer < 5)
 		{

@@ -85,7 +85,7 @@ public class BombLantern : LanternMoonNPC
 		}
 		NPC.TargetClosest(false);
 		Player player = Main.player[NPC.target];
-		float timeValue = (float)(Main.time * 0.12f + NPC.whoAmI * 0.428571f) * 0.3f;
+		float timeValue = (float)(Main.timeForVisualEffects * 0.12f + NPC.whoAmI * 0.428571f) * 0.3f;
 		if (DizzyTime <= 120)
 		{
 			float value = 1f;
@@ -366,7 +366,7 @@ public class BombLantern : LanternMoonNPC
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		float timeValue = (float)(Main.time * 0.12f + NPC.whoAmI * 0.428571f);
+		float timeValue = (float)(Main.timeForVisualEffects * 0.12f + NPC.whoAmI * 0.428571f);
 
 		SpriteEffects effects = SpriteEffects.None;
 		NPC.spriteDirection = NPC.direction;

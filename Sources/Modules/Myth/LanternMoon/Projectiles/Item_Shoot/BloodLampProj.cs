@@ -101,7 +101,7 @@ public class BloodLampProj : ModProjectile
 			var Cen = new Vector2(19f, 19f);
 			if (x >= 2)
 			{
-				Rot = -(float)Math.Sin(Main.time / 26d + x) / 7f + Projectile.rotation;
+				Rot = -(float)Math.Sin(Main.timeForVisualEffects / 26d + x) / 7f + Projectile.rotation;
 			}
 			else if (x == 0)
 			{

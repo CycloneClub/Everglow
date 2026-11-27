@@ -16,7 +16,7 @@ public class LilyLeaf : ModDust
 		dust.rotation += 0.1f;
 		dust.scale *= 0.98f;
 		dust.velocity *= 0.95f;
-		dust.velocity = dust.velocity.RotatedBy(0.015f / dust.scale + Math.Sin(Main.time / 100f) * 0.003f);
+		dust.velocity = dust.velocity.RotatedBy(0.015f / dust.scale + Math.Sin(Main.timeForVisualEffects / 100f) * 0.003f);
 		if (dust.scale < 0.15f)
 		{
 			dust.active = false;

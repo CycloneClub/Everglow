@@ -99,7 +99,7 @@ public class ToothMagicBall : ModProjectile
 		}
 		for (int s = 0; s < 10; s++)
 		{
-			vT[s] = vTMax[s] * (float)(Math.Sin(s + Main.time * 0.03f) + 0.4);
+			vT[s] = vTMax[s] * (float)(Math.Sin(s + Main.timeForVisualEffects * 0.03f) + 0.4);
 		}
 		Main.spriteBatch.Draw(TC, player.Center + new Vector2(20 * player.direction, -7) - Main.screenPosition, null, c0, 0, drawOrigin, player.itemTime / (float)player.itemTimeMax, sp, 0);
 		Main.spriteBatch.Draw(TB0, player.Center + vB[0] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
@@ -126,7 +126,7 @@ public class ToothMagicBall : ModProjectile
 		Vector2 bulbPos = player.Center + new Vector2(20 * player.direction, -7);
 		float energyValue = Energy / 250f;
 		Color c0 = new Color(1, energyValue * energyValue * 0.2f, energyValue * 0.1f, 0);
-		float timeValue = (float)Main.time * 0.009f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.009f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		float accuracy = 16;
 		List<Vertex2D> bars2 = new List<Vertex2D>();

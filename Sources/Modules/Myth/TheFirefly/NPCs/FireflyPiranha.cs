@@ -106,7 +106,7 @@ public class FireflyPiranha : ModNPC
 			}
 			else
 			{
-				NPC.rotation += MathF.Sin((float)Main.time * 0.03f + NPC.whoAmI) * 0.03f;
+				NPC.rotation += MathF.Sin((float)Main.timeForVisualEffects * 0.03f + NPC.whoAmI) * 0.03f;
 			}
 		}
 		if (NPC.velocity.X > 0)

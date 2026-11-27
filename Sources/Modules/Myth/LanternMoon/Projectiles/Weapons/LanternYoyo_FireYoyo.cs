@@ -140,7 +140,7 @@ public class LanternYoyo_FireYoyo : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-		Color drawColor = Color.Lerp(new Color(1f, 0.48f, 0.1f, 0), new Color(1f, 1f, 0.7f, 0), MathF.Sin((float)Main.time * 0.08f + Projectile.whoAmI) * 0.5f + 0.5f);
+		Color drawColor = Color.Lerp(new Color(1f, 0.48f, 0.1f, 0), new Color(1f, 1f, 0.7f, 0), MathF.Sin((float)Main.timeForVisualEffects * 0.08f + Projectile.whoAmI) * 0.5f + 0.5f);
 		float drawSize = 1f;
 		if (Projectile.timeLeft < 60)
 		{

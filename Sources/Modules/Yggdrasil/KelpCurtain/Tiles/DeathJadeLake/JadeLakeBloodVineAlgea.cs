@@ -205,8 +205,8 @@ public class JadeLakeBloodVineAlgea : ModTile, ITileFluentlyDrawn
 			windCycle += highestWindGridPushComplex;
 			float rotation = windCycle * 0.12f;
 			rotation -= lastOffset.X / (22f + j * 3f);
-			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 0.45f + (float)Main.time / 20f) * 0.15f;
-			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.time / 20f) * 6f / (height + 25);
+			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y - j * 0.45f + (float)Main.timeForVisualEffects / 20f) * 0.15f;
+			rotation += MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin(tilePos.X * 2 + tilePos.Y + (float)Main.timeForVisualEffects / 20f) * 6f / (height + 25);
 			var tileLight = Lighting.GetColor(tilePos + new Point(0, -j));
 
 			// 支持发光涂料
@@ -227,14 +227,14 @@ public class JadeLakeBloodVineAlgea : ModTile, ITileFluentlyDrawn
 			{
 				frame = new Rectangle(36, 8, 14, 38);
 				origin = new Vector2(7, 38);
-				float subRot0 = MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X + 1) * 2 + tilePos.Y - j * 0.45f + (float)Main.time / 20f) * 0.15f;
-				float subRot1 = MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X - 1) * 2 + tilePos.Y - j * 0.45f + (float)Main.time / 20f) * 0.15f;
+				float subRot0 = MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X + 1) * 2 + tilePos.Y - j * 0.45f + (float)Main.timeForVisualEffects / 20f) * 0.15f;
+				float subRot1 = MathF.Sin(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X - 1) * 2 + tilePos.Y - j * 0.45f + (float)Main.timeForVisualEffects / 20f) * 0.15f;
 				spriteBatch.Draw(tex, drawPos, frame, tileLight * 0.5f, rotation + 0.8f + subRot0, origin, size, tileSpriteEffect, 0f);
 				spriteBatch.Draw(tex, drawPos, frame, tileLight * 0.5f, rotation - 0.8f + subRot1, origin, size, tileSpriteEffect, 0f);
 				frame = new Rectangle(24, 18, 10, 28);
 				origin = new Vector2(5, 28);
-				subRot0 = MathF.Cos(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X + 1) * 2 + tilePos.Y - j * 0.45f + (float)Main.time / 20f) * 0.1f;
-				subRot1 = MathF.Cos(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X - 1) * 2 + tilePos.Y - j * 0.45f + (float)Main.time / 20f) * 0.1f;
+				subRot0 = MathF.Cos(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X + 1) * 2 + tilePos.Y - j * 0.45f + (float)Main.timeForVisualEffects / 20f) * 0.1f;
+				subRot1 = MathF.Cos(j / (float)height * MathHelper.Pi) * MathF.Sin((tilePos.X - 1) * 2 + tilePos.Y - j * 0.45f + (float)Main.timeForVisualEffects / 20f) * 0.1f;
 				spriteBatch.Draw(tex, drawPos, frame, tileLight * 0.75f, rotation + 0.4f + subRot0, origin, size, tileSpriteEffect, 0f);
 				spriteBatch.Draw(tex, drawPos, frame, tileLight * 0.75f, rotation - 0.4f + subRot1, origin, size, tileSpriteEffect, 0f);
 			}

@@ -52,7 +52,7 @@ public class FurnaceCopperGear_Large : ModTile
 		Vector2 drawPos = new Point(i, j).ToWorldCoordinates() - Main.screenPosition + offsetScreen;
 		int style = tile.TileFrameX / 18;
 		var frame = new Rectangle(style * 48, 0, 48, 48);
-		float timeValue = (float)Main.time / 100f + MathF.Sin(i + j) * 6;
+		float timeValue = (float)Main.timeForVisualEffects / 100f + MathF.Sin(i + j) * 6;
 		int rotDir = (int)(((i + j) % 2 - 0.5f) * 2);
 
 		spriteBatch.Draw(texture, drawPos, frame, Lighting.GetColor(i, j), timeValue * rotDir, frame.Size() * 0.5f, 1, SpriteEffects.None, 0);

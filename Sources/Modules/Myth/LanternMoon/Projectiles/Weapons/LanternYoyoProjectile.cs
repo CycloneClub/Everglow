@@ -128,7 +128,7 @@ public class LanternYoyoProjectile : YoyoProjectile
 		{
 			float releaseTimer = Math.Max(0, Timer % 20 - 6);
 			float releaseScale = releaseTimer / 13f;
-			Color drawColor = Color.Lerp(new Color(1f, 0.48f, 0.1f, 0), new Color(1f, 1f, 0.7f, 0), MathF.Sin((float)Main.time * 0.08f + Projectile.whoAmI) * 0.5f + 0.5f);
+			Color drawColor = Color.Lerp(new Color(1f, 0.48f, 0.1f, 0), new Color(1f, 1f, 0.7f, 0), MathF.Sin((float)Main.timeForVisualEffects * 0.08f + Projectile.whoAmI) * 0.5f + 0.5f);
 			Lighting.AddLight(gapCenter, new Vector3(drawColor.R, drawColor.G * 0.7f, drawColor.B * 0.5f) / 300f);
 			Texture2D fireYoyo = ModAsset.LanternYoyo_FireYoyo.Value;
 			Main.EntitySpriteDraw(spot, gapCenter - Main.screenPosition, null, drawColor, MathHelper.PiOver2, spot.Size() * 0.5f, releaseScale * 2f, SpriteEffects.None, 0f);
@@ -149,8 +149,8 @@ public class LanternYoyoProjectile : YoyoProjectile
 			{
 				float value = k / count;
 				float valueNext = (k + 1) / count;
-				float phase = (j + value) / lineCount * MathHelper.TwoPi + (float)Main.time * 0.03f;
-				float phaseNext = (j + valueNext) / lineCount * MathHelper.TwoPi + (float)Main.time * 0.03f;
+				float phase = (j + value) / lineCount * MathHelper.TwoPi + (float)Main.timeForVisualEffects * 0.03f;
+				float phaseNext = (j + valueNext) / lineCount * MathHelper.TwoPi + (float)Main.timeForVisualEffects * 0.03f;
 				float v_dis = (MathF.Sin(value * MathHelper.TwoPi - MathHelper.PiOver2) + 1) * 0.5f * 12 * MathF.Sin(phase);
 				float v_disNext = (MathF.Sin(valueNext * MathHelper.TwoPi - MathHelper.PiOver2) + 1) * 0.5f * 12 * MathF.Sin(phaseNext);
 				Vector2 pos0 = start * (1 - value) + end * value;

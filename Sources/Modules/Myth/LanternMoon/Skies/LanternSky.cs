@@ -37,11 +37,11 @@ public class LanternSky : CustomSky
 		if (maxDepth >= 3E+38f && minDepth < 3E+38f)
 		{
 			Texture2D LightE = ModAsset.LightEffect.Value;
-			Main.spriteBatch.Draw(LightE, starPos, null, new Color(0.3f, 0.21f, 0, 0), -(float)Math.Sin(Main.time / 26d) + 0.6f, new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.time / 26d))) * 0.05f, SpriteEffects.None, 0);
-			Main.spriteBatch.Draw(LightE, starPos, null, new Color(1f, 0.7f, 0, 0), (float)Math.Sin(Main.time / 12d + 2) + 1.6f, new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.time / 26d))) * 0.05f, SpriteEffects.None, 0);
-			Main.spriteBatch.Draw(LightE, starPos, null, new Color(0.3f, 0.21f, 0, 0), (float)Math.PI / 2f + (float)(Main.time / 9d), new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.time / 26d + 1.57))) * 0.05f, SpriteEffects.None, 0);
-			Main.spriteBatch.Draw(LightE, starPos, null, new Color(1f, 0.7f, 0, 0), (float)(Main.time / 26d), new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.time / 26d + 3.14))) * 0.05f, SpriteEffects.None, 0);
-			Main.spriteBatch.Draw(LightE, starPos, null, new Color(1f, 0.7f, 0, 0), -(float)(Main.time / 26d), new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.time / 26d + 4.71))) * 0.05f, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(LightE, starPos, null, new Color(0.3f, 0.21f, 0, 0), -(float)Math.Sin(Main.timeForVisualEffects / 26d) + 0.6f, new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.timeForVisualEffects / 26d))) * 0.05f, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(LightE, starPos, null, new Color(1f, 0.7f, 0, 0), (float)Math.Sin(Main.timeForVisualEffects / 12d + 2) + 1.6f, new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.timeForVisualEffects / 26d))) * 0.05f, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(LightE, starPos, null, new Color(0.3f, 0.21f, 0, 0), (float)Math.PI / 2f + (float)(Main.timeForVisualEffects / 9d), new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.timeForVisualEffects / 26d + 1.57))) * 0.05f, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(LightE, starPos, null, new Color(1f, 0.7f, 0, 0), (float)(Main.timeForVisualEffects / 26d), new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.timeForVisualEffects / 26d + 3.14))) * 0.05f, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(LightE, starPos, null, new Color(1f, 0.7f, 0, 0), -(float)(Main.timeForVisualEffects / 26d), new Vector2(128f, 128f), (1.5f + (float)(0.75 * Math.Sin(Main.timeForVisualEffects / 26d + 4.71))) * 0.05f, SpriteEffects.None, 0);
 		}
 		Texture2D LMoon = ModAsset.LanternMoon.Value;
 		float HalfMaxTime = Main.dayTime ? 27000 : 16200;

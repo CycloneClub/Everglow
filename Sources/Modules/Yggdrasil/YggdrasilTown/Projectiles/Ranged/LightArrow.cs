@@ -40,7 +40,7 @@ public class LightArrow : ModProjectile
 		}
 		for (int i = 0; i < duplicateTimes; i++)
 		{
-			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(Main.time * 0.15f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi);
+			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(Main.timeForVisualEffects * 0.15f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi);
 			var somg = new LightFruitParticleDust
 			{
 				Velocity = newVelocity,
@@ -56,7 +56,7 @@ public class LightArrow : ModProjectile
 		}
 		for (int i = 0; i < duplicateTimes; i++)
 		{
-			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(-Main.time * 0.12f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi);
+			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(-Main.timeForVisualEffects * 0.12f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi);
 			var somg = new LightFruitParticleDust
 			{
 				Velocity = newVelocity,

@@ -363,7 +363,7 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 		}
 		float value = (Projectile.timeLeft + StabTimer) / 135f;
 		var middle = Vector2.Lerp(end, start, MathF.Sqrt(value) * 0.5f);
-		float time = (float)(Main.time * 0.03);
+		float time = (float)(Main.timeForVisualEffects * 0.03);
 		float dark = MathF.Sin(value * MathF.PI) * 4;
 		var bars = new List<Vertex2D>
 		{
@@ -463,7 +463,7 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 		}
 		float value = (Projectile.timeLeft + StabTimer) / 135f;
 		var middle = Vector2.Lerp(end, start, MathF.Sqrt(value) * 0.5f);
-		float time = (float)(Main.time * 0.03);
+		float time = (float)(Main.timeForVisualEffects * 0.03);
 		Color alphaColor = StabColor;
 		alphaColor.A = 0;
 		alphaColor.R = (byte)(((Projectile.velocity.ToRotation() + Math.PI * 3) % MathHelper.TwoPi) / MathHelper.TwoPi * 255);

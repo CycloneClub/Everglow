@@ -151,7 +151,7 @@ public class LanternSword_Proj : MeleeProj_3D
 				drawColor.B = (byte)(lightC.B * drawColor.B / 255f);
 			}
 			drawColor *= 1.7f;
-			float rot = (worldPos - Projectile.Center).ToRotation() - (float)Main.time * 0.01f;
+			float rot = (worldPos - Projectile.Center).ToRotation() - (float)Main.timeForVisualEffects * 0.01f;
 			float factorHighlight = factor * 3;
 			float mulValue = MathF.Max(MathF.Pow(Math.Max(0, 0.5f + 0.5f * MathF.Cos(rot * 2)), 16) * 0.4f * ReflectionSharpValue * MathF.Pow(extraValue0, 2), factorHighlight);
 			drawColor *= mulValue;

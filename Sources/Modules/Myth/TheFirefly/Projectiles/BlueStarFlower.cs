@@ -192,15 +192,15 @@ public class BlueStarFlower : ModProjectile
 			range *= range;
 			range *= 90f;
 		}
-		float waveValue = (float)(Math.Sin(Main.time * 0.15f + Projectile.whoAmI) + Math.Sin(Main.time * 0.7f + Projectile.whoAmI * 7) * 0.25) * 0.4f + 1;
-		float waveValue2 = (float)(Math.Sin(Main.time * 0.23f + Projectile.whoAmI) * 0.4 + Math.Sin(Main.time * 0.49f + Projectile.whoAmI * 3)) * 0.4f + 1;
+		float waveValue = (float)(Math.Sin(Main.timeForVisualEffects * 0.15f + Projectile.whoAmI) + Math.Sin(Main.timeForVisualEffects * 0.7f + Projectile.whoAmI * 7) * 0.25) * 0.4f + 1;
+		float waveValue2 = (float)(Math.Sin(Main.timeForVisualEffects * 0.23f + Projectile.whoAmI) * 0.4 + Math.Sin(Main.timeForVisualEffects * 0.49f + Projectile.whoAmI * 3)) * 0.4f + 1;
 		Main.spriteBatch.Draw(star, center, null, new Color(255, 255, 255, 0), MathHelper.PiOver2, star.Size() / 2f, new Vector2(waveValue * range / 90f, 1) * Projectile.scale, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, center, null, new Color(255, 255, 255, 0), 0, star.Size() / 2f, new Vector2(waveValue2 * range / 90f, 0.5f) * Projectile.scale, SpriteEffects.None, 0);
 
 		var circle = new List<Vertex2D>();
 		for (int h = 0; h < 20; h += 1)
 		{
-			float timeValue = (float)Main.time * 0.002f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.002f;
 			float addTime = 240 - Projectile.timeLeft;
 			addTime /= 240f;
 			addTime *= addTime;
@@ -228,7 +228,7 @@ public class BlueStarFlower : ModProjectile
 		circle = new List<Vertex2D>();
 		for (int h = 0; h < 20; h += 1)
 		{
-			float timeValue = (float)Main.time * 0.002f;
+			float timeValue = (float)Main.timeForVisualEffects * 0.002f;
 			float addTime = 240 - Projectile.timeLeft;
 			addTime /= 240f;
 			addTime *= addTime;

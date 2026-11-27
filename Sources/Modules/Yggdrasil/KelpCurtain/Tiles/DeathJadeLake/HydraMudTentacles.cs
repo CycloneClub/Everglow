@@ -282,8 +282,8 @@ public class HydraMudTentacles_Fore : TileVFX
 			frameYModify = 0.5f;
 		}
 		float dLength = 16 / texWidth;
-		float sway0 = MathF.Sin((float)Main.time / 36f + Position.X + Position.Y) * 3;
-		float sway1 = MathF.Sin((float)Main.time / 36f + Position.X + Position.Y + 32) * 3;
+		float sway0 = MathF.Sin((float)Main.timeForVisualEffects / 36f + Position.X + Position.Y) * 3;
+		float sway1 = MathF.Sin((float)Main.timeForVisualEffects / 36f + Position.X + Position.Y + 32) * 3;
 		Vector2 point0 = drawCenter + new Vector2(-8 * length + sway0, -18).RotatedBy(rot) + Direction * 8;
 		Vector2 point1 = drawCenter + new Vector2(8 * length + sway1, -18).RotatedBy(rot) + Direction * 8;
 		Vector2 point2 = drawCenter + new Vector2(-8 * length, 6).RotatedBy(rot) + Direction * 12;

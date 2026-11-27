@@ -126,7 +126,7 @@ public class GreenFlameProj : TrailingProjectile
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, texMain.Size() / 2f, fade, SpriteEffects.None, 0);
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
 		float star_scale = 1f;
-		float timeValue = MathF.Sin((float)Main.time * 0.07f + Projectile.whoAmI) * 0.5f + 0.5f;
+		float timeValue = MathF.Sin((float)Main.timeForVisualEffects * 0.07f + Projectile.whoAmI) * 0.5f + 0.5f;
 		Color c0 = new Color(0f, 0.75f * timeValue, 0.75f, 0) * fade;
 		var drawPos = Projectile.Center - Main.screenPosition;
 		Main.spriteBatch.Draw(star, drawPos, null, c0, MathHelper.PiOver2, star.Size() / 2f, new Vector2(star_scale / 1.5f, 0.5f), SpriteEffects.None, 0);

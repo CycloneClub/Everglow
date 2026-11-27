@@ -107,7 +107,7 @@ public class EmptyWaterStaff_Proj_Bubble : ModProjectile, IWarpProjectile_WarpSt
 		float value = 0;
 		for (int i = 0; i < 2; i++)
 		{
-			float timeValue = (float)Main.time / 24f * MathF.Pow(2, i) + Projectile.whoAmI;
+			float timeValue = (float)Main.timeForVisualEffects / 24f * MathF.Pow(2, i) + Projectile.whoAmI;
 			timeValue = MathF.Cos(timeValue);
 			value += MathF.Sin(index / 60f * MathHelper.TwoPi * MathF.Pow(2, i) * 0.5f + timeValue * MathF.Sin(index / 40f * MathHelper.TwoPi) * MathF.Pow(2, i)) * MathF.Pow(2, -i);
 		}
@@ -147,7 +147,7 @@ public class EmptyWaterStaff_Proj_Bubble : ModProjectile, IWarpProjectile_WarpSt
 		List<Vertex2D> highlightBound = new List<Vertex2D>();
 		float width = 10f;
 
-		float timeValue = (float)Main.time / 150f + Projectile.whoAmI / 7f;
+		float timeValue = (float)Main.timeForVisualEffects / 150f + Projectile.whoAmI / 7f;
 
 		for (int k = 0; k < BubbleBound.Count; k++)
 		{
@@ -305,7 +305,7 @@ public class EmptyWaterStaff_Proj_Bubble : ModProjectile, IWarpProjectile_WarpSt
 
 		List<Vertex2D> bars_inner = new List<Vertex2D>();
 		float width = BubbleScale * 0.25f;
-		float timeValue = (float)Main.time / 450f;
+		float timeValue = (float)Main.timeForVisualEffects / 450f;
 		float warpValue = BubbleScale / 40f * 0.02f;
 		for (int k = 0; k < BubbleBound.Count; k++)
 		{

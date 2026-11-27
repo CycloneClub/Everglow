@@ -112,7 +112,7 @@ public class MeltingFireRing : ModProjectile
 		List<Vertex2D> vertices2 = new();
 
 		float radius = dissolve * 20 + 200;
-		float t = (float)Main.time * 0.015f;
+		float t = (float)Main.timeForVisualEffects * 0.015f;
 
 		int verticeCounts = 60;
 		for (int i = 0; i <= verticeCounts; i++)

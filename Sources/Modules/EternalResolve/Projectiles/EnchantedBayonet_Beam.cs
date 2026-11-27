@@ -61,7 +61,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Vector2 normalized = Vector2.Normalize(Projectile.velocity.RotatedBy(Math.PI * 0.5)) * 50 * alphaValue;
 			Vector2 start = Projectile.Center;
 			Vector2 end = Projectile.Center - Vector2.Normalize(Projectile.velocity) * 90f;
-			float time = (float)(Main.time * 0.03);
+			float time = (float)(Main.timeForVisualEffects * 0.03);
 			var bars = new List<Vertex2D>
 			{
 				new Vertex2D(start + normalized, new Color(40, 50, 255, 0), new Vector3(1 + time, 0, 0)),

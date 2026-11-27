@@ -44,7 +44,7 @@ public class GoldLanternLine3 : TrailingProjectile
 		{
 			width *= Projectile.timeLeft / 150f;
 		}
-		width *= 1 + (MathF.Sin((float)Main.time * 0.23f + Projectile.whoAmI) + 0.5f) * 0.7f;
+		width *= 1 + (MathF.Sin((float)Main.timeForVisualEffects * 0.23f + Projectile.whoAmI) + 0.5f) * 0.7f;
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, new Color(1f, 0.75f, 0, 0), MathHelper.PiOver2, star.Size() / 2f, new Vector2(width / 3.5f, 0.5f), SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, new Color(1f, 0.75f, 0, 0), 0, star.Size() / 2f, new Vector2(width / 3.5f, 0.5f), SpriteEffects.None, 0);
 

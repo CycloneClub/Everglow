@@ -128,7 +128,7 @@ public class GiantCampFire_Flame_Fore : TileVFX
 
 	public override void Draw()
 	{
-		float timeValue = (float)Main.time * 0.014f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.014f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int t = 0; t < 40; t++)
 		{

@@ -136,7 +136,7 @@ public class Fevens_MagicLaserArray : ModProjectile
 		Vector2 drawPos = Projectile.Center - Main.screenPosition + relativePos;
 		var drawColor = new Color(1f, 0f, 0f, 0f);
 		var darkDraw = Color.White * value;
-		var timeValue = (float)Main.time * 0.07f;
+		var timeValue = (float)Main.timeForVisualEffects * 0.07f;
 
 		Texture2D swirlPointDark = Commons.ModAsset.Point_Black.Value;
 		Main.spriteBatch.Draw(swirlPointDark, drawPos, null, Color.White * value, timeValue, swirlPointDark.Size() * 0.5f, value * 0.5f, SpriteEffects.None, 0);
@@ -306,7 +306,7 @@ public class Fevens_MagicLaserArray : ModProjectile
 		}
 		Vector2 drawPos = Projectile.Center - Main.screenPosition + relativePos;
 		var drawColor = new Color(0f, 0.4f, 0.8f, 0f);
-		var timeValue = (float)Main.time * 0.07f;
+		var timeValue = (float)Main.timeForVisualEffects * 0.07f;
 		var darkDraw = Color.White * value;
 		var circleDark = new List<Vertex2D>();
 		var circle = new List<Vertex2D>();

@@ -104,7 +104,7 @@ public class EyeOfAnabiosis_Matrix : ModProjectile
 	{
 		float wink = Math.Clamp(Math.Min(WinkTimer, Projectile.timeLeft) / 60f, 0, 1);
 		wink = MathF.Pow(wink, 2);
-		float timeValue = (float)Main.time * 0.03f;
+		float timeValue = (float)Main.timeForVisualEffects * 0.03f;
 		Vector2 drawCenter = Projectile.Center - Main.screenPosition;
 
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;

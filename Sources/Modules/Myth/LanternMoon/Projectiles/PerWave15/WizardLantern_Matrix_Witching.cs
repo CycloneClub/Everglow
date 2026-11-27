@@ -149,7 +149,7 @@ public class WizardLantern_Matrix_Witching : ModProjectile
 
 		Color fishColor = new Color(0.0f, 0.4f, 0.3f, 0.5f);
 		List<Vertex2D> fishes = new List<Vertex2D>();
-		Vector2 fishRot = new Vector2(-40).RotatedBy(-Main.time * 0.009f + Projectile.whoAmI);
+		Vector2 fishRot = new Vector2(-40).RotatedBy(-Main.timeForVisualEffects * 0.009f + Projectile.whoAmI);
 		fishes.Add(drawPos + fishRot, fishColor * colorFade, new Vector3(0, 0, fade));
 		fishes.Add(drawPos + fishRot.RotatedBy(MathHelper.PiOver2), fishColor * colorFade, new Vector3(1, 0, fade));
 		fishes.Add(drawPos + fishRot.RotatedBy(MathHelper.PiOver2 * 3), fishColor * colorFade, new Vector3(0, 1, fade));
@@ -215,15 +215,15 @@ public class WizardLantern_Matrix_Witching : ModProjectile
 		for (int i = 0; i < 8; i++)
 		{
 			Vector2 pos = Projectile.Center + new Vector2(0, -80).RotatedBy(i / 8f * MathHelper.TwoPi);
-			float scale = 0.5f * colorFade * (1 + MathF.Sin(i / 8f * MathHelper.Pi * 3 + (float)Main.time * 0.05f) * 0.25f);
+			float scale = 0.5f * colorFade * (1 + MathF.Sin(i / 8f * MathHelper.Pi * 3 + (float)Main.timeForVisualEffects * 0.05f) * 0.25f);
 			Main.EntitySpriteDraw(blackSpot, pos - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f), 0, blackSpot.Size() * 0.5f, scale, SpriteEffects.None, 0);
 			Main.EntitySpriteDraw(redSpot, pos - Main.screenPosition, null, new Color(1f, 0.05f, 0.1f, 0), 0, redSpot.Size() * 0.5f, scale, SpriteEffects.None, 0);
 			Lighting.AddLight(pos, new Vector3(0.75f, 0, 0) * colorFade);
 		}
 		for (int i = 0; i < 24; i++)
 		{
-			Vector2 pos = Projectile.Center + new Vector2(0, -120).RotatedBy(i / 24f * MathHelper.TwoPi - Main.time * 0.006f);
-			float scale = 0.5f * colorFade * (1 + MathF.Sin(i / 8f * MathHelper.Pi * 3 + (float)Main.time * 0.05f) * 0.4f) * 0.25f;
+			Vector2 pos = Projectile.Center + new Vector2(0, -120).RotatedBy(i / 24f * MathHelper.TwoPi - Main.timeForVisualEffects * 0.006f);
+			float scale = 0.5f * colorFade * (1 + MathF.Sin(i / 8f * MathHelper.Pi * 3 + (float)Main.timeForVisualEffects * 0.05f) * 0.4f) * 0.25f;
 			Main.EntitySpriteDraw(blackSpot, pos - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f), 0, blackSpot.Size() * 0.5f, scale, SpriteEffects.None, 0);
 			Main.EntitySpriteDraw(redSpot, pos - Main.screenPosition, null, new Color(1f, 0.05f, 0.1f, 0), 0, redSpot.Size() * 0.5f, scale, SpriteEffects.None, 0);
 		}

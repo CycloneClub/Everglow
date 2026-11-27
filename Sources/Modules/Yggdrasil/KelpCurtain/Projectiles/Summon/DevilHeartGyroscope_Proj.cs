@@ -156,7 +156,7 @@ public class DevilHeartGyroscope_Proj : GyroscopeProjectile
 		}
 		else
 		{
-			float targetRot = (1.5f - Power / 100f) * MathF.Sin((float)Main.time * 0.24f + Projectile.whoAmI);
+			float targetRot = (1.5f - Power / 100f) * MathF.Sin((float)Main.timeForVisualEffects * 0.24f + Projectile.whoAmI);
 			Projectile.rotation = targetRot * 0.1f + Projectile.rotation * 0.9f;
 		}
 	}

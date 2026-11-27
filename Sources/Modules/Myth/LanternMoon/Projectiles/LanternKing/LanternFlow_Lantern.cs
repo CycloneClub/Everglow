@@ -32,7 +32,7 @@ public class LanternFlow_Lantern : Visual
 		timer++;
 		if (npcOwner != null && npcOwner.active)
 		{
-			velocity = velocity.RotatedBy(MathF.Sin((float)Main.time * 0.03f) * 0.02f);
+			velocity = velocity.RotatedBy(MathF.Sin((float)Main.timeForVisualEffects * 0.03f) * 0.02f);
 		}
 		velocity *= 0.98f;
 		position += velocity;

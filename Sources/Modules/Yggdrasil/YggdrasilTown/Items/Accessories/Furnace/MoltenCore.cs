@@ -62,7 +62,7 @@ public class MoltenCore : ModItem
 		Texture2D texture = ModAsset.MoltenCore.Value;
 		int frameWidth = texture.Width;
 		int frameHeight = texture.Height / 4;
-		int frameOffsetY = frameHeight * (((int)Main.time / 5) % 4);
+		int frameOffsetY = frameHeight * (((int)Main.timeForVisualEffects / 5) % 4);
 
 		spriteBatch.Draw(texture, Item.Center - Main.screenPosition, new Rectangle(0, frameOffsetY, frameWidth, frameHeight), lightColor, 0, new Vector2(frameWidth, frameHeight / 2) / 2, 1, SpriteEffects.None, 0);
 
