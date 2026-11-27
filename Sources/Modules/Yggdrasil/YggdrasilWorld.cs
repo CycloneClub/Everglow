@@ -2,6 +2,8 @@ using System.Reflection;
 using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Quests.MainStory;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 using SubworldLibrary;
 using Terraria.WorldBuilding;
 
@@ -70,6 +72,62 @@ public class YggdrasilWorld : Subworld
 	{
 		TwilightBubbles.Clear();
 		On_WorldGen.setWorldSize += WorldGen_setWorldSize;
+		IL_Liquid.Update += SkipUnderworldEvaporation;
+		IL_Projectile.CanExplodeTile += AllowUnderworldExplosions;
+	}
+
+	public override void Unload()
+	{
+		IL_Liquid.Update -= SkipUnderworldEvaporation;
+		IL_Projectile.CanExplodeTile -= AllowUnderworldExplosions;
+	}
+
+	/// <summary>
+	/// In Yggdrasil, take the same branch as <c>y &lt;= UnderworldLayer</c> so underworld water is not reduced.
+	/// </summary>
+	private static void SkipUnderworldEvaporation(ILContext il)
+	{
+		ILCursor cursor = new(il);
+		if (!cursor.TryGotoNext(
+			i => i.MatchLdarg(0),
+			i => i.MatchLdfld(typeof(Liquid), "y"),
+			i => i.MatchCall<Main>("get_UnderworldLayer")))
+		{
+			throw new InvalidOperationException("Water evaporation check was not found in Liquid.Update.");
+		}
+
+		Instruction branch = cursor.Instrs[cursor.Index + 3];
+		if (!branch.MatchBle(out ILLabel skipEvaporation))
+		{
+			throw new InvalidOperationException("Water evaporation branch was not found in Liquid.Update.");
+		}
+
+		cursor.EmitDelegate<Func<bool>>(() => InYggdrasil);
+		cursor.Emit(OpCodes.Brtrue, skipEvaporation);
+	}
+
+	/// <summary>
+	/// Before hardmode, a Hellforge at or below the underworld cannot be exploded. In Yggdrasil, take the same branch as <c>y &lt; UnderworldLayer</c>.
+	/// </summary>
+	private static void AllowUnderworldExplosions(ILContext il)
+	{
+		ILCursor cursor = new(il);
+		if (!cursor.TryGotoNext(
+			i => i.MatchLdarg(2),
+			i => i.MatchCall<Main>("get_UnderworldLayer"),
+			i => i.MatchBlt(out _)))
+		{
+			throw new InvalidOperationException("Underworld explosion check was not found in Projectile.CanExplodeTile.");
+		}
+
+		Instruction branch = cursor.Instrs[cursor.Index + 2];
+		if (!branch.MatchBlt(out ILLabel allowExplosion))
+		{
+			throw new InvalidOperationException("Underworld explosion branch was not found in Projectile.CanExplodeTile.");
+		}
+
+		cursor.EmitDelegate<Func<bool>>(() => InYggdrasil);
+		cursor.Emit(OpCodes.Brtrue, allowExplosion);
 	}
 
 	private static void WorldGen_setWorldSize(On_WorldGen.orig_setWorldSize orig)
