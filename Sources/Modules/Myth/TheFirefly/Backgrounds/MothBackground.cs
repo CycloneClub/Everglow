@@ -62,7 +62,10 @@ public class MothBackground : ModSystem
 	private void TileLightScanner_GetTileLight(Terraria.Graphics.Light.On_TileLightScanner.orig_GetTileLight orig, Terraria.Graphics.Light.TileLightScanner self, int x, int y, out Vector3 outputColor)
 	{
 		orig(self, x, y, out outputColor);
-		outputColor += ambient;
+		if (BiomeActive())
+		{
+			outputColor += ambient;
+		}
 	}
 
 	public override void PostUpdateEverything()// 开启地下背景
