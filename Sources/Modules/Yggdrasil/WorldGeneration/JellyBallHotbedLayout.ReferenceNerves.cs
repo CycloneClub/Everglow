@@ -177,7 +177,7 @@ internal sealed partial class JellyBallHotbedLayout
 					int x = (int)MathF.Round(SampleNerveCurve(a.X, b.X, c.X, d.X, t));
 					int y = (int)MathF.Round(SampleNerveCurve(a.Y, b.Y, c.Y, d.Y, t));
 					if (x > 3 && x < width - 4 && y > 3 && y < height - 4
-						&& layout[x, y] is Jelly or Fresh)
+						&& layout[x, y] == Jelly)
 					{
 						nerves[x, y] = style;
 					}

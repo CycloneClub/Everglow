@@ -93,7 +93,7 @@ public partial class YggdrasilTownGeneration
 					continue;
 				}
 				Tile tile = Main.tile[bounds.X + x, bounds.Y + y];
-				if (tile.HasTile && layout[x, y] is JellyBallHotbedLayout.Jelly or JellyBallHotbedLayout.Fresh)
+				if (tile.HasTile && tile.TileType == jelly)
 				{
 					if (nerves[x, y] == 1)
 					{

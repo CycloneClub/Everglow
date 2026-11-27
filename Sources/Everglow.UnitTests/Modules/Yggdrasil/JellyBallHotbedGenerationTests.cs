@@ -908,7 +908,7 @@ public class JellyBallHotbedGenerationTests
 			: underPool + (referenceY - 820) / 90 * (476 - underPool));
 		var result = (byte[,])trace.Invoke(null, [layout])!;
 		Assert.AreNotEqual((byte)0, result[px, py], "The implied connecting curve skipped an existing jelly block.");
-		foreach (byte material in new byte[] { 0, 1, 3, 4, 8, 9, 10 })
+		foreach (byte material in new byte[] { 0, 1, 3, 4, 5, 8, 9, 10 })
 		{
 			layout[px, py] = material;
 			var masked = (byte[,])trace.Invoke(null, [layout])!;
@@ -991,8 +991,8 @@ public class JellyBallHotbedGenerationTests
 				{
 					continue;
 				}
-				Assert.IsTrue(layout[x, y] is 2 or 5, "Nerves may replace only existing jelly tissue, never empty space, nuclei, membrane, nutrition or foreign terrain.");
-				tissue += layout[x, y] is 2 or 5 ? 1 : 0;
+				Assert.AreEqual((byte)2, layout[x, y], "Nerves may replace only ordinary jelly tissue.");
+				tissue++;
 			}
 		}
 		Assert.IsTrue(tissue > 200, "The solid tissue must retain its nerve curves.");
