@@ -18,14 +18,6 @@ internal class MEACManager : ILoadable
 			hookManager.AddHook(CodeLayer.ResolutionChanged, Main_OnResolutionChanged);
 			hookManager.AddHook(CodeLayer.PreDrawFilter, FilterManager_EndCapture);
 			screenWarp = ModAsset.ScreenWarp.Value;
-			ModIns.OnUnload += () =>
-			{
-				Ins.MainThread.AddTask(() =>
-				{
-					bloomTarget1?.Dispose();
-					bloomTarget2?.Dispose();
-				});
-			};
 		}
 	}
 
@@ -280,5 +272,13 @@ internal class MEACManager : ILoadable
 
 	public void Unload()
 	{
+		if (!Main.dedServ)
+		{
+			Main.QueueMainThreadAction(() =>
+			{
+				bloomTarget1?.Dispose();
+				bloomTarget2?.Dispose();
+			});
+		}
 	}
 }

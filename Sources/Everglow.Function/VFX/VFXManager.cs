@@ -23,6 +23,8 @@ public class VFXManager : IVFXManager
 
 	private const bool DefaultRt2DIndex = true;
 
+	private readonly IMainThreadContext mainThread;
+
 	/// <summary>
 	/// GraphicsDevice引用
 	/// </summary>
@@ -72,12 +74,13 @@ public class VFXManager : IVFXManager
 
 	public VFXManager(IHookManager hookManager, IMainThreadContext mainThread)
 	{
+		this.mainThread = mainThread;
 		foreach (var layer in drawLayers)
 		{
 			visuals[layer] = new();
 			if (layer is CodeLayer.PostDrawNPCs or CodeLayer.PostDrawBG)
 			{
-				_ = Ins.HookManager.AddHook(layer, () =>
+				_ = hookManager.AddHook(layer, () =>
 				{
 					Main.spriteBatch.End();
 					Draw(layer);
@@ -88,12 +91,13 @@ public class VFXManager : IVFXManager
 			}
 			else
 			{
-				_ = Ins.HookManager.AddHook(layer, () => Draw(layer), $"VFX {layer}");
+				_ = hookManager.AddHook(layer, () => Draw(layer), $"VFX {layer}");
 			}
 		}
 		_ = hookManager.AddHook(CodeLayer.PostUpdateEverything, Update, "VFX Update");
 		_ = hookManager.AddHook(CodeLayer.PreSaveAndQuit, Clear, "VFX Clear");
-		mainThread.AddTask(() => tempRenderTarget = Ins.RenderTargetPool.GetRenderTarget2D());
+		var renderTargetPool = Ins.RenderTargetPool;
+		mainThread.AddTask(() => tempRenderTarget = renderTargetPool.GetRenderTarget2D());
 		foreach (var visual in Ins.ModuleManager.CreateInstances<IVisual>())
 		{
 			Register(visual);
@@ -174,14 +178,13 @@ public class VFXManager : IVFXManager
 
 	public void Dispose()
 	{
-		Ins.MainThread.AddTask(() =>
+		mainThread.AddTask(() =>
 		{
 			foreach (var pipeline in pipelineInstances)
 			{
 				pipeline.Unload();
 			}
 			tempRenderTarget?.Release();
-			Ins.Batch.Dispose();
 		});
 		GC.SuppressFinalize(this);
 	}

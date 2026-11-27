@@ -13,19 +13,16 @@ internal sealed class MirrorScreenCaptureRenderHooks : IDisposable
 	private readonly BlendState additiveLight = CustomBlendStates.NewBlendState(
 		"Mirror additive light", Blend.SourceAlpha, Blend.Zero, Blend.One, Blend.One);
 
-	private readonly IHookHandler blendHook;
-	private readonly IHookHandler warpHook;
-	private readonly IHookHandler screenReflectionHook;
-
 	public MirrorScreenCaptureRenderHooks()
 	{
-		blendHook = Ins.HookManager.AddHook(
+		var hookManager = Ins.HookManager;
+		hookManager.AddHook(
 			typeof(GraphicsDevice).GetProperty(nameof(GraphicsDevice.BlendState)).SetMethod,
 			(Action<Action<GraphicsDevice, BlendState>, GraphicsDevice, BlendState>)SetBlendState);
-		warpHook = Ins.HookManager.AddHook(
+		hookManager.AddHook(
 			typeof(WarpPipeline).GetMethod(nameof(WarpPipeline.Render)),
 			(Action<Action<WarpPipeline, IEnumerable<IVisual>>, WarpPipeline, IEnumerable<IVisual>>)DrawDeferred);
-		screenReflectionHook = Ins.HookManager.AddHook(
+		hookManager.AddHook(
 			typeof(ScreenReflectionPipeline).GetMethod(nameof(ScreenReflectionPipeline.Render)),
 			(Action<Action<ScreenReflectionPipeline, IEnumerable<IVisual>>, ScreenReflectionPipeline, IEnumerable<IVisual>>)DrawDeferred);
 	}
@@ -57,9 +54,6 @@ internal sealed class MirrorScreenCaptureRenderHooks : IDisposable
 	public void Dispose()
 	{
 		Reset();
-		Ins.HookManager.RemoveHook(screenReflectionHook);
-		Ins.HookManager.RemoveHook(warpHook);
-		Ins.HookManager.RemoveHook(blendHook);
 		Main.QueueMainThreadAction(additiveLight.Dispose);
 	}
 

@@ -60,7 +60,7 @@ public class HookSystem : ModSystem
 		Main.OnResolutionChanged += Main_OnResolutionChanged;
 	}
 
-	public override void Unload()
+	public override void OnModUnload()
 	{
 		On_Main.DrawDust -= Main_DrawDust;
 		On_Main.DrawProjectiles -= Main_DrawProjectiles;
@@ -80,6 +80,7 @@ public class HookSystem : ModSystem
 		On_Main.DrawBG -= Main_DrawBG;
 		On_Main.DrawBackground -= Main_DrawBackground;
 		On_Main.DoDraw_WallsTilesNPCs -= Main_DoDraw_WallsTilesNPCs;
+		On_FilterManager.EndCapture -= On_FilterManager_EndCapture;
 		Main.OnResolutionChanged -= Main_OnResolutionChanged;
 	}
 

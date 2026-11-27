@@ -41,23 +41,24 @@ public class GoldShield : ModProjectile, IWarpProjectile
 	{
 		if (Main.netMode != NetmodeID.Server)
 		{
+			var visualQuality = Ins.VisualQuality;
 			Ins.HookManager.AddHook(CodeLayer.PostDrawDusts, RenderCanvasOfShield);
 			Ins.MainThread.AddTask(() =>
 			{
-				AllocateRenderTarget(DrawSize);
+				AllocateRenderTarget(DrawSize, visualQuality.High);
 			});
 			Ins.HookManager.AddHook(CodeLayer.ResolutionChanged, (Vector2 size) =>
 			{
 				blackAreaSwap?.Dispose();
 				blackAreaOrig?.Dispose();
-				AllocateRenderTarget(size);
+				AllocateRenderTarget(size, visualQuality.High);
 			}, "Realloc RenderTarget");
 		}
 	}
 
-	private void AllocateRenderTarget(Vector2 size)
+	private void AllocateRenderTarget(Vector2 size, bool highQuality)
 	{
-		if (Ins.VisualQuality.High)
+		if (highQuality)
 		{
 			var gd = Main.instance.GraphicsDevice;
 			blackAreaSwap = new RenderTarget2D(gd, (int)size.X, (int)size.Y);

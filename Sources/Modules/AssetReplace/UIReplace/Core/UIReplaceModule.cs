@@ -82,7 +82,6 @@ public class UIReplaceModule : IModule
 		}
 
 		ReplaceTextures(TextureReplaceMode.Terraria);
-		TerrariaAssets.Apply();
 
 		TerrariaAssets = null;
 		EternalAssets = null;
