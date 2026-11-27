@@ -6,7 +6,7 @@ namespace Everglow.UnitTests.Modules.Yggdrasil;
 [TestClass]
 public class JellyBallHotbedGenerationTests
 {
-	// Layout palette: 0 terrain, 1 air, 2 jelly, 3 crystal, 4 membrane, 5 fresh, 8 honey, 9 protected, 10 cave air.
+	// Layout palette: 0 terrain, 1 air, 2 jelly, 3 crystal, 4 membrane, 5 fresh, 8 nutrition, 9 protected, 10 cave air.
 	private static byte[,] Generate(byte[,] source, int seed)
 	{
 		var type = typeof(YggdrasilTownGeneration).Assembly.GetType("Everglow.Yggdrasil.WorldGeneration.JellyBallHotbedLayout");
@@ -143,21 +143,21 @@ public class JellyBallHotbedGenerationTests
 		for (int seed = 0; seed < 12; seed++)
 		{
 			var result = Generate(OldHotbed(), seed);
-			var water = new List<(int X, int Y)>();
+			var nutritionTiles = new List<(int X, int Y)>();
 			for (int x = 0; x < 350; x++)
 			{
 				for (int y = 0; y < 480; y++)
 				{
 					if (result[x, y] == 8)
 					{
-						water.Add((x, y));
+						nutritionTiles.Add((x, y));
 					}
 				}
 			}
-			Assert.IsTrue(water.Count > 400, $"Missing pool for seed {seed}.");
-			int surface = water.Min(p => p.Y);
-			var queue = new Queue<(int X, int Y)>(water);
-			var seen = water.ToHashSet();
+			Assert.IsTrue(nutritionTiles.Count > 400, $"Missing pool for seed {seed}.");
+			int surface = nutritionTiles.Min(p => p.Y);
+			var queue = new Queue<(int X, int Y)>(nutritionTiles);
+			var seen = nutritionTiles.ToHashSet();
 			while (queue.TryDequeue(out var point))
 			{
 				Assert.IsTrue(point.X > 0 && point.X < 349 && point.Y < 479, $"Pool leaks for seed {seed}.");
@@ -975,7 +975,7 @@ public class JellyBallHotbedGenerationTests
 				{
 					continue;
 				}
-				Assert.IsTrue(layout[x, y] is 2 or 5, "Nerves may replace only existing jelly tissue, never empty space, nuclei, membrane, honey or foreign terrain.");
+				Assert.IsTrue(layout[x, y] is 2 or 5, "Nerves may replace only existing jelly tissue, never empty space, nuclei, membrane, nutrition or foreign terrain.");
 				tissue += layout[x, y] is 2 or 5 ? 1 : 0;
 			}
 		}

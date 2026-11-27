@@ -1,8 +1,10 @@
 using Everglow.Commons.FeatureFlags;
 using Everglow.Yggdrasil.Common.Tiles;
+using Everglow.Yggdrasil.YggdrasilTown.Liquids;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
 using Everglow.Yggdrasil.YggdrasilTown.Walls;
+using ModLiquidLib.ModLoader;
 using static Everglow.Commons.Utilities.TileUtils;
 
 namespace Everglow.Yggdrasil.WorldGeneration;
@@ -38,6 +40,7 @@ public partial class YggdrasilTownGeneration
 		}
 
 		byte[,] layout = JellyBallHotbedLayout.Generate(source, GenRand.Next());
+		int nutritionType = LiquidLoader.LiquidType<JellyBallNutritionLiquid>();
 		for (int x = 0; x < bounds.Width; x++)
 		{
 			for (int y = 0; y < bounds.Height; y++)
@@ -55,12 +58,12 @@ public partial class YggdrasilTownGeneration
 				{
 					tile.WallType = (ushort)ModContent.WallType<JellyBallSecretionWall>();
 				}
-				if (material is JellyBallHotbedLayout.Air or JellyBallHotbedLayout.CaveAir or JellyBallHotbedLayout.Honey)
+				if (material is JellyBallHotbedLayout.Air or JellyBallHotbedLayout.CaveAir or JellyBallHotbedLayout.Nutrition)
 				{
 					tile.WallType = (ushort)ModContent.WallType<JellyBallSecretionWall>();
-					if (material == JellyBallHotbedLayout.Honey)
+					if (material == JellyBallHotbedLayout.Nutrition)
 					{
-						tile.LiquidType = LiquidID.Honey;
+						tile.LiquidType = nutritionType;
 						tile.LiquidAmount = byte.MaxValue;
 					}
 					continue;

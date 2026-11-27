@@ -129,7 +129,7 @@ internal sealed partial class JellyBallHotbedLayout
 		{
 			for (int y = 4; y < height - 4; y++)
 			{
-				if (layout[x, y] == Honey)
+				if (layout[x, y] == Nutrition)
 				{
 					surface = Math.Min(surface, y);
 				}

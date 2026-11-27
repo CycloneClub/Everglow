@@ -11,7 +11,7 @@ internal sealed partial class JellyBallHotbedLayout
 	public const byte Crystal = 3;
 	public const byte Membrane = 4;
 	public const byte Fresh = 5;
-	public const byte Honey = 8;
+	public const byte Nutrition = 8;
 	public const byte Protected = 9;
 	public const byte CaveAir = 10;
 
@@ -412,7 +412,7 @@ internal sealed partial class JellyBallHotbedLayout
 							}
 							if (footprint.Any(point => tiles[point.X, point.Y] is not (Terrain or Air)
 								|| Enumerable.Range(-4, 9).Any(dx => Enumerable.Range(-4, 9).Any(dy => dx * dx + dy * dy <= 16
-									&& tiles[point.X + dx, point.Y + dy] is Jelly or Fresh or Membrane or Honey))))
+									&& tiles[point.X + dx, point.Y + dy] is Jelly or Fresh or Membrane or Nutrition))))
 							{
 								continue;
 							}
@@ -479,7 +479,7 @@ internal sealed partial class JellyBallHotbedLayout
 					}
 					if (footprint.Any(point => tiles[point.X, point.Y] is not (Terrain or Air)
 						|| Enumerable.Range(-4, 9).Any(mx => Enumerable.Range(-4, 9).Any(my => mx * mx + my * my <= 16
-							&& tiles[point.X + mx, point.Y + my] is Jelly or Fresh or Membrane or Honey))))
+							&& tiles[point.X + mx, point.Y + my] is Jelly or Fresh or Membrane or Nutrition))))
 					{
 						continue;
 					}
@@ -600,7 +600,7 @@ internal sealed partial class JellyBallHotbedLayout
 				while (queue.TryDequeue(out var point))
 				{
 					region.Add(point);
-					keep |= !excavated[point.X, point.Y] || neckHoles[point.X, point.Y] || tiles[point.X, point.Y] == Honey
+					keep |= !excavated[point.X, point.Y] || neckHoles[point.X, point.Y] || tiles[point.X, point.Y] == Nutrition
 						|| (Math.Abs(point.X - center) < width * 0.25f
 							&& point.Y > ChamberRoof(point.X) + 6 && point.Y < PoolSurface + 5);
 					foreach (var direction in SurfaceDirections)
@@ -841,7 +841,7 @@ internal sealed partial class JellyBallHotbedLayout
 			{
 				continue;
 			}
-			Put(point.X, point.Y, Honey);
+			Put(point.X, point.Y, Nutrition);
 			foreach (var direction in SurfaceDirections)
 			{
 				int x = point.X + direction.X;
@@ -1084,7 +1084,7 @@ internal sealed partial class JellyBallHotbedLayout
 	private bool IsTissue(int x, int y) => x > 3 && x < width - 4 && y > 3 && y < height - 4
 		&& tiles[x, y] is Jelly or Fresh;
 
-	private static bool IsOpen(byte material) => material is Air or CaveAir or Honey;
+	private static bool IsOpen(byte material) => material is Air or CaveAir or Nutrition;
 
 	private void Put(int x, int y, byte material)
 	{
