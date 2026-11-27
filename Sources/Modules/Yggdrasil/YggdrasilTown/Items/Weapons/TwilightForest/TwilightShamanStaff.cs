@@ -35,7 +35,7 @@ public class TwilightShamanStaff : ModItem
 		Recipe recipe = CreateRecipe();
 		recipe.AddIngredient<TwilightEucalyptusWood_Item>(10);
 		recipe.AddIngredient<TwilightCrystal>(12);
-		recipe.AddTile(TileID.WorkBenches);
+		recipe.AddTile(TileID.Anvils);
 		recipe.Register();
 	}
 }

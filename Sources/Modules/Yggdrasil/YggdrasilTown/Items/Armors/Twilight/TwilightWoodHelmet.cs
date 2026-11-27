@@ -54,7 +54,7 @@ public class TwilightWoodHelmet : ModItem
 		Recipe recipe = CreateRecipe();
 		recipe.AddIngredient<TwilightEucalyptusWood_Item>(20);
 		recipe.AddIngredient<TwilightCrystal>(8);
-		recipe.AddTile(TileID.WorkBenches);
+		recipe.AddTile(TileID.Anvils);
 		recipe.Register();
 	}
 }
