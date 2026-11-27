@@ -12,17 +12,14 @@ public class EliminateLightSystem : ModSystem
 	{
 		On_TileLightScanner.ApplyWallLight += On_TileLightScanner_ApplyWallLight;
 		On_TileLightScanner.ExportTo += On_TileLightScanner_ExportTo;
-		if (!Main.dedServ)
-		{
-			IL_Main.DrawBlack += PatchDrawBlack;
-		}
+		IL_Main.DrawBlack += PatchDrawBlack;
 	}
 
 	private void On_TileLightScanner_ApplyWallLight(On_TileLightScanner.orig_ApplyWallLight orig, TileLightScanner self, Tile tile, int x, int y, ref FastRandom localRandom, ref Vector3 lightColor)
 	{
 		// Call first to preserve wall light.
 		EliminateLightManager.ApplyEliminateLight(x, y, ref lightColor);
-		lightColor = Vector3.Max(lightColor, new Vector3(0.01f));
+		// lightColor = Vector3.Max(lightColor, new Vector3(0.01f));
 
 		orig(self, tile, x, y, ref localRandom, ref lightColor);
 	}
@@ -53,13 +50,23 @@ public class EliminateLightSystem : ModSystem
 		int tile = -1;
 		int column = -1;
 		cursor.GotoNext(MoveType.After, i => i.MatchCall<Main>(nameof(Main.ShouldShowInvisibleWalls)), i => i.MatchStloc(out showInvisible));
+		// Use the ordinary brightness threshold at every subworld depth.
+		cursor.GotoNext(MoveType.After, i => i.MatchCall<Main>("get_UnderworldLayer"));
+		cursor.GotoNext(i => i.MatchStloc(out _));
+		cursor.Emit(OpCodes.Ldloc, subworld);
+		cursor.Emit(OpCodes.Ldc_I4_0);
+		cursor.Emit(OpCodes.Ceq);
+		cursor.Emit(OpCodes.And);
+
 		cursor.GotoNext(i => i.MatchStloc(out tile), i => i.MatchLdloc(out column), i => i.MatchLdloc(out _), i => i.MatchCall<Lighting>(nameof(Lighting.Brightness)));
 		cursor.Index++;
 		var tileCheck = cursor.Next;
 
-		// The inner loop extends a horizontal run by incrementing its column. A break flushes it.
-		cursor.GotoNext(i => i.MatchLdloc(column), i => i.MatchLdcI4(1), i => i.MatchAdd(), i => i.MatchStloc(column));
-		var extendRun = cursor.Next;
+		// Use the same surface rule for submerged tiles when drawing to a render target.
+		cursor.GotoNext(MoveType.After, i => i.MatchLdsfld<Main>(nameof(Main.worldSurface)));
+		cursor.Emit(OpCodes.Ldloc, subworld);
+		cursor.EmitDelegate<Func<double, bool, double>>(static (surface, inSubworld) => inSubworld ? double.MaxValue : surface);
+
 		cursor.GotoNext(i => i.MatchLdloc(column), i => i.MatchLdloc(out _), i => i.MatchSub(), i => i.MatchLdcI4(0), i => i.MatchBle(out _));
 		var flushRun = cursor.Next;
 
@@ -68,9 +75,6 @@ public class EliminateLightSystem : ModSystem
 		cursor.EmitLdloc(showInvisible);
 		cursor.EmitDelegate<Func<Tile, bool, bool>>(CoversBackground);
 		cursor.Emit(OpCodes.Brfalse, flushRun);
-		cursor.Emit(OpCodes.Ldloc, subworld);
-		cursor.Emit(OpCodes.Brtrue, extendRun);
-		// Main-world occluders fall through to the original brightness, depth and liquid rules.
 	}
 
 	private static bool CoversBackground(Tile tile, bool showInvisible)

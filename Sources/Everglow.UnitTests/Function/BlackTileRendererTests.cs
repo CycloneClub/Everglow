@@ -133,12 +133,13 @@ public class BlackTileRendererTests
 			foreach (Subworld world in new Subworld[] { new YggdrasilWorld(), new RoomWorld() })
 			{
 				current.SetValue(null, world);
-				foreach (var light in new[] { Vector3.Zero, Vector3.One })
+				foreach (float brightness in new[] { 0f, 0.3f, 1f })
 				{
-					Array.Fill(engine._activeLightMap._colors, light);
+					Array.Fill(engine._activeLightMap._colors, new Vector3(brightness));
 					runs.Clear();
 					draw(null!, false);
-					CollectionAssert.AreEqual(new[] { new Point(0, 2), new Point(3, 1), new Point(5, 1) }, runs);
+					Point[] expected = brightness < 1f ? [new(0, 2), new(3, 1), new(5, 1)] : [];
+					CollectionAssert.AreEqual(expected, runs, $"{world.GetType().Name}, row {y}, brightness {brightness}");
 				}
 			}
 
