@@ -243,7 +243,7 @@ public partial class YggdrasilTownGeneration
 				y = startY;
 			}
 			int count = 0;
-			while (!CanPlaceMultiAtTopTowardsUpRight(x, y, 1, 2))
+			while (!CanPlaceStoneBridgePot(x, y))
 			{
 				x = GenRand.Next(leftBound + 5, rightBound - 5);
 				count++;
@@ -251,6 +251,10 @@ public partial class YggdrasilTownGeneration
 				{
 					break;
 				}
+			}
+			if (!CanPlaceStoneBridgePot(x, y))
+			{
+				continue;
 			}
 			PlaceFrameImportantTilesAbove(x, y, 1, 2, ModContent.TileType<StoneBridge_Pot>(), GenRand.Next(5) * 18);
 		}
@@ -261,6 +265,7 @@ public partial class YggdrasilTownGeneration
 	/// </summary>
 	public static void BuildGiantYggdrasilPosts()
 	{
+		var pillarSamples = new List<(Vector2 Center, int Radius)>();
 		int x0CoordPerlin = GenRand.Next(1024);
 		int y0CoordPerlin = GenRand.Next(1024);
 		int upBound = Main.maxTilesY - 2080;
@@ -302,6 +307,10 @@ public partial class YggdrasilTownGeneration
 			{
 				point += velocity;
 				oldPoints.Add(point);
+				if (step % 8 == 0)
+				{
+					pillarSamples.Add((point, radious));
+				}
 				if (SafeGetTile((int)(point + velocity * 30).X, (int)(point + velocity).Y).HasTile)
 				{
 					point -= velocity;
@@ -373,6 +382,8 @@ public partial class YggdrasilTownGeneration
 				FillLiquid(oldPoints[a] * 16 + new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(16))).RotatedByRandom(MathHelper.TwoPi) * radious);
 			}
 		}
+
+		ScatterStoneBridgePotsAlongPillars(pillarSamples, 64, ModContent.TileType<StoneScaleWood>());
 	}
 
 	/// <summary>
@@ -447,6 +458,16 @@ public partial class YggdrasilTownGeneration
 			Point pos = new Point(Main.rand.Next(40, Main.maxTilesX / 2 + 50), Main.rand.Next(Main.maxTilesY - 700, Main.maxTilesY - 20));
 			FillLiquid(pos);
 		}
+
+		Rectangle town = GetMineTownBounds();
+		ScatterStoneBridgePots(
+			mineBounds.Left,
+			mineBounds.Right,
+			mineBounds.Top,
+			mineBounds.Bottom,
+			72,
+			tile => tile.TileType == ModContent.TileType<StoneScaleWood>() || tile.TileType == ModContent.TileType<GreyTownBrick>(),
+			(x, y) => !town.Contains(x, y));
 	}
 
 	private static Rectangle GetMineBounds(int worldWidth, int worldHeight)
@@ -1022,6 +1043,13 @@ public partial class YggdrasilTownGeneration
 		}
 
 		ExtendJellyBallHotbed();
+		ScatterStoneBridgePots(
+			leftBound,
+			rightBound - 5,
+			upBound,
+			bottomBound,
+			48,
+			tile => tile.TileType == ModContent.TileType<StoneScaleWood>() || tile.TileType == ModContent.TileType<JellyBallSecretion>());
 	}
 
 	/// <summary>
@@ -1831,6 +1859,14 @@ public partial class YggdrasilTownGeneration
 				break;
 			}
 		}
+
+		ScatterStoneBridgePots(
+			20,
+			Main.maxTilesX - 20,
+			upBound - 400,
+			bottomBound + 260,
+			72,
+			tile => tile.TileType == ModContent.TileType<TwilightGrassBlock>());
 	}
 
 	public static void BuildTwilightLand_Shell(Vector2 basePos, float range)
@@ -2907,5 +2943,104 @@ public partial class YggdrasilTownGeneration
 		{
 			bonus.Add(potentialList[GenRand.Next(potentialList.Count)]);
 		}
+	}
+
+	private static void ScatterStoneBridgePotsAlongPillars(List<(Vector2 Center, int Radius)> samples, int targetCount, int stoneType)
+	{
+		if (samples.Count == 0 || targetCount <= 0)
+		{
+			return;
+		}
+
+		int potType = ModContent.TileType<StoneBridge_Pot>();
+		int placed = 0;
+		for (int attempt = 0; attempt < targetCount * 80 && placed < targetCount; attempt++)
+		{
+			(Vector2 center, int radius) = samples[GenRand.Next(samples.Count)];
+			int reach = Math.Max(radius, 40);
+			int x = (int)center.X + GenRand.Next(-reach, reach + 1);
+			int y = (int)center.Y + GenRand.Next(-reach, reach + 1);
+			if (!TryFindLocalPotGround(x, y, 20, tile => tile.TileType == stoneType, out int groundY))
+			{
+				continue;
+			}
+			if (!CanPlaceStoneBridgePot(x, groundY))
+			{
+				continue;
+			}
+			PlaceFrameImportantTilesAbove(x, groundY, 1, 2, potType, GenRand.Next(5) * 18);
+			placed++;
+		}
+	}
+
+	private static void ScatterStoneBridgePots(int left, int right, int top, int bottom, int targetCount, Func<Tile, bool> isGround, Func<int, int, bool> allow = null)
+	{
+		if (right <= left || bottom <= top || targetCount <= 0)
+		{
+			return;
+		}
+
+		int potType = ModContent.TileType<StoneBridge_Pot>();
+		int placed = 0;
+		for (int attempt = 0; attempt < targetCount * 80 && placed < targetCount; attempt++)
+		{
+			int x = GenRand.Next(left, right);
+			int y = GenRand.Next(top, bottom);
+			if (!TryFindLocalPotGround(x, y, 20, isGround, out int groundY))
+			{
+				continue;
+			}
+			if (groundY < top || groundY >= bottom)
+			{
+				continue;
+			}
+			if (allow != null && !allow(x, groundY))
+			{
+				continue;
+			}
+			if (!CanPlaceStoneBridgePot(x, groundY))
+			{
+				continue;
+			}
+			PlaceFrameImportantTilesAbove(x, groundY, 1, 2, potType, GenRand.Next(5) * 18);
+			placed++;
+		}
+	}
+
+	/// <summary>
+	/// 1x2 石桥罐需要一整格实心、非半砖的地面，并且上方两格是空的。
+	/// </summary>
+	private static bool CanPlaceStoneBridgePot(int x, int y)
+	{
+		if (!CanPlaceMultiAtTopTowardsUpRight(x, y, 1, 2))
+		{
+			return false;
+		}
+
+		Tile ground = Main.tile[x, y];
+		return Main.tileSolid[ground.TileType] && !ground.IsHalfBlock && !ground.IsActuated;
+	}
+
+	/// <summary>
+	/// 从采样点向下寻找近处地面，不向上穿透整块实心地形。
+	/// </summary>
+	private static bool TryFindLocalPotGround(int x, int y, int maxDown, Func<Tile, bool> isGround, out int groundY)
+	{
+		groundY = y;
+		for (int d = 0; d <= maxDown; d++)
+		{
+			Tile tile = SafeGetTile(x, y + d);
+			if (!tile.HasTile)
+			{
+				continue;
+			}
+			if (!isGround(tile))
+			{
+				return false;
+			}
+			groundY = y + d;
+			return true;
+		}
+		return false;
 	}
 }

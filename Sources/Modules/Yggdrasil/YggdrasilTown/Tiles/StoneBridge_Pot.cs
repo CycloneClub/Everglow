@@ -19,9 +19,9 @@ public class StoneBridge_Pot : ModTile
 		Main.tileSpelunker[Type] = true;
 		DustType = ModContent.DustType<StoneBridgeDust>();
 
-		// Placement
-		TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2); // this style already takes care of direction for us
+		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);
 		TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
+		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.addTile(Type);
 
 		HitSound = SoundID.Shatter;
