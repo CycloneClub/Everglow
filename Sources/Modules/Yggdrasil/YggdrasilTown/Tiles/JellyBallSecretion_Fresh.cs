@@ -7,6 +7,7 @@ public class JellyBallSecretion_Fresh : ModTile
 	public override void SetStaticDefaults()
 	{
 		Main.tileSolid[Type] = true;
+		TileID.Sets.IceSkateSlippery[Type] = true;
 		TileID.Sets.NegatesFallDamage[Type] = true;
 		TileID.Sets.ChecksForMerge[Type] = true;
 		Main.tileMergeDirt[Type] = false;

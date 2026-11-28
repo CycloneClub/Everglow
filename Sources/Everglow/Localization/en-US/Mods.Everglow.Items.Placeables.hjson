@@ -1148,6 +1148,11 @@ JellyBallCube: {
 	Tooltip: Looks soft and bouncy
 }
 
+JellyballNerveCable_Item: {
+	DisplayName: Jellyball Nerve Cable
+	Tooltip: ""
+}
+
 JellyBallSecretionWall_Item: {
 	DisplayName: Jelly Ball Secretion Wall
 	Tooltip: ""

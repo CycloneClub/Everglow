@@ -1168,6 +1168,11 @@ JellyBallCube: {
 	Tooltip: 看起来软软弹弹的
 }
 
+JellyballNerveCable_Item: {
+	DisplayName: 球冻神经缆线
+	Tooltip: ""
+}
+
 JellyBallSecretionWall_Item: {
 	DisplayName: 球冻分泌物墙
 	Tooltip: ""

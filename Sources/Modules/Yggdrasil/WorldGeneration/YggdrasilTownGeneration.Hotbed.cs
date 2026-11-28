@@ -107,6 +107,8 @@ public partial class YggdrasilTownGeneration
 			}
 		}
 
+		BuildJellyBallNerveCables(bounds);
+
 		// 子世界没有原版的最终 framing pass，待全部材料写完再更新接缝。
 		for (int x = 1; x < bounds.Width - 1; x++)
 		{
@@ -119,5 +121,121 @@ public partial class YggdrasilTownGeneration
 				}
 			}
 		}
+	}
+
+	private readonly record struct JellyBallNerveCableAnchor(Point Nerve, Point Cable);
+
+	private static void BuildJellyBallNerveCables(Rectangle bounds)
+	{
+		int nutritionType = LiquidLoader.LiquidType<JellyBallNutritionLiquid>();
+		int nerveType = ModContent.TileType<JellyBallNerve>();
+		int poolLeft = bounds.Right;
+		int poolTop = bounds.Bottom;
+		int poolRight = bounds.Left;
+		int poolBottom = bounds.Top;
+		for (int x = bounds.Left; x < bounds.Right; x++)
+		{
+			for (int y = bounds.Top; y < bounds.Bottom; y++)
+			{
+				Tile tile = Main.tile[x, y];
+				if (tile.LiquidAmount == 0 || tile.LiquidType != nutritionType)
+				{
+					continue;
+				}
+
+				poolLeft = Math.Min(poolLeft, x);
+				poolTop = Math.Min(poolTop, y);
+				poolRight = Math.Max(poolRight, x + 1);
+				poolBottom = Math.Max(poolBottom, y + 1);
+			}
+		}
+
+		if (poolLeft >= poolRight || poolTop >= poolBottom)
+		{
+			return;
+		}
+
+		var poolBounds = Rectangle.Intersect(bounds, new Rectangle(poolLeft - 24, poolTop - 16, poolRight - poolLeft + 48, poolBottom - poolTop + 32));
+		var anchors = new List<JellyBallNerveCableAnchor>();
+		var seenCablePoints = new HashSet<Point>();
+		Point[] directions = [new Point(-1, 0), new Point(1, 0), new Point(0, -1), new Point(0, 1)];
+		for (int x = poolBounds.Left; x < poolBounds.Right; x++)
+		{
+			for (int y = poolBounds.Top; y < poolBounds.Bottom; y++)
+			{
+				Tile tile = Main.tile[x, y];
+				if (!tile.HasUnactuatedTile || tile.TileType != nerveType)
+				{
+					continue;
+				}
+
+				foreach (Point direction in directions)
+				{
+					var cablePoint = new Point(x + direction.X, y + direction.Y);
+					if (poolBounds.Contains(cablePoint) && !Main.tile[cablePoint].HasUnactuatedTile && seenCablePoints.Add(cablePoint))
+					{
+						anchors.Add(new JellyBallNerveCableAnchor(new Point(x, y), cablePoint));
+					}
+				}
+			}
+		}
+
+		var pairs = new List<(JellyBallNerveCableAnchor Start, JellyBallNerveCableAnchor End)>();
+		for (int i = 0; i < anchors.Count; i++)
+		{
+			for (int j = i + 1; j < anchors.Count; j++)
+			{
+				var start = anchors[i];
+				var end = anchors[j];
+				int deltaX = Math.Abs(start.Cable.X - end.Cable.X);
+				int deltaY = Math.Abs(start.Cable.Y - end.Cable.Y);
+				if (start.Nerve == end.Nerve || deltaX < 18 || deltaX > 50 || deltaY > 24
+					|| !IsClearCablePath(start.Cable, end.Cable, poolBounds))
+				{
+					continue;
+				}
+
+				pairs.Add((start, end));
+			}
+		}
+
+		var cable = ModContent.GetInstance<JellyBallNerveCable>();
+		var usedAnchors = new List<Point>();
+		int placed = 0;
+		foreach (var pair in pairs.OrderBy(_ => GenRand.Next()))
+		{
+			if (usedAnchors.Any(point => Vector2.DistanceSquared(point.ToVector2(), pair.Start.Cable.ToVector2()) < 144
+				|| Vector2.DistanceSquared(point.ToVector2(), pair.End.Cable.ToVector2()) < 144))
+			{
+				continue;
+			}
+
+			cable.CreateACableTile(pair.Start.Cable.X, pair.Start.Cable.Y, pair.End.Cable.X, pair.End.Cable.Y);
+			WorldGen.SquareTileFrame(pair.Start.Cable.X, pair.Start.Cable.Y);
+			WorldGen.SquareTileFrame(pair.End.Cable.X, pair.End.Cable.Y);
+			usedAnchors.Add(pair.Start.Cable);
+			usedAnchors.Add(pair.End.Cable);
+			if (++placed >= 5)
+			{
+				break;
+			}
+		}
+	}
+
+	private static bool IsClearCablePath(Point start, Point end, Rectangle bounds)
+	{
+		int steps = Math.Max(Math.Abs(end.X - start.X), Math.Abs(end.Y - start.Y)) * 2;
+		for (int step = 1; step < steps; step++)
+		{
+			float progress = step / (float)steps;
+			int x = (int)MathF.Round(start.X + (end.X - start.X) * progress);
+			int y = (int)MathF.Round(start.Y + (end.Y - start.Y) * progress);
+			if (!bounds.Contains(x, y) || Main.tile[x, y].HasUnactuatedTile)
+			{
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
