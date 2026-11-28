@@ -41,6 +41,12 @@ public class StoneBridge_Pot : ModTile
 
 	public override void KillMultiTile(int i, int j, int frameX, int frameY)
 	{
+		// 额外 1/5 掉落坠落之星，不替换原有战利品。
+		if (Main.rand.NextBool(5))
+		{
+			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, ItemID.FallenStar);
+		}
+
 		DropVanillaSupplies(i, j);
 		if (RollSpecialSupplies(Main.rand) is { } reward)
 		{

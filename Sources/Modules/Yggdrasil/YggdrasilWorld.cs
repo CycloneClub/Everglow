@@ -74,12 +74,14 @@ public class YggdrasilWorld : Subworld
 		On_WorldGen.setWorldSize += WorldGen_setWorldSize;
 		IL_Liquid.Update += SkipUnderworldEvaporation;
 		IL_Projectile.CanExplodeTile += AllowUnderworldExplosions;
+		IL_Item.DespawnIfMeetingConditions += SkipFallenStarDespawn;
 	}
 
 	public override void Unload()
 	{
 		IL_Liquid.Update -= SkipUnderworldEvaporation;
 		IL_Projectile.CanExplodeTile -= AllowUnderworldExplosions;
+		IL_Item.DespawnIfMeetingConditions -= SkipFallenStarDespawn;
 	}
 
 	/// <summary>
@@ -104,6 +106,31 @@ public class YggdrasilWorld : Subworld
 
 		cursor.EmitDelegate<Func<bool>>(() => InYggdrasil);
 		cursor.Emit(OpCodes.Brtrue, skipEvaporation);
+	}
+
+	/// <summary>
+	/// Fallen stars despawn at dawn. In Yggdrasil, skip that check.
+	/// </summary>
+	private static void SkipFallenStarDespawn(ILContext il)
+	{
+		ILCursor cursor = new(il);
+		if (!cursor.TryGotoNext(
+			i => i.MatchLdarg(0),
+			i => i.MatchLdfld<Item>(nameof(Item.type)),
+			i => i.MatchLdcI4(ItemID.FallenStar),
+			i => i.MatchBneUn(out _)))
+		{
+			throw new InvalidOperationException("Fallen star dawn despawn was not found in Item.DespawnIfMeetingConditions.");
+		}
+
+		Instruction branch = cursor.Instrs[cursor.Index + 3];
+		if (!branch.MatchBneUn(out ILLabel skipDespawn))
+		{
+			throw new InvalidOperationException("Fallen star dawn despawn branch was not found in Item.DespawnIfMeetingConditions.");
+		}
+
+		cursor.EmitDelegate<Func<bool>>(() => InYggdrasil);
+		cursor.Emit(OpCodes.Brtrue, skipDespawn);
 	}
 
 	/// <summary>
